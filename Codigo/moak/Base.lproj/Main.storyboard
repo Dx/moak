@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="92I-eW-61G">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F2073" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="92I-eW-61G">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -731,11 +731,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hPT-cL-iNd">
-                                <rect key="frame" x="-4" y="20" width="383" height="647"/>
+                                <rect key="frame" x="-4" y="64" width="383" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QC9-nu-0DH">
-                                <rect key="frame" x="-4" y="20" width="383" height="647"/>
+                                <rect key="frame" x="-4" y="64" width="383" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" rowHeight="85" id="5fP-fT-9rA" customClass="MasterHistoryCellView" customModule="moak" customModuleProvider="target">
@@ -1439,7 +1439,7 @@
         <scene sceneID="W1q-VT-OSh">
             <objects>
                 <navigationController id="BnA-Vb-uI6" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="V5y-nR-R3g">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="V5y-nR-R3g">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1598,7 +1598,7 @@
             <objects>
                 <navigationController id="EFx-9C-xQZ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Tickets" image="Tickets" id="nMe-Lv-KeQ"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5dU-mc-bK4">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5dU-mc-bK4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.88830828669999995" green="0.13328522440000001" blue="0.2141344845" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1615,7 +1615,7 @@
         <scene sceneID="DV6-qR-1rs">
             <objects>
                 <navigationController id="til-d1-Uar" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="76h-LN-4dl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="76h-LN-4dl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1625,7 +1625,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ITd-ic-ble" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2028" y="-693"/>
+            <point key="canvasLocation" x="-2042" y="-770"/>
         </scene>
         <!--History View Controller-->
         <scene sceneID="qrW-Sv-5HH">
@@ -1645,7 +1645,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ifO-yQ-MZS">
-                                <rect key="frame" x="-4" y="21" width="383" height="646"/>
+                                <rect key="frame" x="-4" y="65" width="383" height="602"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -2470,29 +2470,11 @@
             </objects>
             <point key="canvasLocation" x="2637" y="180"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="1AA-J3-Tac">
-            <objects>
-                <viewController id="BUt-mZ-JU7" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Z2G-ab-db7"/>
-                        <viewControllerLayoutGuide type="bottom" id="pLg-2Y-DU6"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ZjD-88-ALE">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5WE-62-1a2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3505" y="403"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="upt-ym-scT">
             <objects>
                 <navigationController id="vT9-3O-qav" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="AlC-IG-cbA">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AlC-IG-cbA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2711,7 +2693,7 @@
         <scene sceneID="Yk4-v5-rhl">
             <objects>
                 <navigationController id="ozW-FK-M0s" customClass="NewProductNavigationViewController" customModule="moak" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="bAv-U8-weu">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bAv-U8-weu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2727,7 +2709,7 @@
         <scene sceneID="pac-hB-gGv">
             <objects>
                 <navigationController id="Vg5-f7-X5B" customClass="UISideMenuNavigationController" customModule="SideMenu" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="U7B-e4-xcq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="U7B-e4-xcq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2899,7 +2881,7 @@
         <scene sceneID="G0m-cb-X4S">
             <objects>
                 <navigationController storyboardIdentifier="LeftMenuNavigationController" id="jJE-RQ-xS3" customClass="UISideMenuNavigationController" customModule="SideMenu" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="K6s-Je-Cfx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="K6s-Je-Cfx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3017,13 +2999,13 @@
         <image name="menu" width="22" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jI3-bn-iqa"/>
+        <segue reference="VaP-Co-cHm"/>
         <segue reference="eBH-0V-VsO"/>
-        <segue reference="f6y-Np-VA2"/>
+        <segue reference="kvY-KJ-dEv"/>
         <segue reference="nsn-qF-9HV"/>
         <segue reference="Ujy-uH-sK9"/>
-        <segue reference="v9a-oW-qbD"/>
         <segue reference="93I-pw-i6M"/>
-        <segue reference="VaP-Co-cHm"/>
+        <segue reference="v9a-oW-qbD"/>
+        <segue reference="jI3-bn-iqa"/>
     </inferredMetricsTieBreakers>
 </document>

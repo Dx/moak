@@ -15,7 +15,7 @@ protocol StoreSelectorDelegate {
     func storeSelected(store: GooglePlaceResult?)
 }
 
-class StoreSelectorController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class StoreSelectorController: UIViewController, UITableViewDelegate, UITableViewDataSource, GMSPlacePickerViewControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     var googlePlaceResults : [GooglePlaceResult] = []
@@ -57,36 +57,43 @@ class StoreSelectorController: UIViewController, UITableViewDelegate, UITableVie
             let southWest = CLLocationCoordinate2DMake(center.latitude - 0.001, center.longitude - 0.001)
             let viewport = GMSCoordinateBounds(coordinate: northEast, coordinate: southWest)
             let config = GMSPlacePickerConfig(viewport: viewport)
-            let placePicker = GMSPlacePicker(config: config)
+            let placePicker = GMSPlacePickerViewController(config: config)
             
-            placePicker.pickPlace(callback: { (place, error) -> () in
-                if let error = error {
-                    print("Pick Place error: \(error.localizedDescription)")
-                    return
-                }
-                
-                if let place = place {
-                    let googlePlace = GooglePlaceResult(id: place.placeID, name: place.name, address: place.formattedAddress!, lat: place.coordinate.latitude, lng: place.coordinate.longitude)
-                    
-                    self.currentGooglePlace = googlePlace
-                    
-                    let firebase = FirebaseClient()
-                    
-                    firebase.setStoreInUserFavs(store: googlePlace)
-                    
-                    self.delegate!.storeSelected(store: googlePlace)
-                
-                	_ = self.navigationController?.popViewController(animated: true)
-                    
-                    print("Place name \(place.name)")
-                    print("Place address \(place.formattedAddress ?? "")")
-                } else {
-                    print("Google place picker failed")
-                }
-            })
+            placePicker.delegate = self
         } else {
             print("Google place picker failed")
         }
+    }
+    
+    // MARK: - GMSPlacePickerViewControllerDelegate
+    func placePicker(_ viewController: GMSPlacePickerViewController, didPick place: GMSPlace) {
+        let googlePlace = GooglePlaceResult(id: place.placeID, name: place.name, address: place.formattedAddress!, lat: place.coordinate.latitude, lng: place.coordinate.longitude)
+        
+        self.currentGooglePlace = googlePlace
+        
+        let firebase = FirebaseClient()
+        
+        firebase.setStoreInUserFavs(store: googlePlace)
+        
+        self.delegate!.storeSelected(store: googlePlace)
+        
+        _ = self.navigationController?.popViewController(animated: true)
+        
+        print("Place name \(place.name)")
+        print("Place address \(place.formattedAddress ?? "")")
+    }
+    
+    func placePicker(_ viewController: GMSPlacePickerViewController, didFailWithError error: Error) {
+        // In your own app you should handle this better, but for the demo we are just going to log
+        // a message.
+        NSLog("An error occurred while picking a place: \(error)")
+    }
+    
+    func placePickerDidCancel(_ viewController: GMSPlacePickerViewController) {
+        NSLog("The place picker was canceled by the user")
+        
+        // Dismiss the place picker.
+        viewController.dismiss(animated: true, completion: nil)
     }
     
     // MARK: - TableView Delegate

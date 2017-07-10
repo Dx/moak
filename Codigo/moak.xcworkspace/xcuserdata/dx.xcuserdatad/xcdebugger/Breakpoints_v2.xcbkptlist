@@ -615,118 +615,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "521352223.686004"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "889"
-            endingLineNumber = "889"
-            landmarkName = "setCurrentStore()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "moak.ListsViewController.(estimateTotal () -&gt; ()).(closure #1)"
-                  moduleName = "moak"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dx/Documents/Moak/Codigo/moak/Controllers/ListsViewController.swift"
-                  timestampString = "507185733.041102"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "915"
-                  endingLineNumber = "915"
-                  offsetFromSymbolStart = "24">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "moak.ListsViewController.(estimateTotal () -&gt; ()).(closure #1)"
-                  moduleName = "moak"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dx/Documents/Moak/Codigo/moak/Controllers/ListsViewController.swift"
-                  timestampString = "507185733.043156"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "915"
-                  endingLineNumber = "915"
-                  offsetFromSymbolStart = "60">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "521352223.686004"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "892"
-            endingLineNumber = "892"
-            landmarkName = "estimateTotal()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "moak.ListsViewController.(barcodeFound (code : Swift.String) -&gt; ()).(closure #1).(closure #1)"
-                  moduleName = "moak"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dx/Documents/Moak/Codigo/moak/Controllers/ListsViewController.swift"
-                  timestampString = "501437385.345216"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "809"
-                  endingLineNumber = "809"
-                  offsetFromSymbolStart = "616">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "moak.ListsViewController.(barcodeFound (code : Swift.String) -&gt; ()).(closure #1).(closure #1).(closure #1)"
-                  moduleName = "moak"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dx/Documents/Moak/Codigo/moak/Controllers/ListsViewController.swift"
-                  timestampString = "501437385.346482"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "810"
-                  endingLineNumber = "810"
-                  offsetFromSymbolStart = "76">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "521352223.686004"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "901"
-            endingLineNumber = "901"
-            landmarkName = "estimateTotal()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "moak/Models/Product.swift"
             timestampString = "520653789.455513"
             startingColumnNumber = "9223372036854775807"
@@ -2658,38 +2546,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "521352223.686004"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "875"
-            endingLineNumber = "875"
-            landmarkName = "setCurrentStore()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "521352223.686004"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "884"
-            endingLineNumber = "884"
-            landmarkName = "setCurrentStore()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "moak/Controllers/ListsViewController.swift"
             timestampString = "520839160.322383"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -4033,22 +3889,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "521352223.686004"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "953"
-            endingLineNumber = "953"
-            landmarkName = "selectClosestStore()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "moak/Controllers/StoreViewController.swift"
             timestampString = "520661042.295064"
             startingColumnNumber = "9223372036854775807"
@@ -4072,22 +3912,6 @@
             startingLineNumber = "118"
             endingLineNumber = "118"
             landmarkName = "reloadStores()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "521352223.686004"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "954"
-            endingLineNumber = "954"
-            landmarkName = "selectClosestStore()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4130,76 +3954,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "521352223.686004"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "951"
-            endingLineNumber = "951"
-            landmarkName = "selectClosestStore()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "moak.ListsViewController.selectClosestStore () -&gt; ()"
-                  moduleName = "moak"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dx/Documents/Moak/Codigo/moak/Controllers/ListsViewController.swift"
-                  timestampString = "516521224.273257"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "895"
-                  endingLineNumber = "895"
-                  offsetFromSymbolStart = "148">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "moak.ListsViewController.(selectClosestStore () -&gt; ()).(closure #1)"
-                  moduleName = "moak"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dx/Documents/Moak/Codigo/moak/Controllers/ListsViewController.swift"
-                  timestampString = "516521224.274954"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "897"
-                  endingLineNumber = "897"
-                  offsetFromSymbolStart = "64">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "moak/Controllers/ListsViewController.swift"
             timestampString = "520839160.322383"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "381"
             endingLineNumber = "381"
             landmarkName = "locationManager(_:didUpdateLocations:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "521352223.686004"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "955"
-            endingLineNumber = "955"
-            landmarkName = "selectClosestStore()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

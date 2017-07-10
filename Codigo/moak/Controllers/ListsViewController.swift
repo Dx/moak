@@ -17,7 +17,7 @@ import SideMenu
 import BubbleTransition
 import Lottie
 
-class ListsViewController: UIViewController, UIViewControllerTransitioningDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, CLLocationManagerDelegate, StoreSelectorDelegate {
+class ListsViewController: UIViewController, UIViewControllerTransitioningDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, CLLocationManagerDelegate, StoreSelectorDelegate, GMSPlacePickerViewControllerDelegate {
     
     var locationManager = CLLocationManager()
     
@@ -843,30 +843,10 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
             let southWest = CLLocationCoordinate2DMake(center.latitude - 0.001, center.longitude - 0.001)
             let viewport = GMSCoordinateBounds(coordinate: northEast, coordinate: southWest)
             let config = GMSPlacePickerConfig(viewport: viewport)
-            let placePicker = GMSPlacePicker(config: config)
+            let placePicker = GMSPlacePickerViewController(config: config)
             
-            placePicker.pickPlace(callback: { (place, error) -> () in
-                if let error = error {
-                    print("Pick Place error: \(error.localizedDescription)")
-                    return
-                }
-                
-                if let place = place {
-                    let googlePlace = GooglePlaceResult(id: place.placeID, name: place.name, address: place.formattedAddress!, lat: place.coordinate.latitude, lng: place.coordinate.longitude)
-                    
-                    self.currentList!.place = googlePlace
-                    
-                    self.setCurrentStore()
-                    
-                    self.reloadProducts()
-                    
-                    print("Place name \(place.name)")
-                    print("Place address \(String(describing: place.formattedAddress))")
-                    print("Place attributions \(String(describing: place.attributions))")
-                } else {
-                    print("Google place picker failed")
-                }
-            })
+            placePicker.delegate = self
+            
         } else {
             print("Google place picker failed")
         }
@@ -876,14 +856,14 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
         let firebase = FirebaseClient()
         
         if self.currentList != nil {
-        	if let currentStore = self.currentList!.place {
-        		firebase.setStoreInUserFavs(store: currentStore)
-        		firebase.setStoreInShoppingList(shoppingListId: self.listSelected, store: currentStore)
-            
-            	self.estimateTotal()
-            
-        	} else {
-            	firebase.deleteStoreFromList(list: self.listSelected)
+            if let currentStore = self.currentList!.place {
+                firebase.setStoreInUserFavs(store: currentStore)
+                firebase.setStoreInShoppingList(shoppingListId: self.listSelected, store: currentStore)
+                
+                self.estimateTotal()
+                
+            } else {
+                firebase.deleteStoreFromList(list: self.listSelected)
             }
         }
     }
@@ -891,16 +871,16 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
     func estimateTotal() {
         let firebase = FirebaseClient()
         if self.currentList!.place != nil {
-        	for product in products {
-            	if product.productSKU != "" {
-                	firebase.getLastPriceInStore(storeId: self.currentList!.place!.id, skuNumber: product.productSKU) { (price: ProductComparer?) in
-                    	if let price = price {
-                        	let total = price.unitaryPrice * product.quantity
-                        	firebase.updateProductPrice(shoppingList: product.shoppingList, purchaseId: product.productId, buyThreePayTwo: false, unitaryPrice: price.unitaryPrice, totalPrice: total)
-                    	}
-                	}
-            	}
-        	}
+            for product in products {
+                if product.productSKU != "" {
+                    firebase.getLastPriceInStore(storeId: self.currentList!.place!.id, skuNumber: product.productSKU) { (price: ProductComparer?) in
+                        if let price = price {
+                            let total = price.unitaryPrice * product.quantity
+                            firebase.updateProductPrice(shoppingList: product.shoppingList, purchaseId: product.productId, buyThreePayTwo: false, unitaryPrice: price.unitaryPrice, totalPrice: total)
+                        }
+                    }
+                }
+            }
         }
     }
     
@@ -911,7 +891,7 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
             UIAlertAction in
             
             if self.inputText != nil {
-            	completion(self.inputText!.text)
+                completion(self.inputText!.text)
             }
             
             NSLog("OK Undo Pressed")
@@ -944,24 +924,53 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
     
     func selectClosestStore() {
         if self.currentList != nil {
-        	let gpClient = GooglePlacesClient()
-        	gpClient.getCloserStore(currentLocation: self.lastLocation!) { (result: GooglePlaceResult?, error: String?) in
-            
-            	if result != nil {
+            let gpClient = GooglePlacesClient()
+            gpClient.getCloserStore(currentLocation: self.lastLocation!) { (result: GooglePlaceResult?, error: String?) in
+                
+                if result != nil {
                     print("distancia a tienda \(result!.distance)")
-                	if result!.distance < 30 {
-                    	self.currentList!.place = result
+                    if result!.distance < 30 {
+                        self.currentList!.place = result
                         self.storeButton.setTitle(self.currentList!.place?.name, for: .normal)
                         self.storeButton.setTitleColor(UIColor.red, for: .normal)
-                	}
-            	} else {
-                
+                    }
+                } else {
+                    
                     self.currentList!.place = nil
-            	}
+                }
+                
+                self.setCurrentStore()
+            }
+        }
+    }
+    
+    // MARK: - GMSPlacePickerViewControllerDelegate 
+    func placePicker(_ viewController: GMSPlacePickerViewController, didPick place: GMSPlace) {
+        
+        let googlePlace = GooglePlaceResult(id: place.placeID, name: place.name, address: place.formattedAddress!, lat: place.coordinate.latitude, lng: place.coordinate.longitude)
+        
+        self.currentList!.place = googlePlace
             
-            	self.setCurrentStore()
-        	}
-    	}
+        self.setCurrentStore()
+            
+        self.reloadProducts()
+            
+        print("Place name \(place.name)")
+        print("Place address \(String(describing: place.formattedAddress))")
+        print("Place attributions \(String(describing: place.attributions))")
+    }
+    
+    func placePicker(_ viewController: GMSPlacePickerViewController, didFailWithError error: Error) {
+        // In your own app you should handle this better, but for the demo we are just going to log
+        // a message.
+        NSLog("An error occurred while picking a place: \(error)")
+    }
+    
+    func placePickerDidCancel(_ viewController: GMSPlacePickerViewController) {
+        NSLog("The place picker was canceled by the user")
+        
+        // Dismiss the place picker.
+        viewController.dismiss(animated: true, completion: nil)
     }
 }
 
