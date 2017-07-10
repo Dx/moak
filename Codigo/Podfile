@@ -1,0 +1,36 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, '6.0'
+
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+use_frameworks!
+
+target 'moak' do
+    platform :ios, '9.2'
+    pod 'Alamofire'
+    pod 'BubbleTransition'
+	pod 'MBProgressHUD'
+	pod 'KCOrderedAccessorFix'
+    pod 'DeployGateSDK'
+    pod 'GoogleMaps'
+    pod 'GooglePlaces'
+    pod 'GooglePlacePicker'
+    pod 'Firebase'
+    pod 'Firebase/Database'
+    pod 'Firebase/Auth'
+    pod 'Firebase/Storage'
+    pod 'FirebaseUI/Facebook'
+    pod 'FirebaseUI/Google'
+    pod 'Firebase/Crash'
+    pod 'FBSDKShareKit'
+    pod 'SideMenu'
+    pod 'lottie-ios'
+end
+
+target 'moak WatchKit App' do
+    platform :watchos, '3.0'
+end
+
+target 'moak WatchKit Extension' do
+    platform :watchos, '3.0'
+end

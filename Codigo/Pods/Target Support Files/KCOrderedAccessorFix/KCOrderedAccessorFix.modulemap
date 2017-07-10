@@ -1,0 +1,6 @@
+framework module KCOrderedAccessorFix {
+  umbrella header "KCOrderedAccessorFix-umbrella.h"
+
+  export *
+  module * { export * }
+}

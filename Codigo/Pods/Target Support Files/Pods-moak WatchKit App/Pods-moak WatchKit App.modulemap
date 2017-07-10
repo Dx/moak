@@ -1,0 +1,6 @@
+framework module Pods_moak_WatchKit_App {
+  umbrella header "Pods-moak WatchKit App-umbrella.h"
+
+  export *
+  module * { export * }
+}
