@@ -26,7 +26,7 @@ class Product {
     var checkedLongitude: Double!
     var checkedDate: Date?
     
-    var buyThreePayTwo: Bool = false
+    var modeBuying: Int = 0
     
     var shoppingList: String = ""
     
@@ -42,10 +42,10 @@ class Product {
     
     convenience init (productName: String, productSKUName: String, productSKU: String, lat:Double, lng: Double, order: Float, shoppingList: String) {
         
-        self.init(productName: productName, productSKUName: productSKUName, productSKU: productSKU, quantity: 1, listedDate: Date(), listedLatitude: lat, listedLongitude: lng, buyThreePayTwo: false, checked: false, order: order, shoppingList: shoppingList)
+        self.init(productName: productName, productSKUName: productSKUName, productSKU: productSKU, quantity: 1, listedDate: Date(), listedLatitude: lat, listedLongitude: lng, modeBuying: 0, checked: false, order: order, shoppingList: shoppingList)
     }
     
-    init (productName: String, productSKUName: String, productSKU: String, quantity: Float, listedDate: Date, listedLatitude: Double, listedLongitude: Double, buyThreePayTwo: Bool, checked: Bool, order: Float, shoppingList: String) {
+    init (productName: String, productSKUName: String, productSKU: String, quantity: Float, listedDate: Date, listedLatitude: Double, listedLongitude: Double, modeBuying: Int, checked: Bool, order: Float, shoppingList: String) {
         
         let defaults = UserDefaults.standard
         
@@ -65,7 +65,7 @@ class Product {
         self.listedDate = listedDate
         self.listedLatitude = listedLatitude
         self.listedLongitude = listedLongitude
-        self.buyThreePayTwo = buyThreePayTwo
+        self.modeBuying = modeBuying
         self.checkedLatitude = 0
         self.checkedLongitude = 0
         self.checked = checked
@@ -129,8 +129,8 @@ class Product {
             self.listedOrder = listedOrder
         }
         
-        if let buyThreePayTwo = parameters["buyThreePayTwo"] as? Bool {
-            self.buyThreePayTwo = buyThreePayTwo
+        if let modeBuying = parameters["modeBuying"] as? Int {
+            self.modeBuying = modeBuying
         }
         
         if let checked = parameters["checked"] as? Bool {
@@ -191,7 +191,7 @@ class Product {
             "checked": fchecked,
             "unitaryPrice":self.unitaryPrice,
             "totalPrice":self.totalPrice,
-            "buyThreePayTwo": self.buyThreePayTwo,
+            "modeBuying": self.modeBuying,
             "checkedDate":formattedPurchasedDate,
             "checkedPosition":["lat":checkedLatitude!,
                 "long":checkedLongitude!]] as [String : Any]

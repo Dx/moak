@@ -193,7 +193,7 @@ class MagicListViewController: UIViewController, UITableViewDelegate, UITableVie
                 if let price = productComparer {
                     product?.unitaryPrice = price.unitaryPrice
                     
-                    firebase.updateProductPrice(shoppingList: self.listId!, purchaseId: (product?.productId)!, buyThreePayTwo: false, unitaryPrice: price.unitaryPrice, totalPrice: price.unitaryPrice)
+                    firebase.updateProductPrice(shoppingList: self.listId!, purchaseId: (product?.productId)!, modeBuying: 0, unitaryPrice: price.unitaryPrice, totalPrice: price.unitaryPrice)
                 }
             }
         }

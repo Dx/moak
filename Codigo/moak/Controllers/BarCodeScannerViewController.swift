@@ -367,7 +367,7 @@ class BarCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObj
                 if let price = productComparer {
                     product?.unitaryPrice = price.unitaryPrice
                     
-                    firebase.updateProductPrice(shoppingList: list, purchaseId: (product?.productId)!, buyThreePayTwo: false, unitaryPrice: price.unitaryPrice, totalPrice: price.unitaryPrice)
+                    firebase.updateProductPrice(shoppingList: list, purchaseId: (product?.productId)!, modeBuying: 0, unitaryPrice: price.unitaryPrice, totalPrice: price.unitaryPrice)
                 }
             }
         }

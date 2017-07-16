@@ -92,12 +92,12 @@ class MoveToListViewController: UIViewController, UITableViewDelegate, UITableVi
             
             for product in self.selectedProducts {
                 if let location = self.lastLocation {
-                    let newProduct = Product(productName: product.productName, productSKUName:product.productSKUName, productSKU: product.productSKU, quantity: product.quantity, listedDate: Date(), listedLatitude: location.coordinate.latitude, listedLongitude: location.coordinate.longitude, buyThreePayTwo: false, checked: false, order: 0, shoppingList: key)
+                    let newProduct = Product(productName: product.productName, productSKUName:product.productSKUName, productSKU: product.productSKU, quantity: product.quantity, listedDate: Date(), listedLatitude: location.coordinate.latitude, listedLongitude: location.coordinate.longitude, modeBuying: 0, checked: false, order: 0, shoppingList: key)
                     newProduct.unitaryPrice = product.unitaryPrice
                     newProduct.totalPrice = product.totalPrice
                     firebase.addProductInShoppingList(shoppingList: key, product: newProduct)
                 } else {
-                    let newProduct = Product(productName: product.productName, productSKUName:product.productSKUName, productSKU: product.productSKU, quantity: product.quantity, listedDate: Date(), listedLatitude: 0, listedLongitude: 0, buyThreePayTwo: false, checked: false, order: 0, shoppingList: key)
+                    let newProduct = Product(productName: product.productName, productSKUName:product.productSKUName, productSKU: product.productSKU, quantity: product.quantity, listedDate: Date(), listedLatitude: 0, listedLongitude: 0, modeBuying: 0, checked: false, order: 0, shoppingList: key)
                     newProduct.unitaryPrice = product.unitaryPrice
                     newProduct.totalPrice = product.totalPrice
                     firebase.addProductInShoppingList(shoppingList: key, product: newProduct)

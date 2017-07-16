@@ -10,6 +10,7 @@
 		470CF70E8CFC84B34D429CF9 /* Pods_moak_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D18724E2676C1A4957FA652 /* Pods_moak_WatchKit_Extension.framework */; };
 		BB7FE1028F949AA85335709B /* Pods_moak_WatchKit_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE0CEC1600AA15C478B34662 /* Pods_moak_WatchKit_App.framework */; };
 		E114A4381DE6A0C40026C058 /* AddProductController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114A4371DE6A0C40026C058 /* AddProductController.swift */; };
+		E126BC881F1A729400A17A15 /* ProductDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E126BC871F1A729400A17A15 /* ProductDataViewController.swift */; };
 		E12810131DA7132E003EFD6C /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12810121DA7132E003EFD6C /* Friend.swift */; };
 		E12FB8601E0F16D500B7E804 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12FB85F1E0F16D500B7E804 /* StringExtension.swift */; };
 		E14DCF321EE437800038B2B4 /* GeneralExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14DCF311EE437800038B2B4 /* GeneralExtensions.swift */; };
@@ -61,7 +62,6 @@
 		E1D997681DA2028900FE129F /* DetailHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D9975F1DA2028900FE129F /* DetailHistoryCell.swift */; };
 		E1D9977B1DA2029600FE129F /* UserNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D9976A1DA2029600FE129F /* UserNameViewController.swift */; };
 		E1D9977C1DA2029600FE129F /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D9976B1DA2029600FE129F /* ShoppingListViewController.swift */; };
-		E1D9977D1DA2029600FE129F /* SearchProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D9976C1DA2029600FE129F /* SearchProductViewController.swift */; };
 		E1D9977E1DA2029600FE129F /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D9976D1DA2029600FE129F /* RankingViewController.swift */; };
 		E1D9977F1DA2029600FE129F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D9976E1DA2029600FE129F /* ProfileViewController.swift */; };
 		E1D997801DA2029600FE129F /* PageProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D9976F1DA2029600FE129F /* PageProfileViewController.swift */; };
@@ -154,6 +154,7 @@
 		DC3CE90E79EC0F8E1E0C94AF /* Pods-moak WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moak WatchKit Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-moak WatchKit Extension/Pods-moak WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
 		E10FC0FD1E2B3A3D008C4C26 /* Bridging_Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bridging_Header.h; sourceTree = "<group>"; };
 		E114A4371DE6A0C40026C058 /* AddProductController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddProductController.swift; path = Controllers/AddProductController.swift; sourceTree = "<group>"; };
+		E126BC871F1A729400A17A15 /* ProductDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductDataViewController.swift; path = Controllers/ProductDataViewController.swift; sourceTree = "<group>"; };
 		E12810121DA7132E003EFD6C /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		E12FB85F1E0F16D500B7E804 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = Models/StringExtension.swift; sourceTree = "<group>"; };
 		E14DCF311EE437800038B2B4 /* GeneralExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeneralExtensions.swift; path = Controllers/GeneralExtensions.swift; sourceTree = "<group>"; };
@@ -211,7 +212,6 @@
 		E1D9975F1DA2028900FE129F /* DetailHistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailHistoryCell.swift; path = Views/DetailHistoryCell.swift; sourceTree = "<group>"; };
 		E1D9976A1DA2029600FE129F /* UserNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserNameViewController.swift; path = Controllers/UserNameViewController.swift; sourceTree = "<group>"; };
 		E1D9976B1DA2029600FE129F /* ShoppingListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShoppingListViewController.swift; path = Controllers/ShoppingListViewController.swift; sourceTree = "<group>"; };
-		E1D9976C1DA2029600FE129F /* SearchProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchProductViewController.swift; path = Controllers/SearchProductViewController.swift; sourceTree = "<group>"; };
 		E1D9976D1DA2029600FE129F /* RankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RankingViewController.swift; path = Controllers/RankingViewController.swift; sourceTree = "<group>"; };
 		E1D9976E1DA2029600FE129F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Controllers/ProfileViewController.swift; sourceTree = "<group>"; };
 		E1D9976F1DA2029600FE129F /* PageProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PageProfileViewController.swift; path = Controllers/PageProfileViewController.swift; sourceTree = "<group>"; };
@@ -412,7 +412,6 @@
 				E1D9976B1DA2029600FE129F /* ShoppingListViewController.swift */,
 				E1D997731DA2029600FE129F /* MasterHistoryViewController.swift */,
 				E1D997761DA2029600FE129F /* HistoryViewController.swift */,
-				E1D9976C1DA2029600FE129F /* SearchProductViewController.swift */,
 				E1D9976D1DA2029600FE129F /* RankingViewController.swift */,
 				E1D9976E1DA2029600FE129F /* ProfileViewController.swift */,
 				E1D9976F1DA2029600FE129F /* PageProfileViewController.swift */,
@@ -433,6 +432,7 @@
 				E16BECFB1EDE74E30010BB93 /* MagicListViewController.swift */,
 				E14DCF311EE437800038B2B4 /* GeneralExtensions.swift */,
 				E14DCF331EE593C50038B2B4 /* TutorialViewController.swift */,
+				E126BC871F1A729400A17A15 /* ProductDataViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -775,7 +775,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1D9977D1DA2029600FE129F /* SearchProductViewController.swift in Sources */,
 				E1D997661DA2028900FE129F /* MasterHistoryCellView.swift in Sources */,
 				E1D997861DA2029600FE129F /* ListsViewController.swift in Sources */,
 				E1A1C3F71DE0BEC900F772DE /* StoreSelectorViewCell.swift in Sources */,
@@ -840,6 +839,7 @@
 				E1EDCFAA1DFB646F00A242C7 /* ComparativeCell.swift in Sources */,
 				E1D997681DA2028900FE129F /* DetailHistoryCell.swift in Sources */,
 				E16A34E01E09F0D300CE6D51 /* ChrixClient.swift in Sources */,
+				E126BC881F1A729400A17A15 /* ProductDataViewController.swift in Sources */,
 				E1D9977E1DA2029600FE129F /* RankingViewController.swift in Sources */,
 				E1DFFECD1EA86526005553CB /* MenuController.swift in Sources */,
 				E1A709AC1DD8A6790009E711 /* AddProductNavigation.swift in Sources */,

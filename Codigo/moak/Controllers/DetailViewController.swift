@@ -19,7 +19,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITableViewDe
     @IBOutlet weak var productTotalPrice: UITextField!
     @IBOutlet weak var tablePicker: UISegmentedControl!
     @IBOutlet weak var skuText: UITextField!
-    @IBOutlet weak var barcodeButton: UIButton!
     @IBOutlet weak var historyTableView: UITableView!
     @IBOutlet weak var modePicker: UISegmentedControl!
     
@@ -47,7 +46,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITableViewDe
     
     override func viewWillAppear(_ animated: Bool) {
         self.loadValues()
-        
     }
     
     func loadValues() {
@@ -85,11 +83,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITableViewDe
             	self.productQuantity.text = "0"
         	}
             
-            if product.buyThreePayTwo {
-            	self.modePicker.selectedSegmentIndex = 1
-            } else {
-                self.modePicker.selectedSegmentIndex = 0
-            }
+            self.modePicker.selectedSegmentIndex = product.modeBuying
         
         	self.productTotalPrice.text = formatter.string(from: product.totalPrice as NSNumber)
         
@@ -128,13 +122,11 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITableViewDe
             productQuantity.isEnabled = false
             productPrice.isEnabled = false
             productTotalPrice.isEnabled = false
-            barcodeButton.isEnabled = false
         } else {
             self.addDoneButtonOnKeyboard()
             productQuantity.isEnabled = true
             productPrice.isEnabled = true
             productTotalPrice.isEnabled = true
-            barcodeButton.isEnabled = true
         }
     }
     
@@ -144,10 +136,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITableViewDe
     
     @IBAction func clickJustPrice(_ sender: Any) {
         captureJustPrice()
-    }
-    
-    @IBAction func searchProductClick(_ sender: AnyObject) {
-        self.performSegue(withIdentifier: "showProductDescription", sender: nil)
     }
     
     @IBAction func modePickerChanged(_ sender: Any) {
@@ -160,6 +148,14 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         case 1:
             if productQuantity.text == "0" || productQuantity.text == "1" || (productQuantity.text?.contains("."))! {
             	productQuantity.text = "3"
+            }
+            textFieldDidEndEditing(self.productQuantity)
+            productPrice.becomeFirstResponder()
+            textFieldDidBeginEditing(self.productPrice)
+            productTotalPrice.isEnabled = false
+        case 2:
+            if productQuantity.text == "0" || productQuantity.text == "1" || (productQuantity.text?.contains("."))! {
+                productQuantity.text = "2"
             }
             textFieldDidEndEditing(self.productQuantity)
             productPrice.becomeFirstResponder()
@@ -194,11 +190,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         default:
             print ("dev/null")
         }
-    }
-    
-    @IBAction func barcodeButtonClicked(_ sender: AnyObject) {
-        
-        self.performSegue(withIdentifier: "showBarCodeScanner", sender: self)
     }
     
     // MARK: - Functions
@@ -562,20 +553,24 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITableViewDe
                 let nf = NumberFormatter()
                 nf.numberStyle = .decimal
                 
-                self.selectedProduct!.buyThreePayTwo = modePicker.selectedSegmentIndex == 1
+                self.selectedProduct!.modeBuying = modePicker.selectedSegmentIndex
                 
-                if !self.selectedProduct!.buyThreePayTwo {
-                    
-            		self.selectedProduct!.totalPrice = (self.selectedProduct?.unitaryPrice)! * (stringToNumberFormatter.number(from: productQuantity.text!)!).floatValue
-                } else {
+                switch self.selectedProduct!.modeBuying {
+                case 0:
+                    self.selectedProduct!.totalPrice = (self.selectedProduct?.unitaryPrice)! * (stringToNumberFormatter.number(from: productQuantity.text!)!).floatValue
+                case 1:
                     self.selectedProduct!.totalPrice = (self.selectedProduct?.unitaryPrice)! * ((stringToNumberFormatter.number(from: productQuantity.text!)!).floatValue / 3 * 2)
+                case 2:
+                    self.selectedProduct!.totalPrice = (self.selectedProduct?.unitaryPrice)! * ((stringToNumberFormatter.number(from: productQuantity.text!)!).floatValue / 2)
+                default:
+                    print("dev/null")
                 }
                 
             	let formatter = NumberFormatter()
             	formatter.numberStyle = .currency
             	self.productTotalPrice.text = formatter.string(from: self.selectedProduct!.totalPrice as NSNumber)
             	
-                firebase.updateProductPrice(shoppingList: self.shoppingList!, purchaseId: (self.selectedProduct?.productId)!, buyThreePayTwo: self.selectedProduct!.buyThreePayTwo, unitaryPrice: self.selectedProduct!.unitaryPrice, totalPrice: self.selectedProduct!.totalPrice)
+                firebase.updateProductPrice(shoppingList: self.shoppingList!, purchaseId: (self.selectedProduct?.productId)!, modeBuying: self.selectedProduct!.modeBuying, unitaryPrice: self.selectedProduct!.unitaryPrice, totalPrice: self.selectedProduct!.totalPrice)
             }
         case productTotalPrice:
             if let _ = Float(self.productTotalPrice.text!) {}
@@ -583,11 +578,13 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITableViewDe
                 self.productTotalPrice.text = "0"
             }
             
-            self.selectedProduct!.buyThreePayTwo = modePicker.selectedSegmentIndex == 1
+            self.selectedProduct!.modeBuying = modePicker.selectedSegmentIndex
             
             unityCaptured = false
             if self.productTotalPrice.text != "" {
-                if !self.selectedProduct!.buyThreePayTwo {
+                
+                switch self.selectedProduct!.modeBuying {
+                case 0:
                     self.selectedProduct!.totalPrice = (stringToNumberFormatter.number(from: self.productTotalPrice.text!)?.floatValue)!
                     
                     let quantity = (stringToNumberFormatter.number(from: productQuantity.text!))!.floatValue
@@ -596,13 +593,19 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITableViewDe
                     } else {
                         self.selectedProduct!.unitaryPrice = (self.selectedProduct?.totalPrice)! / quantity
                     }
+                case 1:
+                    print("nothing")
+                case 2:
+                    print("nothing")
+                default:
+                    print("dev/null")
                 }
             
             	let formatter = NumberFormatter()
             	formatter.numberStyle = .currency
             	self.productTotalPrice.text = formatter.string(from: self.selectedProduct!.totalPrice as NSNumber)
             
-                firebase.updateProductPrice(shoppingList: self.shoppingList!, purchaseId: (self.selectedProduct?.productId)!, buyThreePayTwo: self.selectedProduct!.buyThreePayTwo, unitaryPrice: self.selectedProduct!.unitaryPrice, totalPrice: self.selectedProduct!.totalPrice)
+                firebase.updateProductPrice(shoppingList: self.shoppingList!, purchaseId: (self.selectedProduct?.productId)!, modeBuying: self.selectedProduct!.modeBuying, unitaryPrice: self.selectedProduct!.unitaryPrice, totalPrice: self.selectedProduct!.totalPrice)
             }
         case productQuantity:
             if let _ = Float(self.productQuantity.text!) {
@@ -612,18 +615,18 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITableViewDe
             
             if unityCaptured {
                 
-                self.selectedProduct!.buyThreePayTwo = modePicker.selectedSegmentIndex == 1
+                self.selectedProduct!.modeBuying = modePicker.selectedSegmentIndex
                 
-                if !self.selectedProduct!.buyThreePayTwo {
-                	self.selectedProduct!.totalPrice = (self.selectedProduct?.unitaryPrice)! * (stringToNumberFormatter.number(from: productQuantity.text!))!.floatValue
-                } else {
-                    
+                switch self.selectedProduct!.modeBuying {
+                case 0:
+                    self.selectedProduct!.totalPrice = (self.selectedProduct?.unitaryPrice)! * (stringToNumberFormatter.number(from: productQuantity.text!))!.floatValue
+                case 1:
                     let number = stringToNumberFormatter.number(from: productQuantity.text!)
                     
                     if let intNumber = number {
                         if  Int(intNumber) % 3 > 0 {
-                        	self.productQuantity.text = "3"
-                        	self.selectedProduct!.quantity = 3
+                            self.productQuantity.text = "3"
+                            self.selectedProduct!.quantity = 3
                         }
                     } else {
                         self.productQuantity.text = "3"
@@ -633,7 +636,26 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITableViewDe
                     self.selectedProduct!.quantity = Float(Int(stringToNumberFormatter.number(from: productQuantity.text!)!))
                     
                     self.selectedProduct!.totalPrice = (self.selectedProduct?.unitaryPrice)! * ((stringToNumberFormatter.number(from: productQuantity.text!))!.floatValue / 3 * 2)
+                case 2:
+                    let number = stringToNumberFormatter.number(from: productQuantity.text!)
+                    
+                    if let intNumber = number {
+                        if  Int(intNumber) % 2 > 0 {
+                            self.productQuantity.text = "2"
+                            self.selectedProduct!.quantity = 2
+                        }
+                    } else {
+                        self.productQuantity.text = "2"
+                        self.selectedProduct!.quantity = 2
+                    }
+                    
+                    self.selectedProduct!.quantity = Float(Int(stringToNumberFormatter.number(from: productQuantity.text!)!))
+                    
+                    self.selectedProduct!.totalPrice = (self.selectedProduct?.unitaryPrice)! * ((stringToNumberFormatter.number(from: productQuantity.text!))!.floatValue / 2)
+                default:
+                    print("dev/null")
                 }
+                
             } else {
                 let quantity = (stringToNumberFormatter.number(from: productQuantity.text!))!.floatValue
                 if quantity == 0 {
@@ -649,7 +671,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITableViewDe
             
             firebase.updateProductQuantity(shoppingList: self.shoppingList!, purchaseId: (self.selectedProduct?.productId)!, quantity: NSDecimalNumber(string:productQuantity.text!), totalPrice: self.selectedProduct!.totalPrice)
             
-            firebase.updateProductPrice(shoppingList: self.shoppingList!, purchaseId: (self.selectedProduct?.productId)!, buyThreePayTwo: self.selectedProduct!.buyThreePayTwo, unitaryPrice: self.selectedProduct!.unitaryPrice, totalPrice: self.selectedProduct!.totalPrice)
+            firebase.updateProductPrice(shoppingList: self.shoppingList!, purchaseId: (self.selectedProduct?.productId)!, modeBuying: self.selectedProduct!.modeBuying, unitaryPrice: self.selectedProduct!.unitaryPrice, totalPrice: self.selectedProduct!.totalPrice)
 
         default:
             selectedProduct?.productName = "err"

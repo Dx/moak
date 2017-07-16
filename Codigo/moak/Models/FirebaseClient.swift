@@ -108,9 +108,9 @@ class FirebaseClient {
         self.db.updateChildValues(childUpdates)
     }
     
-    func updateProductPrice(shoppingList: String, purchaseId: String, buyThreePayTwo: Bool, unitaryPrice: Float, totalPrice: Float) {
+    func updateProductPrice(shoppingList: String, purchaseId: String, modeBuying: Int, unitaryPrice: Float, totalPrice: Float) {
         let childUpdates = ["productsInShoppingList/\(shoppingList)/\(purchaseId)/unitaryPrice": unitaryPrice,
-                            "productsInShoppingList/\(shoppingList)/\(purchaseId)/buyThreePayTwo": buyThreePayTwo,
+                            "productsInShoppingList/\(shoppingList)/\(purchaseId)/modeBuying": modeBuying,
                             "productsInShoppingList/\(shoppingList)/\(purchaseId)/totalPrice": totalPrice] as [String : Any]
         self.db.updateChildValues(childUpdates as [AnyHashable: Any])
     }

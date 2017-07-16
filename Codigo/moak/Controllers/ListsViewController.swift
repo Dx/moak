@@ -876,7 +876,7 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
                     firebase.getLastPriceInStore(storeId: self.currentList!.place!.id, skuNumber: product.productSKU) { (price: ProductComparer?) in
                         if let price = price {
                             let total = price.unitaryPrice * product.quantity
-                            firebase.updateProductPrice(shoppingList: product.shoppingList, purchaseId: product.productId, buyThreePayTwo: false, unitaryPrice: price.unitaryPrice, totalPrice: total)
+                            firebase.updateProductPrice(shoppingList: product.shoppingList, purchaseId: product.productId, modeBuying: 0, unitaryPrice: price.unitaryPrice, totalPrice: total)
                         }
                     }
                 }
