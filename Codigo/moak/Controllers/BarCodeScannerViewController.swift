@@ -11,6 +11,9 @@ import UIKit
 import CoreLocation
 
 class BarCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, CLLocationManagerDelegate {
+    
+    @IBOutlet weak var noAuthorizedView: UIView!
+    
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
     var detailController : DetailViewController?
@@ -29,22 +32,28 @@ class BarCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObj
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        checkingForPermission()
-        settingVideoCapture()
-        settingButtons()
+        
         if self.defaults.string(forKey: "listId") != nil {
-        	self.listId = self.defaults.string(forKey: "listId")!
+            self.listId = self.defaults.string(forKey: "listId")!
+        }
+        
+        let cameraMediaType = AVMediaTypeVideo
+        let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(forMediaType: cameraMediaType)
+        
+        if cameraAuthorizationStatus == .authorized {
+            noAuthorizedView.isHidden = true
+            settingVideoCapture()
+            settingButtons()
+            startCamera()
+        } else {
+            noAuthorizedView.isHidden = false
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if (captureSession?.isRunning == false) {
-            captureSession.startRunning();
-        }
         
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -79,27 +88,29 @@ class BarCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObj
         }
     }
     
-    // MARK: - Methods
-    
-    func checkingForPermission() {
+    @IBAction func authorizeCamera(_ sender: Any) {
         let cameraMediaType = AVMediaTypeVideo
         let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(forMediaType: cameraMediaType)
-        
-        switch cameraAuthorizationStatus {
-        case .denied: break
-        case .authorized: break
-        case .restricted: break
-            
-        case .notDetermined:
-            // Prompting user for the permission to use the camera.
-            AVCaptureDevice.requestAccess(forMediaType: cameraMediaType) { granted in
-                if granted {
-                    print("Granted access to \(cameraMediaType)")
-                } else {
-                    print("Denied access to \(cameraMediaType)")
-                }
+        if cameraAuthorizationStatus == .notDetermined {
+            noAuthorizedView.isHidden = true
+            settingVideoCapture()
+            settingButtons()
+            startCamera()
+        } else {
+            if let appSettings = NSURL(string: UIApplicationOpenSettingsURLString) {
+                UIApplication.shared.openURL(appSettings as URL)
             }
         }
+    }
+    
+    // MARK: - Methods
+    
+    func startCamera() {
+        if (captureSession?.isRunning == false) {
+            captureSession.startRunning();
+        }
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     func settingVideoCapture() {

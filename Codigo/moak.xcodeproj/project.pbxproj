@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		470CF70E8CFC84B34D429CF9 /* Pods_moak_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D18724E2676C1A4957FA652 /* Pods_moak_WatchKit_Extension.framework */; };
 		BB7FE1028F949AA85335709B /* Pods_moak_WatchKit_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE0CEC1600AA15C478B34662 /* Pods_moak_WatchKit_App.framework */; };
-		E114A4381DE6A0C40026C058 /* AddProductController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114A4371DE6A0C40026C058 /* AddProductController.swift */; };
 		E126BC881F1A729400A17A15 /* ProductDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E126BC871F1A729400A17A15 /* ProductDataViewController.swift */; };
 		E12810131DA7132E003EFD6C /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12810121DA7132E003EFD6C /* Friend.swift */; };
 		E12FB8601E0F16D500B7E804 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12FB85F1E0F16D500B7E804 /* StringExtension.swift */; };
@@ -153,7 +152,6 @@
 		D98D8ADEC4AFCA0179A284AF /* Pods_moak.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_moak.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC3CE90E79EC0F8E1E0C94AF /* Pods-moak WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moak WatchKit Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-moak WatchKit Extension/Pods-moak WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
 		E10FC0FD1E2B3A3D008C4C26 /* Bridging_Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bridging_Header.h; sourceTree = "<group>"; };
-		E114A4371DE6A0C40026C058 /* AddProductController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddProductController.swift; path = Controllers/AddProductController.swift; sourceTree = "<group>"; };
 		E126BC871F1A729400A17A15 /* ProductDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductDataViewController.swift; path = Controllers/ProductDataViewController.swift; sourceTree = "<group>"; };
 		E12810121DA7132E003EFD6C /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		E12FB85F1E0F16D500B7E804 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = Models/StringExtension.swift; sourceTree = "<group>"; };
@@ -423,7 +421,6 @@
 				E194EE621DB1D39B00D98085 /* StoreViewController.swift */,
 				E1A709AB1DD8A6790009E711 /* AddProductNavigation.swift */,
 				E1A1C3F41DDF896000F772DE /* StoreSelectorController.swift */,
-				E114A4371DE6A0C40026C058 /* AddProductController.swift */,
 				E1B6AE9F1DEBBCB400E2FC21 /* PriceController.swift */,
 				E1DFFECC1EA86526005553CB /* MenuController.swift */,
 				E17851CB1EB75B0400E37B51 /* AddToListQuestionViewController.swift */,
@@ -803,7 +800,6 @@
 				E1F31D891DB71D5100370AD9 /* FriendCell.swift in Sources */,
 				E16BECF81EDE61390010BB93 /* UserProductAverage.swift in Sources */,
 				E1D997821DA2029600FE129F /* MoveToListViewController.swift in Sources */,
-				E114A4381DE6A0C40026C058 /* AddProductController.swift in Sources */,
 				E194EE631DB1D39B00D98085 /* StoreViewController.swift in Sources */,
 				E1D997A21DA202A000FE129F /* ProductComparer.swift in Sources */,
 				E1D997601DA2028900FE129F /* TableViewCellDetailHistory.swift in Sources */,

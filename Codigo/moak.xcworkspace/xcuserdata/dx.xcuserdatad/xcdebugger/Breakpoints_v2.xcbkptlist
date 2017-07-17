@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "519454895.321787"
+            timestampString = "521952826.487347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,27 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "521352223.686004"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "839"
-            endingLineNumber = "839"
-            landmarkName = "getCurrentGooglePlace()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "415"
-            endingLineNumber = "415"
+            startingLineNumber = "461"
+            endingLineNumber = "461"
             landmarkName = "tableView(_:numberOfRowsInSection:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "326"
-            endingLineNumber = "326"
+            startingLineNumber = "367"
+            endingLineNumber = "367"
             landmarkName = "motionEnded(_:with:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -138,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "349"
-            endingLineNumber = "349"
+            startingLineNumber = "390"
+            endingLineNumber = "390"
             landmarkName = "locationManager(_:didChangeAuthorization:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -440,11 +424,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "776"
-            endingLineNumber = "776"
+            startingLineNumber = "822"
+            endingLineNumber = "822"
             landmarkName = "createTicketConfirmed()"
             landmarkType = "7">
          </BreakpointContent>
@@ -568,11 +552,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "670"
-            endingLineNumber = "670"
+            startingLineNumber = "716"
+            endingLineNumber = "716"
             landmarkName = "ListsViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -807,28 +791,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "moak/Controllers/AddProductController.swift"
-            timestampString = "502606424.6315"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "nextClick(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "moak/Controllers/BarCodeScannerViewController.swift"
-            timestampString = "519315572.484761"
+            timestampString = "521960319.982188"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "244"
-            endingLineNumber = "244"
+            startingLineNumber = "255"
+            endingLineNumber = "255"
             landmarkName = "foundCode(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -968,11 +936,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "519974912.526097"
+            timestampString = "521952826.487347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "488"
-            endingLineNumber = "488"
+            startingLineNumber = "487"
+            endingLineNumber = "487"
             landmarkName = "addNewProduct(productName:skuName:sku:)"
             landmarkType = "7">
             <Locations>
@@ -1016,11 +984,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "519974912.526097"
+            timestampString = "521952826.487347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "489"
-            endingLineNumber = "489"
+            startingLineNumber = "488"
+            endingLineNumber = "488"
             landmarkName = "addNewProduct(productName:skuName:sku:)"
             landmarkType = "7">
             <Locations>
@@ -1080,11 +1048,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "785"
-            endingLineNumber = "785"
+            startingLineNumber = "831"
+            endingLineNumber = "831"
             landmarkName = "createTicketConfirmed()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1096,11 +1064,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/BarCodeScannerViewController.swift"
-            timestampString = "519315572.484761"
+            timestampString = "521960319.982188"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "362"
-            endingLineNumber = "362"
+            startingLineNumber = "373"
+            endingLineNumber = "373"
             landmarkName = "addNewProduct(productName:skuName:sku:)"
             landmarkType = "7">
             <Locations>
@@ -1240,11 +1208,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/BarCodeScannerViewController.swift"
-            timestampString = "519315572.484761"
+            timestampString = "521960319.982188"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "365"
-            endingLineNumber = "365"
+            startingLineNumber = "376"
+            endingLineNumber = "376"
             landmarkName = "addNewProduct(productName:skuName:sku:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1256,11 +1224,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "741"
-            endingLineNumber = "741"
+            startingLineNumber = "787"
+            endingLineNumber = "787"
             landmarkName = "updateComparisonPrices(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1699,11 +1667,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
+            startingLineNumber = "270"
+            endingLineNumber = "270"
             landmarkName = "createTicket(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1715,11 +1683,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1763,11 +1731,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "679"
-            endingLineNumber = "679"
+            startingLineNumber = "725"
+            endingLineNumber = "725"
             landmarkName = "ListsViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -1779,11 +1747,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "519974912.526097"
+            timestampString = "521952826.487347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "460"
-            endingLineNumber = "460"
+            startingLineNumber = "459"
+            endingLineNumber = "459"
             landmarkName = "AddProductDescriptionController"
             landmarkType = "3">
          </BreakpointContent>
@@ -1971,11 +1939,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "364"
-            endingLineNumber = "364"
+            startingLineNumber = "405"
+            endingLineNumber = "405"
             landmarkName = "locationManager(_:didChangeAuthorization:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2066,11 +2034,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "519974912.526097"
+            timestampString = "521952826.487347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "457"
-            endingLineNumber = "457"
+            startingLineNumber = "456"
+            endingLineNumber = "456"
             landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2082,11 +2050,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "519974912.526097"
+            timestampString = "521952826.487347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "477"
-            endingLineNumber = "477"
+            startingLineNumber = "476"
+            endingLineNumber = "476"
             landmarkName = "addNewProduct(productName:skuName:sku:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2098,11 +2066,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "612"
-            endingLineNumber = "612"
+            startingLineNumber = "658"
+            endingLineNumber = "658"
             landmarkName = "longPressGestureRecognized(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2402,11 +2370,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "438"
-            endingLineNumber = "438"
+            startingLineNumber = "484"
+            endingLineNumber = "484"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
             <Locations>
@@ -2546,11 +2514,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "298"
-            endingLineNumber = "298"
+            startingLineNumber = "339"
+            endingLineNumber = "339"
             landmarkName = "suscribeToProducts()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2562,11 +2530,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "521352223.686004"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "871"
-            endingLineNumber = "871"
+            startingLineNumber = "892"
+            endingLineNumber = "892"
             landmarkName = "estimateTotal()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2584,38 +2552,6 @@
             startingLineNumber = "638"
             endingLineNumber = "638"
             landmarkName = "deleteShoppingList(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "272"
-            endingLineNumber = "272"
-            landmarkName = "askSuggestedList()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "271"
-            endingLineNumber = "271"
-            landmarkName = "askSuggestedList()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2658,11 +2594,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "444"
-            endingLineNumber = "444"
+            startingLineNumber = "490"
+            endingLineNumber = "490"
             landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2674,11 +2610,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/BarCodeScannerViewController.swift"
-            timestampString = "519315572.484761"
+            timestampString = "521960319.982188"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
             landmarkName = "foundCode(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2722,11 +2658,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "519974912.526097"
+            timestampString = "521952826.487347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "397"
-            endingLineNumber = "397"
+            startingLineNumber = "396"
+            endingLineNumber = "396"
             landmarkName = "textField(_:shouldChangeCharactersIn:replacementString:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2738,11 +2674,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "519974912.526097"
+            timestampString = "521952826.487347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "373"
-            endingLineNumber = "373"
+            startingLineNumber = "372"
+            endingLineNumber = "372"
             landmarkName = "startActivity(on:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2802,11 +2738,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "519455122.821204"
+            timestampString = "521952826.487347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
             landmarkName = "startDictation()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2818,11 +2754,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "519455122.821204"
+            timestampString = "521952826.487347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "AddProductDescriptionController"
             landmarkType = "3">
          </BreakpointContent>
@@ -2834,11 +2770,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "289"
-            endingLineNumber = "289"
+            startingLineNumber = "330"
+            endingLineNumber = "330"
             landmarkName = "ListsViewController"
             landmarkType = "3">
             <Locations>
@@ -2882,11 +2818,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "508"
-            endingLineNumber = "508"
+            startingLineNumber = "554"
+            endingLineNumber = "554"
             landmarkName = "tableView(_:editActionsForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2898,11 +2834,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "713"
-            endingLineNumber = "713"
+            startingLineNumber = "759"
+            endingLineNumber = "759"
             landmarkName = "reloadProducts()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2930,11 +2866,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "229"
-            endingLineNumber = "229"
+            startingLineNumber = "285"
+            endingLineNumber = "285"
             landmarkName = "createTicket(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3026,11 +2962,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3122,11 +3058,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3138,11 +3074,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
+            startingLineNumber = "298"
+            endingLineNumber = "298"
             landmarkName = "getDefaultList(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3154,11 +3090,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521953200.447701"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3170,11 +3106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "237"
-            endingLineNumber = "237"
+            startingLineNumber = "293"
+            endingLineNumber = "293"
             landmarkName = "getDefaultList(completion:)"
             landmarkType = "7">
             <Locations>
@@ -3218,11 +3154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
+            startingLineNumber = "296"
+            endingLineNumber = "296"
             landmarkName = "getDefaultList(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3346,11 +3282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "519974912.526097"
+            timestampString = "521952826.487347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "456"
-            endingLineNumber = "456"
+            startingLineNumber = "455"
+            endingLineNumber = "455"
             landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3362,11 +3298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "519974912.526097"
+            timestampString = "521952826.487347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "451"
-            endingLineNumber = "451"
+            startingLineNumber = "450"
+            endingLineNumber = "450"
             landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3458,11 +3394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "282"
-            endingLineNumber = "282"
+            startingLineNumber = "323"
+            endingLineNumber = "323"
             landmarkName = "storeSelected(store:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3474,11 +3410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "210"
-            endingLineNumber = "210"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
             landmarkName = "createTicket(_:)"
             landmarkType = "7">
             <Locations>
@@ -3522,11 +3458,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/BarCodeScannerViewController.swift"
-            timestampString = "519315572.484761"
+            timestampString = "521960319.982188"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "247"
-            endingLineNumber = "247"
+            startingLineNumber = "258"
+            endingLineNumber = "258"
             landmarkName = "foundCode(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3538,11 +3474,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/BarCodeScannerViewController.swift"
-            timestampString = "519315572.484761"
+            timestampString = "521960319.982188"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "252"
-            endingLineNumber = "252"
+            startingLineNumber = "263"
+            endingLineNumber = "263"
             landmarkName = "foundCode(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3554,11 +3490,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/BarCodeScannerViewController.swift"
-            timestampString = "519315572.484761"
+            timestampString = "521960319.982188"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266"
+            startingLineNumber = "277"
+            endingLineNumber = "277"
             landmarkName = "barcodeFound(code:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3586,11 +3522,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3602,11 +3538,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/BarCodeScannerViewController.swift"
-            timestampString = "519315572.484761"
+            timestampString = "521960319.982188"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "238"
-            endingLineNumber = "238"
+            startingLineNumber = "249"
+            endingLineNumber = "249"
             landmarkName = "foundCode(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3618,11 +3554,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/BarCodeScannerViewController.swift"
-            timestampString = "519315572.484761"
+            timestampString = "521959594.468353"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3634,11 +3570,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/BarCodeScannerViewController.swift"
-            timestampString = "519315572.484761"
+            timestampString = "521958045.296089"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3666,12 +3602,12 @@
                   moduleName = "moak"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/davidcruzsalinas/Documents/moak/Codigo/moak/Controllers/MasterListViewController.swift"
-                  timestampString = "521875793.694004"
+                  timestampString = "521960438.231262"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "152"
                   endingLineNumber = "152"
-                  offsetFromSymbolStart = "23">
+                  offsetFromSymbolStart = "28">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -3681,12 +3617,12 @@
                   moduleName = "moak"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/davidcruzsalinas/Documents/moak/Codigo/moak/Controllers/MasterListViewController.swift"
-                  timestampString = "521875793.696372"
+                  timestampString = "521960438.232955"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "153"
                   endingLineNumber = "153"
-                  offsetFromSymbolStart = "27">
+                  offsetFromSymbolStart = "28">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -3922,11 +3858,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "384"
-            endingLineNumber = "384"
+            startingLineNumber = "426"
+            endingLineNumber = "426"
             landmarkName = "locationManager(_:didUpdateLocations:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3938,11 +3874,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "382"
-            endingLineNumber = "382"
+            startingLineNumber = "424"
+            endingLineNumber = "424"
             landmarkName = "locationManager(_:didUpdateLocations:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3954,11 +3890,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "381"
-            endingLineNumber = "381"
+            startingLineNumber = "423"
+            endingLineNumber = "423"
             landmarkName = "locationManager(_:didUpdateLocations:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -4104,22 +4040,6 @@
             startingLineNumber = "373"
             endingLineNumber = "373"
             landmarkName = "setShopsT()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4402,11 +4322,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "309"
-            endingLineNumber = "309"
+            startingLineNumber = "350"
+            endingLineNumber = "350"
             landmarkName = "suscribeToProducts()"
             landmarkType = "7">
             <Locations>
@@ -4593,11 +4513,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "519974912.526097"
+            timestampString = "521952826.487347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "473"
-            endingLineNumber = "473"
+            startingLineNumber = "472"
+            endingLineNumber = "472"
             landmarkName = "addNewProduct(productName:skuName:sku:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -4673,11 +4593,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "279"
-            endingLineNumber = "279"
+            startingLineNumber = "320"
+            endingLineNumber = "320"
             landmarkName = "storeSelected(store:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -4689,11 +4609,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
             landmarkName = "viewDidAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -4705,27 +4625,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/BarCodeScannerViewController.swift"
-            timestampString = "519315572.484761"
+            timestampString = "521958045.296089"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "viewWillAppear(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "moak/Controllers/BarCodeScannerViewController.swift"
-            timestampString = "519315572.484761"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -4737,11 +4641,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "519974912.526097"
+            timestampString = "521952826.487347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "322"
-            endingLineNumber = "322"
+            startingLineNumber = "321"
+            endingLineNumber = "321"
             landmarkName = "searchProducts(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -4753,11 +4657,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "519974912.526097"
+            timestampString = "521952826.487347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "325"
-            endingLineNumber = "325"
+            startingLineNumber = "324"
+            endingLineNumber = "324"
             landmarkName = "searchProducts(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -4785,11 +4689,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "519974912.526097"
+            timestampString = "521952826.487347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "337"
-            endingLineNumber = "337"
+            startingLineNumber = "336"
+            endingLineNumber = "336"
             landmarkName = "searchProducts(_:)"
             landmarkType = "7">
             <Locations>
@@ -4897,11 +4801,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "519974912.526097"
+            timestampString = "521952826.487347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "354"
-            endingLineNumber = "354"
+            startingLineNumber = "353"
+            endingLineNumber = "353"
             landmarkName = "reloadTable(name:)"
             landmarkType = "7">
             <Locations>
@@ -4945,11 +4849,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "519974912.526097"
+            timestampString = "521952826.487347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "355"
-            endingLineNumber = "355"
+            startingLineNumber = "354"
+            endingLineNumber = "354"
             landmarkName = "reloadTable(name:)"
             landmarkType = "7">
             <Locations>
@@ -4993,11 +4897,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "519974912.526097"
+            timestampString = "521952826.487347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "359"
-            endingLineNumber = "359"
+            startingLineNumber = "358"
+            endingLineNumber = "358"
             landmarkName = "reloadTable(name:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5009,11 +4913,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "519975735.060714"
+            timestampString = "521952826.487347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "462"
-            endingLineNumber = "462"
+            startingLineNumber = "461"
+            endingLineNumber = "461"
             landmarkName = "addProduct()"
             landmarkType = "7">
          </BreakpointContent>
@@ -5025,11 +4929,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "519975807.560747"
+            timestampString = "521952826.487347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "492"
-            endingLineNumber = "492"
+            startingLineNumber = "491"
+            endingLineNumber = "491"
             landmarkName = "addNewProduct(productName:skuName:sku:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5041,11 +4945,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "519975840.602269"
+            timestampString = "521952826.487347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "466"
-            endingLineNumber = "466"
+            startingLineNumber = "465"
+            endingLineNumber = "465"
             landmarkName = "addNewProduct(productName:sku:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5105,11 +5009,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "519975985.068027"
+            timestampString = "521952826.487347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "494"
-            endingLineNumber = "494"
+            startingLineNumber = "493"
+            endingLineNumber = "493"
             landmarkName = "addNewProduct(productName:skuName:sku:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5121,11 +5025,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "812"
-            endingLineNumber = "812"
+            startingLineNumber = "858"
+            endingLineNumber = "858"
             landmarkName = "createTicketConfirmed()"
             landmarkType = "7">
          </BreakpointContent>
@@ -5185,11 +5089,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5520,11 +5424,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/ListsViewController.swift"
-            timestampString = "520839160.322383"
+            timestampString = "521960437.011544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "514"
-            endingLineNumber = "514"
+            startingLineNumber = "560"
+            endingLineNumber = "560"
             landmarkName = "tableView(_:editActionsForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5701,6 +5605,38 @@
             startingLineNumber = "558"
             endingLineNumber = "558"
             landmarkName = "textFieldDidEndEditing(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "moak/Controllers/ListsViewController.swift"
+            timestampString = "521955579.251889"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "setLocationManager()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "moak/Controllers/BarCodeScannerViewController.swift"
+            timestampString = "521958481.601408"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

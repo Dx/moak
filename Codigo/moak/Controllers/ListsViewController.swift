@@ -10,22 +10,13 @@ import UIKit
 import MBProgressHUD
 import CoreLocation
 import GooglePlaces
-import GooglePlacePicker
 import Firebase
 import AudioToolbox
 import SideMenu
 import BubbleTransition
 import Lottie
 
-class ListsViewController: UIViewController, UIViewControllerTransitioningDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, CLLocationManagerDelegate, StoreSelectorDelegate, GMSPlacePickerViewControllerDelegate {
-    
-    var locationManager = CLLocationManager()
-    
-    let defaults = UserDefaults.standard
-    
-    var lastLocation : CLLocation? = nil
-    
-    let transition = BubbleTransition()
+class ListsViewController: UIViewController, UIViewControllerTransitioningDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, CLLocationManagerDelegate, StoreSelectorDelegate {
     
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var closeListButton: UIButton!
@@ -33,6 +24,15 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
     @IBOutlet weak var addProductsLabel: UILabel!
     @IBOutlet weak var storeButton: UIButton!
     @IBOutlet weak var addButton: UIButton!
+    
+    var locationManager = CLLocationManager()
+    
+    let defaults = UserDefaults.standard
+    
+    var lastLocation : CLLocation? = nil
+    var isUpdatingLocation: Bool = false
+    
+    let transition = BubbleTransition()
     
     var currentList : ShoppingList? = nil
     
@@ -50,27 +50,37 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
     // MARK: - View methods
     
     override func viewDidLoad() {
-        
-//        let firebase = FirebaseClient()
-//        firebase.setShopsT()
-        
         super.viewDidLoad()
         
+        setLocationManager()
+        
+        setViewControls()
+    }
+    
+    func setViewControls() {
+        configureTableList()
+        setStoreButton()
+        setSideMenuManager()
+        setButtonAnimation()
+    }
+    
+    func setStoreButton() {
         storeButton.titleLabel!.lineBreakMode = .byWordWrapping
         storeButton.titleLabel!.textAlignment = .center
+    }
+    
+    func setButtonAnimation() {
+        let buttonAnimation = LOTAnimationView.init(name: "plusbutton")
         
-        self.locationManager.requestAlwaysAuthorization()
-        self.locationManager.delegate = self
-        
-        self.locationManager.distanceFilter  = 10
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
-        
-        // To order the list
-        let longpress = UILongPressGestureRecognizer(target: self, action: #selector(ListsViewController.longPressGestureRecognized(_:)))
-        listTableView.addGestureRecognizer(longpress)
-        
-        self.configureTableList()
-        
+        buttonAnimation.frame = CGRect(x: self.view.frame.midX - 33.5, y: addButton.frame.midY + 31, width: 67, height: 67)
+        buttonAnimation.loopAnimation = true
+        buttonAnimation.layer.zPosition = 7
+        buttonAnimation.isUserInteractionEnabled = false
+        self.view.addSubview(buttonAnimation)
+        buttonAnimation.play()
+    }
+    
+    func setSideMenuManager() {
         SideMenuManager.menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? UISideMenuNavigationController
         
         SideMenuManager.menuFadeStatusBar = true
@@ -80,13 +90,59 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
         SideMenuManager.menuShadowOpacity = 0.3
         SideMenuManager.menuFadeStatusBar = true
         SideMenuManager.menuPresentMode = .viewSlideInOut
+    }
+    
+    func setLocationManager() {
         
-        let buttonAnimation = LOTAnimationView.init(name: "plusbutton")
+        locationManager.distanceFilter  = 10
+        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+        self.locationManager.delegate = self
         
-        buttonAnimation.frame = CGRect(x: self.view.frame.midX - 33, y: addButton.frame.midY + 31, width: 67, height: 67)
-        buttonAnimation.loopAnimation = true
-        // self.view.addSubview(buttonAnimation!)
-        buttonAnimation.play()
+        if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedAlways {
+            if !isUpdatingLocation {
+                locationManager.startUpdatingLocation()
+            }
+        } else {
+            let alert = UIAlertController(title: "Me das permiso?", message: "Moak necesita acceder a tu posición para poder detectar si estás cerca de una tienda y mostrarte los mejores precios. Me autorizas?", preferredStyle: UIAlertControllerStyle.alert)
+            
+            alert.addAction(UIAlertAction(title: "No", style: .default, handler: { action in
+                switch action.style{
+                case .default:
+                    print("default")
+                    
+                case .cancel:
+                    print("cancel")
+                    
+                case .destructive:
+                    print("destructive")
+                }
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Sí", style: .default, handler: { action in
+                switch action.style{
+                case .default:
+                    print("default")
+                    self.locationManager.requestAlwaysAuthorization()
+                    
+                    self.locationManager.startUpdatingLocation()
+                    if CLLocationManager.authorizationStatus() != CLAuthorizationStatus.notDetermined {
+                        if let appSettings = NSURL(string: UIApplicationOpenSettingsURLString) {
+                            UIApplication.shared.openURL(appSettings as URL)
+                        }
+                    }
+                    
+                case .cancel:
+                    print("cancel")
+                    
+                case .destructive:
+                    print("destructive")
+                }
+            }))
+            
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -240,7 +296,6 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
                 self.listDescriptionSelected = shoppingList.name
                 self.navigationItem.title = shoppingList.name
                 self.loadShoppingList()
-                self.locationManager.startUpdatingLocation()
                 
                 completion("")
             }
@@ -257,20 +312,6 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
         })
         
         self.suscribeToProducts()
-    }
-    
-    // MARK: - SuggestedList
-    func askSuggestedList() {
-        
-        performSegue(withIdentifier: "showNewProductAdding", sender: self)
-        
-//        let defaults = UserDefaults.standard
-//        let userId = defaults.string(forKey: "userId")!
-//        
-//        let chrixClient = ChrixClient()
-//        chrixClient.askForSuggestedList(userName: userId, idlist: self.listSelected) { (result: String) in
-//            
-//        }
     }
     
     // MARK: - StoreSelector Delegate
@@ -341,8 +382,8 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
         }
     }
     
-    
     // MARK: - CoreLocationManager
+    
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         print("didChangeAuthorizationStatus")
         
@@ -368,6 +409,7 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        isUpdatingLocation = true
         self.lastLocation = locations.last! as CLLocation
         if self.lastLocation != nil && self.currentList != nil {
             print("didUpdateLocations:  \(self.lastLocation!.coordinate.latitude), \(self.lastLocation!.coordinate.longitude)")
@@ -386,10 +428,14 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
     // MARK: - Table View
     
     func configureTableList() {
-        self.listTableView.delegate = self
-        self.listTableView.dataSource = self
-        self.listTableView.separatorStyle = .singleLine
-        self.listTableView.tableFooterView = UIView()
+        listTableView.delegate = self
+        listTableView.dataSource = self
+        listTableView.separatorStyle = .singleLine
+        listTableView.tableFooterView = UIView()
+        
+        // To order the list
+        let longpress = UILongPressGestureRecognizer(target: self, action: #selector(ListsViewController.longPressGestureRecognized(_:)))
+        listTableView.addGestureRecognizer(longpress)
     }
     
     func orderList() {
@@ -827,31 +873,6 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
         self.reloadProducts()
     }
     
-    func getCurrentGooglePlace() {
-        var center : CLLocationCoordinate2D? = nil
-        if let currentLocation = self.lastLocation {
-            center = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude)
-        }
-        
-        let buyed = products.filter { $0.checkedLatitude != 0 }
-        if let firstProductBuyed = buyed.first {
-            center = CLLocationCoordinate2DMake(firstProductBuyed.checkedLatitude! as Double, firstProductBuyed.checkedLongitude! as Double)
-        }
-        
-        if let center = center {
-            let northEast = CLLocationCoordinate2DMake(center.latitude + 0.001, center.longitude + 0.001)
-            let southWest = CLLocationCoordinate2DMake(center.latitude - 0.001, center.longitude - 0.001)
-            let viewport = GMSCoordinateBounds(coordinate: northEast, coordinate: southWest)
-            let config = GMSPlacePickerConfig(viewport: viewport)
-            let placePicker = GMSPlacePickerViewController(config: config)
-            
-            placePicker.delegate = self
-            
-        } else {
-            print("Google place picker failed")
-        }
-    }
-    
     func setCurrentStore() {
         let firebase = FirebaseClient()
         
@@ -942,35 +963,6 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
                 self.setCurrentStore()
             }
         }
-    }
-    
-    // MARK: - GMSPlacePickerViewControllerDelegate 
-    func placePicker(_ viewController: GMSPlacePickerViewController, didPick place: GMSPlace) {
-        
-        let googlePlace = GooglePlaceResult(id: place.placeID, name: place.name, address: place.formattedAddress!, lat: place.coordinate.latitude, lng: place.coordinate.longitude)
-        
-        self.currentList!.place = googlePlace
-            
-        self.setCurrentStore()
-            
-        self.reloadProducts()
-            
-        print("Place name \(place.name)")
-        print("Place address \(String(describing: place.formattedAddress))")
-        print("Place attributions \(String(describing: place.attributions))")
-    }
-    
-    func placePicker(_ viewController: GMSPlacePickerViewController, didFailWithError error: Error) {
-        // In your own app you should handle this better, but for the demo we are just going to log
-        // a message.
-        NSLog("An error occurred while picking a place: \(error)")
-    }
-    
-    func placePickerDidCancel(_ viewController: GMSPlacePickerViewController) {
-        NSLog("The place picker was canceled by the user")
-        
-        // Dismiss the place picker.
-        viewController.dismiss(animated: true, completion: nil)
     }
 }
 

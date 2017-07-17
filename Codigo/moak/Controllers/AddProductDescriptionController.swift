@@ -11,8 +11,7 @@ import AudioToolbox
 import Speech
 import CoreLocation
 
-class AddProductDescriptionController: UIViewController, UITableViewDataSource, UITableViewDelegate, SFSpeechRecognizerDelegate, CLLocationManagerDelegate {
-    
+class AddProductDescriptionController: UIViewController, UITableViewDataSource, UITableViewDelegate, SFSpeechRecognizerDelegate, CLLocationManagerDelegate {    
 
     @IBOutlet weak var searchText: UITextField!
     @IBOutlet weak var searchTable: UITableView!
