@@ -936,12 +936,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "521952826.487347"
+            timestampString = "522453276.885665"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "487"
-            endingLineNumber = "487"
-            landmarkName = "addNewProduct(productName:skuName:sku:)"
+            startingLineNumber = "505"
+            endingLineNumber = "505"
+            landmarkName = "configureTable()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -984,12 +984,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "521952826.487347"
+            timestampString = "522453276.885665"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "488"
-            endingLineNumber = "488"
-            landmarkName = "addNewProduct(productName:skuName:sku:)"
+            startingLineNumber = "506"
+            endingLineNumber = "506"
+            landmarkName = "configureTable()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -1747,13 +1747,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "521952826.487347"
+            timestampString = "522453276.885665"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "459"
-            endingLineNumber = "459"
-            landmarkName = "AddProductDescriptionController"
-            landmarkType = "3">
+            startingLineNumber = "477"
+            endingLineNumber = "477"
+            landmarkName = "canBecomeFirstResponder"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2034,13 +2034,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "521952826.487347"
+            timestampString = "522453276.885665"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "456"
-            endingLineNumber = "456"
-            landmarkName = "tableView(_:didSelectRowAt:)"
-            landmarkType = "7">
+            startingLineNumber = "474"
+            endingLineNumber = "474"
+            landmarkName = "AddProductDescriptionController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2050,12 +2050,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "521952826.487347"
+            timestampString = "522453276.885665"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "476"
-            endingLineNumber = "476"
-            landmarkName = "addNewProduct(productName:skuName:sku:)"
+            startingLineNumber = "494"
+            endingLineNumber = "494"
+            landmarkName = "textFieldShouldReturn(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2658,12 +2658,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "521952826.487347"
+            timestampString = "522453276.885665"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "396"
-            endingLineNumber = "396"
-            landmarkName = "textField(_:shouldChangeCharactersIn:replacementString:)"
+            startingLineNumber = "414"
+            endingLineNumber = "414"
+            landmarkName = "searchProducts(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2674,12 +2674,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "521952826.487347"
+            timestampString = "522453276.885665"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "372"
-            endingLineNumber = "372"
-            landmarkName = "startActivity(on:)"
+            startingLineNumber = "390"
+            endingLineNumber = "390"
+            landmarkName = "addProductToList()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2738,12 +2738,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "521952826.487347"
+            timestampString = "522453276.885665"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
-            landmarkName = "startDictation()"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
+            landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2754,13 +2754,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "521952826.487347"
+            timestampString = "522453276.885665"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
-            landmarkName = "AddProductDescriptionController"
-            landmarkType = "3">
+            startingLineNumber = "203"
+            endingLineNumber = "203"
+            landmarkName = "prepare(for:sender:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3282,12 +3282,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "521952826.487347"
+            timestampString = "522453276.885665"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "455"
-            endingLineNumber = "455"
-            landmarkName = "tableView(_:didSelectRowAt:)"
+            startingLineNumber = "473"
+            endingLineNumber = "473"
+            landmarkName = "viewTapped()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3298,12 +3298,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "521952826.487347"
+            timestampString = "522453276.885665"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "450"
-            endingLineNumber = "450"
-            landmarkName = "tableView(_:didSelectRowAt:)"
+            startingLineNumber = "468"
+            endingLineNumber = "468"
+            landmarkName = "startActivity(on:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3602,12 +3602,12 @@
                   moduleName = "moak"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/davidcruzsalinas/Documents/moak/Codigo/moak/Controllers/MasterListViewController.swift"
-                  timestampString = "521960438.231262"
+                  timestampString = "522453398.412697"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "152"
                   endingLineNumber = "152"
-                  offsetFromSymbolStart = "28">
+                  offsetFromSymbolStart = "23">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -3617,12 +3617,12 @@
                   moduleName = "moak"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/davidcruzsalinas/Documents/moak/Codigo/moak/Controllers/MasterListViewController.swift"
-                  timestampString = "521960438.232955"
+                  timestampString = "522453398.414504"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "153"
                   endingLineNumber = "153"
-                  offsetFromSymbolStart = "28">
+                  offsetFromSymbolStart = "27">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -4385,117 +4385,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "moak/Controllers/DetailViewController.swift"
-            timestampString = "521836109.676949"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "loadValues()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "moak.DetailViewController.loadValues () -&gt; ()"
-                  moduleName = "moak"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dx/Documents/Moak/Codigo/moak/Controllers/DetailViewController.swift"
-                  timestampString = "519152450.876776"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "58"
-                  endingLineNumber = "58"
-                  offsetFromSymbolStart = "64">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "moak.DetailViewController.loadValues () -&gt; ()"
-                  moduleName = "moak"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dx/Documents/Moak/Codigo/moak/Controllers/DetailViewController.swift"
-                  timestampString = "519152450.878621"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "58"
-                  endingLineNumber = "58"
-                  offsetFromSymbolStart = "520">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "moak.DetailViewController.(loadValues () -&gt; ()).(closure #1)"
-                  moduleName = "moak"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dx/Documents/Moak/Codigo/moak/Controllers/DetailViewController.swift"
-                  timestampString = "519152450.880496"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "60"
-                  endingLineNumber = "60"
-                  offsetFromSymbolStart = "24">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "moak/Controllers/DetailViewController.swift"
-            timestampString = "521836109.676949"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "loadValues()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "moak.DetailViewController.(loadValues () -&gt; ()).(closure #1)"
-                  moduleName = "moak"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dx/Documents/Moak/Codigo/moak/Controllers/DetailViewController.swift"
-                  timestampString = "519152450.884426"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "60"
-                  endingLineNumber = "60"
-                  offsetFromSymbolStart = "24">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "moak.DetailViewController.(loadValues () -&gt; ()).(closure #1)"
-                  moduleName = "moak"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dx/Documents/Moak/Codigo/moak/Controllers/DetailViewController.swift"
-                  timestampString = "519152450.885841"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "60"
-                  endingLineNumber = "60"
-                  offsetFromSymbolStart = "56">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "moak/Models/FirebaseClient.swift"
             timestampString = "519482404.480637"
             startingColumnNumber = "9223372036854775807"
@@ -4513,28 +4402,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "521952826.487347"
+            timestampString = "522453276.885665"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "472"
-            endingLineNumber = "472"
-            landmarkName = "addNewProduct(productName:skuName:sku:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "moak/Controllers/DetailViewController.swift"
-            timestampString = "521836109.676949"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "loadValues()"
+            startingLineNumber = "490"
+            endingLineNumber = "490"
+            landmarkName = "textField(_:shouldChangeCharactersIn:replacementString:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4557,7 +4430,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Models/FirebaseClient.swift"
@@ -4566,7 +4439,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "112"
             endingLineNumber = "112"
-            landmarkName = "updateProductPrice(shoppingList:purchaseId:buyThreePayTwo:unitaryPrice:totalPrice:)"
+            landmarkName = "updateProductPrice(shoppingList:purchaseId:modeBuying:unitaryPrice:totalPrice:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4641,12 +4514,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "521952826.487347"
+            timestampString = "522453276.885665"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "321"
-            endingLineNumber = "321"
-            landmarkName = "searchProducts(_:)"
+            startingLineNumber = "339"
+            endingLineNumber = "339"
+            landmarkName = "startRecording()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4657,28 +4530,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "521952826.487347"
+            timestampString = "522453276.885665"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "324"
-            endingLineNumber = "324"
-            landmarkName = "searchProducts(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "moak/Controllers/DetailViewController.swift"
-            timestampString = "521836109.676949"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "loadValues()"
+            startingLineNumber = "342"
+            endingLineNumber = "342"
+            landmarkName = "startRecording()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4689,12 +4546,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "521952826.487347"
+            timestampString = "522453276.885665"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "336"
-            endingLineNumber = "336"
-            landmarkName = "searchProducts(_:)"
+            startingLineNumber = "354"
+            endingLineNumber = "354"
+            landmarkName = "startRecording()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -4801,12 +4658,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "521952826.487347"
+            timestampString = "522453276.885665"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "353"
-            endingLineNumber = "353"
-            landmarkName = "reloadTable(name:)"
+            startingLineNumber = "371"
+            endingLineNumber = "371"
+            landmarkName = "startRecording()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -4849,12 +4706,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "521952826.487347"
+            timestampString = "522453276.885665"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "354"
-            endingLineNumber = "354"
-            landmarkName = "reloadTable(name:)"
+            startingLineNumber = "372"
+            endingLineNumber = "372"
+            landmarkName = "startRecording()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -4897,12 +4754,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "521952826.487347"
+            timestampString = "522453276.885665"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "358"
-            endingLineNumber = "358"
-            landmarkName = "reloadTable(name:)"
+            startingLineNumber = "376"
+            endingLineNumber = "376"
+            landmarkName = "speechRecognizer(_:availabilityDidChange:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4913,12 +4770,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "521952826.487347"
+            timestampString = "522453276.885665"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "461"
-            endingLineNumber = "461"
-            landmarkName = "addProduct()"
+            startingLineNumber = "479"
+            endingLineNumber = "479"
+            landmarkName = "AddProductDescriptionController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "moak/Controllers/AddProductDescriptionController.swift"
+            timestampString = "522453276.885665"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "509"
+            endingLineNumber = "509"
+            landmarkName = "tableView(_:titleForHeaderInSection:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4929,28 +4802,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "521952826.487347"
+            timestampString = "522453276.885665"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "491"
-            endingLineNumber = "491"
-            landmarkName = "addNewProduct(productName:skuName:sku:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "521952826.487347"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "465"
-            endingLineNumber = "465"
-            landmarkName = "addNewProduct(productName:sku:)"
+            startingLineNumber = "483"
+            endingLineNumber = "483"
+            landmarkName = "textFieldDidChange(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5009,12 +4866,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "moak/Controllers/AddProductDescriptionController.swift"
-            timestampString = "521952826.487347"
+            timestampString = "522453276.885665"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "493"
-            endingLineNumber = "493"
-            landmarkName = "addNewProduct(productName:skuName:sku:)"
+            startingLineNumber = "511"
+            endingLineNumber = "511"
+            landmarkName = "tableView(_:titleForHeaderInSection:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5175,22 +5032,6 @@
             startingLineNumber = "612"
             endingLineNumber = "612"
             landmarkName = "textFieldDidEndEditing(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "moak/Controllers/DetailViewController.swift"
-            timestampString = "521836109.676949"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "loadScreen()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5636,6 +5477,310 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "40"
             endingLineNumber = "40"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "moak/Controllers/AddProductDescriptionController.swift"
+            timestampString = "522453276.885665"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "551"
+            endingLineNumber = "551"
+            landmarkName = "addProduct()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "moak/Controllers/AddProductDescriptionController.swift"
+            timestampString = "522453276.885665"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "555"
+            endingLineNumber = "555"
+            landmarkName = "addNewProduct(productName:sku:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "moak/Controllers/AddProductDescriptionController.swift"
+            timestampString = "522453276.885665"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "562"
+            endingLineNumber = "562"
+            landmarkName = "addNewProduct(productName:skuName:sku:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "moak/Controllers/DetailViewController.swift"
+            timestampString = "522433531.206071"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "536"
+            endingLineNumber = "536"
+            landmarkName = "textFieldDidEndEditing(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "moak/Controllers/DetailViewController.swift"
+            timestampString = "522433535.166693"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "484"
+            endingLineNumber = "484"
+            landmarkName = "textFieldDidBeginEditing(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "moak.DetailViewController.textFieldDidBeginEditing (__ObjC.UITextField) -&gt; ()"
+                  moduleName = "moak"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/davidcruzsalinas/Documents/moak/Codigo/moak/Controllers/DetailViewController.swift"
+                  timestampString = "522453398.441401"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "484"
+                  endingLineNumber = "484"
+                  offsetFromSymbolStart = "326">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "moak.DetailViewController.textFieldDidBeginEditing (__ObjC.UITextField) -&gt; ()"
+                  moduleName = "moak"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/davidcruzsalinas/Documents/moak/Codigo/moak/Controllers/DetailViewController.swift"
+                  timestampString = "522453398.442832"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "484"
+                  endingLineNumber = "484"
+                  offsetFromSymbolStart = "377">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "moak/Controllers/DetailViewController.swift"
+            timestampString = "522434433.890363"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "loadValues()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "moak.DetailViewController.(loadValues () -&gt; ()).(closure #1)"
+                  moduleName = "moak"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/davidcruzsalinas/Documents/moak/Codigo/moak/Controllers/DetailViewController.swift"
+                  timestampString = "522453398.44604"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "moak.DetailViewController.(loadValues () -&gt; ()).(closure #1)"
+                  moduleName = "moak"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/davidcruzsalinas/Documents/moak/Codigo/moak/Controllers/DetailViewController.swift"
+                  timestampString = "522453398.447471"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "49">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "moak/Controllers/DetailViewController.swift"
+            timestampString = "522434493.310208"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "loadValues()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "moak/Controllers/AddToListQuestionViewController.swift"
+            timestampString = "522434776.885871"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "prepare(for:sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "moak/Models/FirebaseClient.swift"
+            timestampString = "522434874.367155"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "updateProductName(shoppingList:purchaseId:productName:productSKUName:productSKU:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "moak/Models/FirebaseClient.swift"
+            timestampString = "522434878.609051"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "updateProductQuantity(shoppingList:purchaseId:quantity:totalPrice:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "moak/Models/FirebaseClient.swift"
+            timestampString = "522434880.271409"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "updateProductOrder(shoppingList:purchaseId:order:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "moak/Models/FirebaseClient.swift"
+            timestampString = "522434883.375433"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "deleteProduct(shoppingList:productId:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "moak/Models/FirebaseClient.swift"
+            timestampString = "522434899.76844"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "check(shoppingList:purchaseId:checked:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "moak/Models/FirebaseClient.swift"
+            timestampString = "522434905.131794"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "addProductInShoppingList(shoppingList:product:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "moak/Controllers/AddProductDescriptionController.swift"
+            timestampString = "522453276.885665"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>

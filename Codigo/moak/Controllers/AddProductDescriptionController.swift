@@ -63,22 +63,8 @@ class AddProductDescriptionController: UIViewController, UITableViewDataSource, 
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: self.view.window)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: self.view.window)
         
-        SFSpeechRecognizer.requestAuthorization { (authStatus) in
-            
-            switch authStatus {
-            case .authorized:
-                print("Speech recognition autorized :)")
-                
-            case .denied:
-                print("User denied access to speech recognition")
-                
-            case .restricted:
-                print("Speech recognition restricted on this device")
-                
-            case .notDetermined:
-                print("Speech recognition not yet authorized")
-            }
-        }
+        
+        self.checkDictationAuthorization()
         
         self.configureTable()
         
@@ -91,7 +77,111 @@ class AddProductDescriptionController: UIViewController, UITableViewDataSource, 
         addDictationButtonOnKeyboard()
     }
     
+    func checkDictationAuthorization() {
+        switch SFSpeechRecognizer.authorizationStatus() {
+            
+        case SFSpeechRecognizerAuthorizationStatus.notDetermined:
+            let alert = UIAlertController(title: "Me das permiso?", message: "Moak necesita acceder al reconocimiento de voz para que puedas dictarle. Me autorizas?", preferredStyle: UIAlertControllerStyle.alert)
+            
+            alert.addAction(UIAlertAction(title: "No", style: .default, handler: { action in
+                switch action.style{
+                case .default:
+                    print("default")
+                    
+                case .cancel:
+                    print("cancel")
+                    
+                case .destructive:
+                    print("destructive")
+                }
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Sí", style: .default, handler: { action in
+                switch action.style{
+                case .default:
+                    print("default")
+                    SFSpeechRecognizer.requestAuthorization { (authStatus) in
+                        
+                        switch authStatus {
+                        case .authorized:
+                            print("Speech recognition autorized :)")
+                            
+                        case .denied:
+                            print("User denied access to speech recognition")
+                            
+                        case .restricted:
+                            print("Speech recognition restricted on this device")
+                            
+                        case .notDetermined:
+                            print("Speech recognition not yet authorized")
+                        }
+                    }
+                    
+                case .cancel:
+                    print("cancel")
+                    
+                case .destructive:
+                    print("destructive")
+                }
+            }))
+            
+            self.present(alert, animated: true, completion: nil)
+            
+        case SFSpeechRecognizerAuthorizationStatus.authorized:
+            print("lalalal")
+        default:
+            let alert = UIAlertController(title: "Me das permiso?", message: "Moak necesita acceder a tu posición para poder detectar si estás cerca de una tienda y mostrarte los mejores precios. Me autorizas?", preferredStyle: UIAlertControllerStyle.alert)
+            
+            alert.addAction(UIAlertAction(title: "No", style: .default, handler: { action in
+                switch action.style{
+                case .default:
+                    print("default")
+                    
+                case .cancel:
+                    print("cancel")
+                    
+                case .destructive:
+                    print("destructive")
+                }
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Sí", style: .default, handler: { action in
+                switch action.style{
+                case .default:
+                    print("default")
+                    self.locationManager.requestAlwaysAuthorization()
+                    
+                    self.locationManager.startUpdatingLocation()
+                    if CLLocationManager.authorizationStatus() != CLAuthorizationStatus.notDetermined {
+                        if let appSettings = NSURL(string: UIApplicationOpenSettingsURLString) {
+                            UIApplication.shared.openURL(appSettings as URL)
+                        }
+                    }
+                    
+                case .cancel:
+                    print("cancel")
+                    
+                case .destructive:
+                    print("destructive")
+                }
+            }))
+            
+            self.present(alert, animated: true, completion: {
+                if SFSpeechRecognizer.authorizationStatus() == SFSpeechRecognizerAuthorizationStatus.authorized {
+                    self.enableDictation = true
+                } else {
+                    self.enableDictation = false
+                }
+                self.addDictationButtonOnKeyboard()
+            })
+        }
+
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
+        if SFSpeechRecognizer.authorizationStatus() != SFSpeechRecognizerAuthorizationStatus.authorized {
+            checkDictationAuthorization()
+        }
         self.searchText.becomeFirstResponder()
     }
     
