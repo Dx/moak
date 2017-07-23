@@ -135,7 +135,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITableViewDe
     }
     
     @IBAction func clickJustPrice(_ sender: Any) {
-        captureJustPrice()
+        captureJustPrice() 
     }
     
     @IBAction func modePickerChanged(_ sender: Any) {
