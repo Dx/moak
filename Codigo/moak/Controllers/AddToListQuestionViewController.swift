@@ -10,6 +10,8 @@ import UIKit
 
 class AddToListQuestionViewController: UIViewController {
 
+	let localNotifications = Notification.Name(rawValue:"LocalNotifications")
+	
     @IBOutlet weak var productTitle: UILabel!
     
     var shoppingListId = ""
@@ -36,6 +38,10 @@ class AddToListQuestionViewController: UIViewController {
     }
     
     @IBAction func addToListClick(_ sender: Any) {
+		let nc = NotificationCenter.default
+		nc.post(name:localNotifications,
+		        object: nil,
+		        userInfo:["message":"Hello there!", "date":Date()])
         self.dismiss(animated: true, completion: nil)
     }
 

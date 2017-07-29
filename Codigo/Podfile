@@ -25,6 +25,7 @@ target 'moak' do
     pod 'FBSDKShareKit'
     pod 'SideMenu'
     pod 'lottie-ios'
+    pod 'NotificationBannerSwift'
 end
 
 target 'moak WatchKit App' do

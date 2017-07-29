@@ -47,95 +47,31 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITableViewDe
     override func viewWillAppear(_ animated: Bool) {
         self.loadValues()
     }
-    
-    func loadValues() {
-        
-        if self.selectedProduct != nil {
-            loadScreen()
-        } else {
-        	let firebase = FirebaseClient()
-        
-        	firebase.getProductInShoppingList(shoppingList: (self.selectedProduct?.shoppingList)!, productId: (self.selectedProduct?.productSKU)!, completion: {(product: Product?) in
-            
-            	if let product = product {
-            		self.selectedProduct = product
-                	
-                    self.loadScreen()
-            	}
-            
-            	self.productPrice.becomeFirstResponder()
-        	})
-        }
-    }
-        
-    func loadScreen() {
-        if let product = self.selectedProduct {
-        	self.productName.text = product.productName
-        
-        	let formatter = NumberFormatter()
-        	formatter.numberStyle = .currency
-        	self.productPrice.text = formatter.string(from: product.unitaryPrice as NSNumber)
-        	if product.quantity != 0 {
-            	let nf = NumberFormatter()
-            	nf.numberStyle = .decimal
-            	self.productQuantity.text = nf.string(from: product.quantity as NSNumber)
-        	} else {
-            	self.productQuantity.text = "0"
-        	}
-            
-            self.modePicker.selectedSegmentIndex = product.modeBuying
-        
-        	self.productTotalPrice.text = formatter.string(from: product.totalPrice as NSNumber)
-        
-        	if product.productSKU != "" {
-            	self.skuText.text = product.productSKU
-            	self.searchForSKUInHistory()
-            	self.reloadTables()
-        	}
-            
-            self.productPrice.becomeFirstResponder()
-        }
-    }
-    
-    func configureScreen() {
-        self.hideKeyboardWhenTappedAround()
-        productName.delegate = self
-        
-        self.productName.autocapitalizationType = .sentences
-        
-        productQuantity.keyboardType = .decimalPad
-        productQuantity.delegate = self
-        
-        productPrice.keyboardType = .decimalPad
-        productPrice.delegate = self
-        
-        productTotalPrice.keyboardType = .decimalPad
-        productTotalPrice.delegate = self
-        
-        self.historyTableView.reloadData()
-        
-        let screenSize: CGRect = UIScreen.main.bounds
-        self.screenWidth = screenSize.width
-        self.screenHeight = screenSize.height
-        
-        if ticketSelected != nil { // It comes from history ticket
-            productQuantity.isEnabled = false
-            productPrice.isEnabled = false
-            productTotalPrice.isEnabled = false
-        } else {
-            self.addDoneButtonOnKeyboard()
-            productQuantity.isEnabled = true
-            productPrice.isEnabled = true
-            productTotalPrice.isEnabled = true
-        }
-    }
-    
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		
+		switch segue.identifier! {
+		case "showProductDescription":
+			let destination = segue.destination as! AddProductDescriptionController
+			destination.product = self.selectedProduct
+		case "showBarCodeScanner":
+			let destination = segue.destination as! BarCodeScannerViewController
+			destination.selectedProduct = self.selectedProduct
+			destination.detailController = self
+		case "showTutorial":
+			let tutorial = segue.destination as! TutorialViewController
+			tutorial.requiredScreen = "Detail"
+		default:
+			print ("dev/null")
+		}
+	}
+	
     @IBAction func clickToCart(_ sender: Any) {
         addToList()
     }
     
     @IBAction func clickJustPrice(_ sender: Any) {
-        captureJustPrice() 
+        captureJustPrice()
     }
     
     @IBAction func modePickerChanged(_ sender: Any) {
@@ -174,32 +110,96 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         performSegue(withIdentifier: "showTutorial", sender: nil)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        switch segue.identifier! {
-        case "showProductDescription":
-            let destination = segue.destination as! AddProductDescriptionController
-            destination.product = self.selectedProduct
-        case "showBarCodeScanner":
-            let destination = segue.destination as! BarCodeScannerViewController
-            destination.selectedProduct = self.selectedProduct
-            destination.detailController = self
-        case "showTutorial":
-            let tutorial = segue.destination as! TutorialViewController
-            tutorial.requiredScreen = "Detail"
-        default:
-            print ("dev/null")
-        }
-    }
-    
     // MARK: - Functions
-        
+	
+	func loadValues() {
+		
+		if self.selectedProduct != nil {
+			loadScreen()
+		} else {
+			let firebase = FirebaseClient()
+			
+			firebase.getProductInShoppingList(shoppingList: (self.selectedProduct?.shoppingList)!, productId: (self.selectedProduct?.productSKU)!, completion: {(product: Product?) in
+				
+				if let product = product {
+					self.selectedProduct = product
+					
+					self.loadScreen()
+				}
+				
+				self.productPrice.becomeFirstResponder()
+			})
+		}
+	}
+	
+	func loadScreen() {
+		if let product = self.selectedProduct {
+			self.productName.text = product.productName
+			
+			let formatter = NumberFormatter()
+			formatter.numberStyle = .currency
+			self.productPrice.text = formatter.string(from: product.unitaryPrice as NSNumber)
+			if product.quantity != 0 {
+				let nf = NumberFormatter()
+				nf.numberStyle = .decimal
+				self.productQuantity.text = nf.string(from: product.quantity as NSNumber)
+			} else {
+				self.productQuantity.text = "0"
+			}
+			
+			self.modePicker.selectedSegmentIndex = product.modeBuying
+			
+			self.productTotalPrice.text = formatter.string(from: product.totalPrice as NSNumber)
+			
+			if product.productSKU != "" {
+				self.skuText.text = product.productSKU
+				self.searchForSKUInHistory()
+				self.reloadTables()
+			}
+			
+			self.productPrice.becomeFirstResponder()
+		}
+	}
+	
+	func configureScreen() {
+		self.hideKeyboardWhenTappedAround()
+		productName.delegate = self
+		
+		self.productName.autocapitalizationType = .sentences
+		
+		productQuantity.keyboardType = .decimalPad
+		productQuantity.delegate = self
+		
+		productPrice.keyboardType = .decimalPad
+		productPrice.delegate = self
+		
+		productTotalPrice.keyboardType = .decimalPad
+		productTotalPrice.delegate = self
+		
+		self.historyTableView.reloadData()
+		
+		let screenSize: CGRect = UIScreen.main.bounds
+		self.screenWidth = screenSize.width
+		self.screenHeight = screenSize.height
+		
+		if ticketSelected != nil { // It comes from history ticket
+			productQuantity.isEnabled = false
+			productPrice.isEnabled = false
+			productTotalPrice.isEnabled = false
+		} else {
+			self.addDoneButtonOnKeyboard()
+			productQuantity.isEnabled = true
+			productPrice.isEnabled = true
+			productTotalPrice.isEnabled = true
+		}
+	}
+	
     func searchForSKUInHistory() {
         if ticketSelected == nil && self.storeId != nil { // It comes from shopping list, not history
-            
+			
             let firebase = FirebaseClient()
             firebase.getLastPriceInStore(storeId: self.storeId!, skuNumber: self.selectedProduct!.productSKU ) {(productComparer: ProductComparer?) in
-            
+				
                 if productComparer != nil {
                     DispatchQueue.main.async {
                         let formatter = NumberFormatter()

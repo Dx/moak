@@ -14,21 +14,21 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.24.0):
     - FBSDKCoreKit
-  - Firebase (4.0.3):
-    - Firebase/Core (= 4.0.3)
-  - Firebase/Auth (4.0.3):
+  - Firebase (4.0.4):
+    - Firebase/Core (= 4.0.4)
+  - Firebase/Auth (4.0.4):
     - Firebase/Core
     - FirebaseAuth (= 4.0.0)
-  - Firebase/Core (4.0.3):
+  - Firebase/Core (4.0.4):
     - FirebaseAnalytics (= 4.0.2)
-    - FirebaseCore (= 4.0.3)
-  - Firebase/Crash (4.0.3):
+    - FirebaseCore (= 4.0.4)
+  - Firebase/Crash (4.0.4):
     - Firebase/Core
     - FirebaseCrash (= 2.0.0)
-  - Firebase/Database (4.0.3):
+  - Firebase/Database (4.0.4):
     - Firebase/Core
     - FirebaseDatabase (= 4.0.0)
-  - Firebase/Storage (4.0.3):
+  - Firebase/Storage (4.0.4):
     - Firebase/Core
     - FirebaseStorage (= 2.0.0)
   - FirebaseAnalytics (4.0.2):
@@ -39,8 +39,9 @@ PODS:
     - FirebaseAnalytics (~> 4.0)
     - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
     - GTMSessionFetcher/Core (~> 1.1)
-  - FirebaseCore (4.0.3):
+  - FirebaseCore (4.0.4):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - nanopb (~> 0.3)
   - FirebaseCrash (2.0.0):
     - FirebaseAnalytics (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
@@ -92,16 +93,26 @@ PODS:
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMOAuth2 (1.1.4):
     - GTMSessionFetcher (~> 1.1)
-  - GTMSessionFetcher (1.1.10):
-    - GTMSessionFetcher/Full (= 1.1.10)
-  - GTMSessionFetcher/Core (1.1.10)
-  - GTMSessionFetcher/Full (1.1.10):
-    - GTMSessionFetcher/Core (= 1.1.10)
+  - GTMSessionFetcher (1.1.11):
+    - GTMSessionFetcher/Full (= 1.1.11)
+  - GTMSessionFetcher/Core (1.1.11)
+  - GTMSessionFetcher/Full (1.1.11):
+    - GTMSessionFetcher/Core (= 1.1.11)
   - KCOrderedAccessorFix (0.1.1)
   - lottie-ios (1.5.2)
+  - MarqueeLabel/Swift (3.1.1)
   - MBProgressHUD (1.0.0)
+  - nanopb (0.3.8):
+    - nanopb/decode (= 0.3.8)
+    - nanopb/encode (= 0.3.8)
+  - nanopb/decode (0.3.8)
+  - nanopb/encode (0.3.8)
+  - NotificationBannerSwift (1.4.0):
+    - MarqueeLabel/Swift
+    - SnapKit (~> 3.2)
   - Protobuf (3.3.0)
   - SideMenu (2.3.3)
+  - SnapKit (3.2.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -121,6 +132,7 @@ DEPENDENCIES:
   - KCOrderedAccessorFix
   - lottie-ios
   - MBProgressHUD
+  - NotificationBannerSwift
   - SideMenu
 
 SPEC CHECKSUMS:
@@ -131,10 +143,10 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: f8c9eb0dd34a9cd277c7b60da4b32226d142502d
   FBSDKLoginKit: 1214c6d5a1c4995b694d8db8a9ba6910c6028acf
   FBSDKShareKit: a2ed9d7781a4eda9ac20d7404305e795b10251ac
-  Firebase: 9e33fdfbca37cab635c693883caa90a4475b842b
+  Firebase: 1492bf04e1b73a7353b4fb2cf5a20bac9692f341
   FirebaseAnalytics: ad41720e3e67fc63fbe3d2948d3e26932a8de311
   FirebaseAuth: ebb6abcbabae00fc47446d690c19ce68d8484fde
-  FirebaseCore: c709067051de07bdaffdc4e735cd7299a23c463a
+  FirebaseCore: cfc042628ef9f20debe09c0eb683135fcd404cb4
   FirebaseCrash: 600ec2cbd8e10c3064a42de2c6ee7687bd02a076
   FirebaseDatabase: d829b3a8c3e2ac7a16773c5df226966b0805dfc2
   FirebaseInstanceID: 9fbf536668f4d3f0880e7438456dabd1376e294b
@@ -146,13 +158,17 @@ SPEC CHECKSUMS:
   GoogleSignIn: d7ad83f13480e1f30453471d00d19b5293ac46af
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
-  GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
+  GTMSessionFetcher: 5ad62e8200fa00ed011fe5e08d27fef72c5b1429
   KCOrderedAccessorFix: 53c6f2bb13c9a163590f414536eccd2f103e3189
   lottie-ios: 255a0e95973a5c4424e809d7a5c19f7384c73e84
+  MarqueeLabel: 17c5148b6f7144498eff5e0d286bd2e7e866f972
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  nanopb: 22bc080fa3955e2116b6ff3ee6c2cb3c15ab97cb
+  NotificationBannerSwift: b2a81c9f0f816851686ca2e802058afd65676adc
   Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
   SideMenu: a447554ae5c982e8077666389e1c8b0c8656e065
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
 
-PODFILE CHECKSUM: 07ba0a5d54caf593bd2b8633b81af6bee336eb2b
+PODFILE CHECKSUM: 88fadd409681aabf559e9c51b4fc44ee643de016
 
 COCOAPODS: 1.2.1

@@ -35,18 +35,18 @@ class AddProductDescriptionController: UIViewController, UITableViewDataSource, 
     var locationManager = CLLocationManager()
     var lastLocation : CLLocation? = nil
     
-    private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "es-MX"))
-    private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
-    private var recognitionTask: SFSpeechRecognitionTask?
-    private let audioEngine = AVAudioEngine()
-    
     var screenWidth : CGFloat = 0.0
     var screenHeight : CGFloat = 0.0
     
     var listController: ListsViewController? = nil
     
     var descriptions: [String] = []
-    
+	
+	private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "es-MX"))
+	private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
+	private var recognitionTask: SFSpeechRecognitionTask?
+	private let audioEngine = AVAudioEngine()
+	
     // MARK: - View methods
     
     override func viewDidLoad() {
@@ -75,6 +75,13 @@ class AddProductDescriptionController: UIViewController, UITableViewDataSource, 
         speechRecognizer?.delegate = self
         
         addDictationButtonOnKeyboard()
+		
+		let nc = NotificationCenter.default
+		
+		let historyPoint = HistoryPoint(id: "0", reason: "Entró a product description", date: Date(), points: 25, userId: "")
+		nc.post(name:Notification.Name(rawValue:"LocalNotifications"),
+		        object: nil,
+		        userInfo: ["message":historyPoint, "date":Date()])
     }
     
     func checkDictationAuthorization() {

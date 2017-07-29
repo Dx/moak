@@ -74,6 +74,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>MarqueeLabel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>NotificationBannerSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-moak WatchKit App.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -99,7 +109,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SnapKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>lottie-ios.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>nanopb.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -107,22 +127,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>2FC6D66F68717AE7DF0B73F01B93CA69</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>320AD47B0C6BA014D301395D3BFC8FB6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>3380590F973AFAFA30255D504B7DEDAC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>38830187D9E171E7B43047ED06A08ADC</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3AEA9E60D0F03FDDDC5904A73E750B54</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3CB3092DB44A52D1CD7A2D94B6B53994</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -152,7 +172,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>895A701878CF028E41C06E61F8522231</key>
+		<key>91740D7BF02C3426EEE0AC1F28A9AA9C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -172,6 +192,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>B7C84F97B5BAFA2DC0E3E3B31D15339D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>BC5000D645EEAF961C85907CDC796FE1</key>
 		<dict>
 			<key>primary</key>
@@ -182,12 +207,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>C7E22BEB205BF5EDC7D383150E23BC40</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>E396A93E4C79B22B7816E9F02F62ECED</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>E4DD95323C54A78F879DAB0F1508B8E7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>E7189638A2D6B731F99C8766C818790C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EAA88C5A4B6AEAC54C2772A9995B99C2</key>
 		<dict>
 			<key>primary</key>
 			<true/>

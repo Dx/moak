@@ -15,6 +15,7 @@ import AudioToolbox
 import SideMenu
 import BubbleTransition
 import Lottie
+import NotificationBannerSwift
 
 class ListsViewController: UIViewController, UIViewControllerTransitioningDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, CLLocationManagerDelegate, StoreSelectorDelegate {
     
@@ -47,6 +48,10 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
     var listSelected: String = ""
     var listDescriptionSelected: String?
     
+    var pointsNotification: [HistoryPoint] = []
+	
+	let localNotifications = Notification.Name(rawValue:"LocalNotifications")
+    
     // MARK: - View methods
     
     override func viewDidLoad() {
@@ -55,94 +60,9 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
         setLocationManager()
         
         setViewControls()
-    }
-    
-    func setViewControls() {
-        configureTableList()
-        setStoreButton()
-        setSideMenuManager()
-        setButtonAnimation()
-    }
-    
-    func setStoreButton() {
-        storeButton.titleLabel!.lineBreakMode = .byWordWrapping
-        storeButton.titleLabel!.textAlignment = .center
-    }
-    
-    func setButtonAnimation() {
-        let buttonAnimation = LOTAnimationView.init(name: "plusbutton")
-        
-        buttonAnimation.frame = CGRect(x: self.view.frame.midX - 33.5, y: addButton.frame.midY + 31, width: 67, height: 67)
-        buttonAnimation.loopAnimation = true
-        buttonAnimation.layer.zPosition = 7
-        buttonAnimation.isUserInteractionEnabled = false
-        self.view.addSubview(buttonAnimation)
-        buttonAnimation.play()
-    }
-    
-    func setSideMenuManager() {
-        SideMenuManager.menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? UISideMenuNavigationController
-        
-        SideMenuManager.menuFadeStatusBar = true
-        SideMenuManager.menuAnimationTransformScaleFactor = 1
-        // SideMenuManager.menuBlurEffectStyle = UIBlurEffectStyle.light
-        SideMenuManager.menuAnimationFadeStrength = 0.3
-        SideMenuManager.menuShadowOpacity = 0.3
-        SideMenuManager.menuFadeStatusBar = true
-        SideMenuManager.menuPresentMode = .viewSlideInOut
-    }
-    
-    func setLocationManager() {
-        
-        locationManager.distanceFilter  = 10
-        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
-        self.locationManager.delegate = self
-        
-        if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedAlways {
-            if !isUpdatingLocation {
-                locationManager.startUpdatingLocation()
-            }
-        } else {
-            let alert = UIAlertController(title: "Me das permiso?", message: "Moak necesita acceder a tu posición para poder detectar si estás cerca de una tienda y mostrarte los mejores precios. Me autorizas?", preferredStyle: UIAlertControllerStyle.alert)
-            
-            alert.addAction(UIAlertAction(title: "No", style: .default, handler: { action in
-                switch action.style{
-                case .default:
-                    print("default")
-                    
-                case .cancel:
-                    print("cancel")
-                    
-                case .destructive:
-                    print("destructive")
-                }
-            }))
-            
-            alert.addAction(UIAlertAction(title: "Sí", style: .default, handler: { action in
-                switch action.style{
-                case .default:
-                    print("default")
-                    self.locationManager.requestAlwaysAuthorization()
-                    
-                    self.locationManager.startUpdatingLocation()
-                    if CLLocationManager.authorizationStatus() != CLAuthorizationStatus.notDetermined {
-                        if let appSettings = NSURL(string: UIApplicationOpenSettingsURLString) {
-                            UIApplication.shared.openURL(appSettings as URL)
-                        }
-                    }
-                    
-                case .cancel:
-                    print("cancel")
-                    
-                case .destructive:
-                    print("destructive")
-                }
-            }))
-            
-            self.present(alert, animated: true, completion: nil)
-        }
-        
-        
+		
+		let nc = NotificationCenter.default
+		nc.addObserver(forName:localNotifications, object:nil, queue:nil, using:catchNotification)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -157,27 +77,10 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
             loadTitle()
             loadShoppingList()
         }
+		
+		showPointsNotifications()
         
         becomeFirstResponder()
-    }
-    
-    func loadTitle() {
-        if let list = self.defaults.string(forKey: "listId") {
-            self.listSelected = list
-            
-            if let listName = self.defaults.string(forKey: "listDescription") {
-                self.listDescriptionSelected = listName
-                self.navigationItem.title = self.listDescriptionSelected
-            } else {
-                let firebase = FirebaseClient()
-                firebase.getShoppingList(shoppingListId: list) { (result: ShoppingList?) in
-                    if let completeList = result {
-                        self.defaults.set(completeList.name, forKey: "listDescription")
-                        self.navigationItem.title = self.listDescriptionSelected
-                    }
-                }
-            }
-        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -266,21 +169,143 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
         }
         
         if self.currentList!.place != nil {
-        
-        	let myAlert = UIAlertController(title: "Crear ticket", message: "¿Desea cerrar su compra y crear un ticket?", preferredStyle: .alert)
-        	let okAction = UIAlertAction(title: "Ok", style: .default) { (action) in
-            	self.createTicketConfirmed()
-        	}
-        	let cancelAction = UIAlertAction(title: "Cancelar", style: .default) { (action) in
-            // ...
-        	}
-        
-        	myAlert.addAction(okAction)
-        	myAlert.addAction(cancelAction)
-        
-        	self.present(myAlert, animated: true, completion: nil)
+            
+            let myAlert = UIAlertController(title: "Crear ticket", message: "¿Desea cerrar su compra y crear un ticket?", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .default) { (action) in
+                self.createTicketConfirmed()
+            }
+            let cancelAction = UIAlertAction(title: "Cancelar", style: .default) { (action) in
+                // ...
+            }
+            
+            myAlert.addAction(okAction)
+            myAlert.addAction(cancelAction)
+            
+            self.present(myAlert, animated: true, completion: nil)
         } else {
             self.showAlert(error: "Para cerrar el ticket debes elegir una tienda", title: "Ups")
+        }
+    }
+	
+	func catchNotification(notification:Notification) -> Void {
+		print("Catch notification")
+		
+		guard let userInfo = notification.userInfo,
+			let message  = userInfo["message"] as? HistoryPoint,
+			let _     = userInfo["date"]    as? Date else {
+				print("No userInfo found in notification")
+				return
+		}
+		
+		pointsNotification.append(message)
+	}
+	
+    // MARK: - Methods
+	
+    func setViewControls() {
+        configureTableList()
+        setStoreButton()
+        setSideMenuManager()
+        setButtonAnimation()
+    }
+    
+    func setStoreButton() {
+        storeButton.titleLabel!.lineBreakMode = .byWordWrapping
+        storeButton.titleLabel!.textAlignment = .center
+    }
+    
+    func setButtonAnimation() {
+        let buttonAnimation = LOTAnimationView.init(name: "plusbutton")
+        
+        buttonAnimation.frame = CGRect(x: self.view.frame.midX - 33.5, y: addButton.frame.midY + 31, width: 67, height: 67)
+        buttonAnimation.loopAnimation = true
+        buttonAnimation.layer.zPosition = 7
+        buttonAnimation.isUserInteractionEnabled = false
+        self.view.addSubview(buttonAnimation)
+        buttonAnimation.play()
+    }
+    
+    func setSideMenuManager() {
+        SideMenuManager.menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? UISideMenuNavigationController
+        
+        SideMenuManager.menuFadeStatusBar = true
+        SideMenuManager.menuAnimationTransformScaleFactor = 1
+        // SideMenuManager.menuBlurEffectStyle = UIBlurEffectStyle.light
+        SideMenuManager.menuAnimationFadeStrength = 0.3
+        SideMenuManager.menuShadowOpacity = 0.3
+        SideMenuManager.menuFadeStatusBar = true
+        SideMenuManager.menuPresentMode = .viewSlideInOut
+    }
+    
+    func setLocationManager() {
+        
+        locationManager.distanceFilter  = 10
+        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+        self.locationManager.delegate = self
+        
+        if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedAlways {
+            if !isUpdatingLocation {
+                locationManager.startUpdatingLocation()
+            }
+        } else {
+            let alert = UIAlertController(title: "Me das permiso?", message: "Moak necesita acceder a tu posición para poder detectar si estás cerca de una tienda y mostrarte los mejores precios. Me autorizas?", preferredStyle: UIAlertControllerStyle.alert)
+            
+            alert.addAction(UIAlertAction(title: "No", style: .default, handler: { action in
+                switch action.style{
+                case .default:
+                    print("default")
+                    
+                case .cancel:
+                    print("cancel")
+                    
+                case .destructive:
+                    print("destructive")
+                }
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Sí", style: .default, handler: { action in
+                switch action.style{
+                case .default:
+                    print("default")
+                    self.locationManager.requestAlwaysAuthorization()
+                    
+                    self.locationManager.startUpdatingLocation()
+                    if CLLocationManager.authorizationStatus() != CLAuthorizationStatus.notDetermined {
+                        if let appSettings = NSURL(string: UIApplicationOpenSettingsURLString) {
+                            UIApplication.shared.openURL(appSettings as URL)
+                        }
+                    }
+                    
+                case .cancel:
+                    print("cancel")
+                    
+                case .destructive:
+                    print("destructive")
+                }
+            }))
+            
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        
+    }
+    
+    func loadTitle() {
+        if let list = self.defaults.string(forKey: "listId") {
+            self.listSelected = list
+            
+            if let listName = self.defaults.string(forKey: "listDescription") {
+                self.listDescriptionSelected = listName
+                self.navigationItem.title = self.listDescriptionSelected
+            } else {
+                let firebase = FirebaseClient()
+                firebase.getShoppingList(shoppingListId: list) { (result: ShoppingList?) in
+                    if let completeList = result {
+                        self.defaults.set(completeList.name, forKey: "listDescription")
+                        self.navigationItem.title = self.listDescriptionSelected
+                    }
+                }
+            }
         }
     }
     
@@ -300,6 +325,19 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
                 completion("")
             }
         })
+    }
+    
+    func showPointsNotifications() {
+		for point in pointsNotification{
+			let banner = NotificationBanner(title: "Puntos ganados!", subtitle: "Ganaste \(point.points) puntos por \(point.reason)", style: .success)
+			banner.show()
+		}
+		
+		pointsNotification.removeAll()
+    }
+    
+    func addPoints(point: HistoryPoint) {
+        pointsNotification.append(point)
     }
     
     func loadShoppingList() {
