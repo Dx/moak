@@ -162,7 +162,7 @@ class TableViewCell: UITableViewCell, UITextFieldDelegate {
     }
     
     //MARK: - horizontal pan gesture methods
-    func handlePan(_ recognizer: UIPanGestureRecognizer) {
+	@objc func handlePan(_ recognizer: UIPanGestureRecognizer) {
         // 1
         if recognizer.state == .began {
             // when the gesture begins, record the current center location

@@ -155,7 +155,7 @@ class TableViewCellDetailHistory: UITableViewCell, UITextFieldDelegate {
         crossLabel.frame = CGRect(x: bounds.size.width + kUICuesMargin, y: 0,
                                   width: kUICuesWidth, height: bounds.size.height)
         priceText.frame = CGRect(x: bounds.size.width - kPriceLeftMargin, y: 0,
-                                 width: kPriceLeftMargin - kLabelLeftMargin, height: bounds.size.height)
+                                 width: kPriceLeftMargin - kLabelLeftMargin, hei@objc ght: bounds.size.height)
     }
     
     //MARK: - Done button keyboard

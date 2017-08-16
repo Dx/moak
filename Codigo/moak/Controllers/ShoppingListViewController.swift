@@ -120,7 +120,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         return cell
     }
     
-    func save() {
+	@objc func save() {
         let firebase = FirebaseClient()
         let nameList = self.shoppingListText!.text!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         
@@ -144,13 +144,13 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         self.dismiss(animated: true, completion: nil)
     }
     
-    func deleteList() {
+	@objc func deleteList() {
         let firebase = FirebaseClient()
         firebase.deleteShoppingList(self.shoppingListIdSelected)
         self.dismiss(animated: true, completion: nil)
     }
     
-    func cancel() {
+	@objc func cancel() {
         self.dismiss(animated: true, completion: nil)
     }
     

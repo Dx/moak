@@ -658,7 +658,7 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
     
 	// MARK: - Functions
     
-    func longPressGestureRecognized(_ gestureRecognizer: UIGestureRecognizer) {
+	@objc func longPressGestureRecognized(_ gestureRecognizer: UIGestureRecognizer) {
         let longPress = gestureRecognizer as! UILongPressGestureRecognizer
         let state = longPress.state
         let locationInView = longPress.location(in: listTableView)

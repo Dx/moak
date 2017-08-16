@@ -386,7 +386,7 @@ class AddProductDescriptionController: UIViewController, UITableViewDataSource, 
         listBottomMargin.constant = 50
     }
     
-    func keyboardWillShow(_ sender: Notification) {
+	@objc func keyboardWillShow(_ sender: Notification) {
         listBottomMargin.constant = 270
     }
     
@@ -473,7 +473,7 @@ class AddProductDescriptionController: UIViewController, UITableViewDataSource, 
         }
     }
     
-    func viewTapped() {
+	@objc func viewTapped() {
         self.searchText?.resignFirstResponder()
     }
     

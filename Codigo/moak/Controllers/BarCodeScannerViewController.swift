@@ -196,16 +196,16 @@ class BarCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObj
         view.addSubview(tutorialButton)
     }
     
-    func showTutorial() {
+	@objc func showTutorial() {
         performSegue(withIdentifier: "showTutorial", sender: self)
     }
     
-    func cancel() {
+	@objc func cancel() {
         captureSession.stopRunning()
         self.parent?.dismiss(animated: true, completion: nil)
     }
     
-    func toggleFlash() {
+	@objc func toggleFlash() {
         let device = AVCaptureDevice.default(for: AVMediaType.video)
         if (device?.hasTorch)! {
             do {

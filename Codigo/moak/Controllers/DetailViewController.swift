@@ -372,7 +372,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         }
     }
     
-    func addToList() {
+	@objc func addToList() {
         
         if productTotalPrice.isFirstResponder {
             productQuantity.becomeFirstResponder()
@@ -389,7 +389,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         self.finishDetailView()
     }
     
-    func captureJustPrice() {
+	@objc func captureJustPrice() {
         
         self.productName.becomeFirstResponder()
         
@@ -624,7 +624,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITableViewDe
                     let number = stringToNumberFormatter.number(from: productQuantity.text!)
                     
                     if let intNumber = number {
-                        if  Int(intNumber) % 3 > 0 {
+						if  Int(truncating: intNumber) % 3 > 0 {
                             self.productQuantity.text = "3"
                             self.selectedProduct!.quantity = 3
                         }
@@ -633,14 +633,14 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITableViewDe
                         self.selectedProduct!.quantity = 3
                     }
                     
-                    self.selectedProduct!.quantity = Float(Int(stringToNumberFormatter.number(from: productQuantity.text!)!))
+					self.selectedProduct!.quantity = Float(Int(truncating: stringToNumberFormatter.number(from: productQuantity.text!)!))
                     
                     self.selectedProduct!.totalPrice = (self.selectedProduct?.unitaryPrice)! * ((stringToNumberFormatter.number(from: productQuantity.text!))!.floatValue / 3 * 2)
                 case 2:
                     let number = stringToNumberFormatter.number(from: productQuantity.text!)
                     
                     if let intNumber = number {
-                        if  Int(intNumber) % 2 > 0 {
+						if  Int(truncating: intNumber) % 2 > 0 {
                             self.productQuantity.text = "2"
                             self.selectedProduct!.quantity = 2
                         }
@@ -649,7 +649,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITableViewDe
                         self.selectedProduct!.quantity = 2
                     }
                     
-                    self.selectedProduct!.quantity = Float(Int(stringToNumberFormatter.number(from: productQuantity.text!)!))
+					self.selectedProduct!.quantity = Float(Int(truncating: stringToNumberFormatter.number(from: productQuantity.text!)!))
                     
                     self.selectedProduct!.totalPrice = (self.selectedProduct?.unitaryPrice)! * ((stringToNumberFormatter.number(from: productQuantity.text!))!.floatValue / 2)
                 default:
@@ -690,7 +690,7 @@ extension UIViewController {
         view.addGestureRecognizer(tap)
     }
     
-    func dismissKeyboard() {
+	@objc func dismissKeyboard() {
         view.endEditing(true)
     }
 }
