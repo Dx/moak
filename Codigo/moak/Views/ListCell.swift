@@ -56,7 +56,7 @@ class ListCell: UITableViewCell {
             
             let textRange = NSMakeRange(0, name.text!.characters.count)
             let attributedText = NSMutableAttributedString(string: name.text!)
-            attributedText.addAttribute(NSStrikethroughStyleAttributeName , value: 2, range: textRange)
+			attributedText.addAttribute(NSAttributedStringKey.strikethroughStyle , value: 2, range: textRange)
             // Add other attributes if needed
             self.name.attributedText = attributedText
         } else {
@@ -99,7 +99,7 @@ class ListCell: UITableViewCell {
         }
         
         if capturedPrice {
-            let attrs = [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 15)]
+			let attrs = [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 15)]
             let boldString = NSMutableAttributedString(string:unitPrice.text!, attributes:attrs)
             self.unitPrice.attributedText = boldString
         }

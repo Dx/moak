@@ -418,7 +418,7 @@ class FirebaseClient {
                     if let productParams = product.value as? [String: AnyObject] {
                     
                     	let product = UserProductAverage(parameters: productParams)
-                        if product.daysToBuy() > -8 && product.daysToBuy() < 8 {
+                        if product.daysToBuy() > -16 && product.daysToBuy() < 16 {
                 			result.append(product)
                         }
                     }
@@ -854,9 +854,11 @@ class FirebaseClient {
                             } else {
                                 storeComplete.distance = -1
                             }
-                            
-                            result.append(storeComplete)
-                            
+							
+							if storeComplete.distance <= 200 {
+								result.append(storeComplete)
+							}
+							
                             result = result.sorted(by: { $0.distance < $1.distance} )
                             
                             completion(result)

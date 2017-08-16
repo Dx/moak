@@ -80,6 +80,10 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Moak utiliza tu posición para encontrar las tiendas cercanas</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Moak utiliza tu posición para encontrar las tiendas cercanas</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Moak usa la cámara para capturar códigos de barra</string>
 	<key>NSLocationAlwaysUsageDescription</key>

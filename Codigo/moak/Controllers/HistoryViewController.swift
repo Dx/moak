@@ -51,6 +51,8 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureTableView()
+		
+		
         
         let screenSize: CGRect = UIScreen.main.bounds
         screenWidth = screenSize.width

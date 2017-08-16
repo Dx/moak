@@ -29,7 +29,7 @@ class MasterListViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         
         if (WCSession.isSupported()) {
-            session = WCSession.default()
+            session = WCSession.default
             session.delegate = self
             session.activate()
         } else {

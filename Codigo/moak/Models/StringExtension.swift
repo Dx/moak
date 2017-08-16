@@ -42,7 +42,7 @@ extension String {
             endIndex = self.endIndex
         }
         
-        return self[startIndex ..< endIndex]
+		return String(self[startIndex ..< endIndex])
     }
     
     func substring(from: Int) -> String {

@@ -16,11 +16,11 @@ typedef void (^LOTAnimationCompletionBlock)(BOOL animationFinished);
 + (nonnull instancetype)animationNamed:(nonnull NSString *)animationName NS_SWIFT_NAME(init(name:));
 + (nonnull instancetype)animationNamed:(nonnull NSString *)animationName inBundle:(nonnull NSBundle *)bundle NS_SWIFT_NAME(init(name:bundle:));
 + (nonnull instancetype)animationFromJSON:(nonnull NSDictionary *)animationJSON NS_SWIFT_NAME(init(json:));
-+ (instancetype)animationFromJSON:(NSDictionary *)animationJSON inBundle:(NSBundle *)bundle NS_SWIFT_NAME(init(json:bundle:));
++ (instancetype _Nullable )animationFromJSON:(NSDictionary *_Nullable)animationJSON inBundle:(NSBundle *_Nullable)bundle NS_SWIFT_NAME(init(json:bundle:));
 
 - (nonnull instancetype)initWithContentsOfURL:(nonnull NSURL *)url;
 
-+ (instancetype)animationWithFilePath:(NSString *)filePath NS_SWIFT_NAME(init(filePath:));
++ (instancetype _Nullable )animationWithFilePath:(NSString *_Nullable)filePath NS_SWIFT_NAME(init(filePath:));
 
 @property (nonatomic, readonly) BOOL isAnimationPlaying;
 @property (nonatomic, assign) BOOL loopAnimation;

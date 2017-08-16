@@ -79,7 +79,7 @@ class GooglePlacesClient {
         
         let headers = ["Content-Type": "application/json"]
         
-        let getUrl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyDPfiiPEWUoKW4knF1T5NV_G1OTv4T0iIg&location=\(currentLocation.coordinate.latitude),\(currentLocation.coordinate.longitude)&radius=500&types=store&keyword=supermarket|convenience_store|food|pharmacy"
+        let getUrl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyDPfiiPEWUoKW4knF1T5NV_G1OTv4T0iIg&location=\(currentLocation.coordinate.latitude),\(currentLocation.coordinate.longitude)&radius=200&types=store&keyword=supermarket|convenience_store|food|pharmacy"
         
         let urlwithPercentEscapes = getUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         

@@ -63,6 +63,7 @@ class MasterHistoryViewController: UIViewController, UITableViewDelegate, UITabl
             }
             let backItem = UIBarButtonItem()
             backItem.title = "Atrás"
+			backItem.tintColor = .red
             navigationItem.backBarButtonItem = backItem
         }
     }

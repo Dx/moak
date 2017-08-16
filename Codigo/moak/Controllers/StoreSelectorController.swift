@@ -18,6 +18,8 @@ protocol StoreSelectorDelegate {
 class StoreSelectorController: UIViewController, UITableViewDelegate, UITableViewDataSource, GMSPlacePickerViewControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+	
     var googlePlaceResults : [GooglePlaceResult] = []
     var delegate: StoreSelectorDelegate?
     var lastLocation : CLLocation? = nil
@@ -33,6 +35,8 @@ class StoreSelectorController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     override func viewWillAppear(_ animated: Bool) {
+		activityIndicator.isHidden = false
+		tableView.isHidden = true
         self.reloadStores()
     }
 
@@ -183,16 +187,26 @@ class StoreSelectorController: UIViewController, UITableViewDelegate, UITableVie
     // MARK: - Functions
     
     func reloadStores() {
-        
-        let client = GooglePlacesClient()
-        client.getCloserStores(currentLocation: self.lastLocation!) { (result: [GooglePlaceResult]?, error: String?) in
-            
-            if result != nil {
-                self.googlePlaceResults = result!
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            }
-        }
+		
+		let firebase = FirebaseClient()
+		firebase.getUserStores(location: self.lastLocation!) { (resultFirebase: [GooglePlaceResult]) in
+			
+			self.googlePlaceResults = resultFirebase
+			
+			let client = GooglePlacesClient()
+			client.getCloserStores(currentLocation: self.lastLocation!) { (result: [GooglePlaceResult]?, error: String?) in
+				
+				if result != nil {
+					self.googlePlaceResults.append(contentsOf: result!)
+					DispatchQueue.main.async {
+						self.tableView.reloadData()
+						self.tableView.isHidden = false
+						self.activityIndicator.isHidden = true
+					}
+				}
+			}
+		}
+		
+		
     }
 }

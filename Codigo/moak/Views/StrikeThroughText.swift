@@ -52,7 +52,7 @@ class StrikeThroughText: UITextField {
 
     func resizeStrikeThrough() {
         if let text = text {
-            if let textSize = text.size(attributes: [NSFontAttributeName:font!]) as CGSize! {
+			if let textSize = text.size(withAttributes: [NSAttributedStringKey.font:font!]) as CGSize! {
                 strikeThroughLayer.frame = CGRect(x: 0, y: bounds.size.height/2,
                     width: textSize.width, height: kStrikeOutThickness)
             }

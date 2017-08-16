@@ -66,7 +66,6 @@ class MagicListViewController: UIViewController, UITableViewDelegate, UITableVie
     
     // MARK: - Table View
     
-    
     func configureTableList() {
         self.tableView.delegate = self
         self.tableView.dataSource = self

@@ -20,8 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var shortcutItem: UIApplicationShortcutItem?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        GMSServices.provideAPIKey("AIzaSyDreT7fCLOxKN8rEkgK3yTDuho4TAkS_98")
-        GMSPlacesClient.provideAPIKey("AIzaSyDreT7fCLOxKN8rEkgK3yTDuho4TAkS_98")
+		
+		self.window?.tintColor = UIColor(red: 0.6171, green: 0.2617, blue: 0.2617, alpha: 1.0)
+	GMSServices.provideAPIKey("AIzaSyDreT7fCLOxKN8rEkgK3yTDuho4TAkS_98")
+	GMSPlacesClient.provideAPIKey("AIzaSyDreT7fCLOxKN8rEkgK3yTDuho4TAkS_98")
         GMSPlacesClient.openSourceLicenseInfo()
         
         FirebaseApp.configure()

@@ -37,8 +37,8 @@ class BarCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObj
             self.listId = self.defaults.string(forKey: "listId")!
         }
         
-        let cameraMediaType = AVMediaTypeVideo
-        let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(forMediaType: cameraMediaType)
+        let cameraMediaType = AVMediaType.video
+        let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: cameraMediaType)
         
         if cameraAuthorizationStatus == .authorized {
             noAuthorizedView.isHidden = true
@@ -89,8 +89,8 @@ class BarCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObj
     }
     
     @IBAction func authorizeCamera(_ sender: Any) {
-        let cameraMediaType = AVMediaTypeVideo
-        let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(forMediaType: cameraMediaType)
+        let cameraMediaType = AVMediaType.video
+        let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: cameraMediaType)
         if cameraAuthorizationStatus == .notDetermined {
             noAuthorizedView.isHidden = true
             settingVideoCapture()
@@ -117,11 +117,11 @@ class BarCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObj
         view.backgroundColor = UIColor.black
         captureSession = AVCaptureSession()
         
-        let videoCaptureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+        let videoCaptureDevice = AVCaptureDevice.default(for: AVMediaType.video)
         let videoInput: AVCaptureDeviceInput
         
         do {
-            videoInput = try AVCaptureDeviceInput(device: videoCaptureDevice)
+            videoInput = try AVCaptureDeviceInput(device: videoCaptureDevice!)
         } catch {
             return
         }
@@ -139,7 +139,7 @@ class BarCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObj
             captureSession.addOutput(metadataOutput)
             
             metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-            metadataOutput.metadataObjectTypes = [AVMetadataObjectTypeEAN8Code, AVMetadataObjectTypeEAN13Code, AVMetadataObjectTypePDF417Code]
+			metadataOutput.metadataObjectTypes = [AVMetadataObject.ObjectType.ean8, AVMetadataObject.ObjectType.ean13, AVMetadataObject.ObjectType.pdf417]
         } else {
             failed()
             return
@@ -147,7 +147,7 @@ class BarCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObj
         
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession);
         previewLayer.frame = view.layer.bounds;
-        previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+        previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill;
         view.layer.addSublayer(previewLayer);
         
         captureSession.startRunning();
@@ -206,15 +206,15 @@ class BarCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObj
     }
     
     func toggleFlash() {
-        let device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+        let device = AVCaptureDevice.default(for: AVMediaType.video)
         if (device?.hasTorch)! {
             do {
                 try device?.lockForConfiguration()
-                if (device?.torchMode == AVCaptureTorchMode.on) {
-                    device?.torchMode = AVCaptureTorchMode.off
+                if (device?.torchMode == AVCaptureDevice.TorchMode.on) {
+                    device?.torchMode = AVCaptureDevice.TorchMode.off
                 } else {
                     do {
-                        try device?.setTorchModeOnWithLevel(1.0)
+						try device?.setTorchModeOn(level:1.0)
                     } catch {
                         print(error)
                     }
@@ -240,7 +240,7 @@ class BarCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObj
             let readableObject = metadataObject as! AVMetadataMachineReadableCodeObject;
             
             AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-            foundCode(readableObject.stringValue);
+			foundCode(readableObject.stringValue!);
         }
     }
     

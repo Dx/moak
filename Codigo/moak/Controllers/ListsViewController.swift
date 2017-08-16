@@ -132,7 +132,7 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
             
             storeSelector.lastLocation = self.lastLocation
             let backItem = UIBarButtonItem()
-            backItem.title = "Cancelar"
+            backItem.title = "Cancelari"
             backItem.tintColor = .red
             navigationItem.backBarButtonItem = backItem
         case "showNewProductAdding":
@@ -329,7 +329,31 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
     
     func showPointsNotifications() {
 		for point in pointsNotification{
-			let banner = NotificationBanner(title: "Puntos ganados!", subtitle: "Ganaste \(point.points) puntos por \(point.reason)", style: .success)
+			//let banner = NotificationBanner(title: "Puntos ganados!", subtitle: "Ganaste \(point.points) puntos por \(point.reason)", style: .success)
+			// let view = PointNotification()
+			
+			let screenSize = UIScreen.main.bounds
+			
+			let anotherView = UIView()
+			let label = UILabel(frame: CGRect(x: screenSize.width / 2, y: 30, width: 300, height: 21))
+			label.center = CGPoint(x: screenSize.width / 2, y: 30)
+			label.textAlignment = .center
+			label.font = label.font.withSize(15)
+			label.text = "Ganaste \(point.points) por \(point.reason)"
+			label.textColor = UIColor.black
+			
+			let crownAnimation = LOTAnimationView.init(name: "crown")
+			
+			crownAnimation.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
+			crownAnimation.loopAnimation = true
+			anotherView.addSubview(crownAnimation)
+			crownAnimation.play()
+			
+			anotherView.backgroundColor = UIColor.white
+			
+			anotherView.addSubview(label)
+			let banner = NotificationBanner(customView: anotherView)
+			banner.haptic = .light
 			banner.show()
 		}
 		
@@ -898,15 +922,6 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
         }
         
         firebase.deleteStoreFromList(list: self.listSelected)
-        
-        let crownAnimation = LOTAnimationView.init(name: "crown")
-        
-        let screenSize = UIScreen.main.bounds
-        
-        crownAnimation.frame = CGRect(x: screenSize.width / 2, y: screenSize.height / 2, width: 100, height: 100)
-        self.view.addSubview(crownAnimation)
-        crownAnimation.play()
-        crownAnimation.isHidden = true
         
         self.reloadProducts()
     }
