@@ -10,7 +10,7 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import Firebase
 
-class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
+class LoginViewController: UIViewController, LoginButtonDelegate {
     
     @IBOutlet weak var labelName: UILabel!
     
@@ -23,7 +23,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         super.viewDidLoad()
         
-        if (FBSDKAccessToken.current() != nil)
+        if (AccessToken.current != nil)
         {
             if !logged {
             	self.goToNextView()
@@ -32,52 +32,52 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
         else
         {
-            let loginView : FBSDKLoginButton = FBSDKLoginButton()
+            let loginView : FBLoginButton = FBLoginButton()
             self.view.addSubview(loginView)
             loginView.center = self.view.center
-            loginView.readPermissions = ["public_profile", "email", "user_birthday", "user_location", "user_friends"]
+            loginView.permissions = ["public_profile", "email", "user_birthday", "user_location"]
             loginView.delegate = self
         }
     }    
     
     @IBAction func showNext(_ sender: AnyObject) {
         if logged {
-            self.performSegue(withIdentifier: "showLanguageView", sender: self)
+            self.performSegue(withIdentifier: "showMenuView", sender: self)
         }
     }
     
     // MARK: - FBSDKLoginButtonDelegate delegate
-    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
         print("User Logged In")
         
         if ((error) != nil)
         {
-            print(error)
-        } else if result.isCancelled {
+            print(error!)
+        } else if result!.isCancelled {
             // Handle cancellations
         } else {
             
-            let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+            let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
             
             Auth.auth().signIn(with: credential) { (user, error) in
                 // ...
             }
             
-            if result.grantedPermissions.contains("email") {
+            if result!.grantedPermissions.contains("email") {
                 logged = true
                 self.goToNextView()
             }
         }
     }
     
-    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
         logged = false
         print("User Logged Out")
     }
     
     func completeUserData(_ completion:@escaping (Bool) -> ())
     {
-        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, email, birthday"])
+        let graphRequest : GraphRequest = GraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, email, birthday"])
         graphRequest.start(completionHandler: { (connection, result, error) -> Void in
             
             if ((error) != nil)

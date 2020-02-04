@@ -195,16 +195,16 @@ class FirebaseClient {
         let userId = self.defaults.string(forKey: "userId")!
         
         let key = db.child("prices").childByAutoId().key
-        price.id = key
+        price.id = key!
         price.capturedByUserId = userId
-        db.child("prices").child(key).setValue(price.getFirebaseObject())
+        db.child("prices").child(key!).setValue(price.getFirebaseObject())
         
-        db.child("userShops").child(userId).child(price.sku).child(key).setValue(key)
+        db.child("userShops").child(userId).child(price.sku).child(key!).setValue(key)
         
         getUserIdsSharingShoppingList(shoppingList: shoppingListId) { (result: [String]?) in
             if let userNames = result {
                 for userName in userNames {
-                    self.db.child("userShops").child(userName).child(price.sku).child(key).setValue(key)
+                    self.db.child("userShops").child(userName).child(price.sku).child(key!).setValue(key)
                 }
             }
         }
@@ -591,7 +591,7 @@ class FirebaseClient {
         let userId = self.defaults.string(forKey: "userId")!
         // Completes the shopping list entity
         let key = self.db.child("shoppingLists").childByAutoId().key
-        shoppingList.id = key
+        shoppingList.id = key!
         shoppingList.owner = userId
         let document = shoppingList.getFirebaseObject()
         
@@ -601,7 +601,7 @@ class FirebaseClient {
         
     	self.db.child("users").child(userId).child("lists").child(shoppingList.id).setValue(shoppingList.name)
         
-        return key
+        return key!
     }
     
     func updateNameShoppingList(id: String, name: String) {
@@ -751,7 +751,7 @@ class FirebaseClient {
         let userId = self.defaults.string(forKey: "userId")!
         // Adds the ticket to the user
         let key = self.db.child("users").child(userId).child("tickets").childByAutoId().key
-        let ticketSummary = TicketSummary(id: key, storeName: ticket.storeName, totalPrice: ticket.totalPrice!, ticketDate: ticket.ticketDate)
+        let ticketSummary = TicketSummary(id: key!, storeName: ticket.storeName, totalPrice: ticket.totalPrice!, ticketDate: ticket.ticketDate)
         
         var sharedWith = [String]()
         sharedWith.append(userId)
@@ -762,7 +762,7 @@ class FirebaseClient {
                 for user in list.sharedWith {
                     if user.1["id"] != nil {
                     	if let userId = (user.1["id"])! as? String {
-                        	self.db.child("users").child(userId).child("tickets").child(key).setValue(ticketSummary.getFirebaseObject())
+                            self.db.child("users").child(userId).child("tickets").child(key!).setValue(ticketSummary.getFirebaseObject())
                         	sharedWith.append(userId)
                     	}
                     }
@@ -775,7 +775,7 @@ class FirebaseClient {
         self.db.updateChildValues(childUpdates)
         
         // Completes the ticket entity
-        ticket.id = key
+        ticket.id = key!
         ticket.owner = userId
         ticket.ticketDate = Date()
         ticket.sharedWith = sharedWith
@@ -785,7 +785,7 @@ class FirebaseClient {
         let childUpdatesTickets = ["tickets/\(key)": document]
         self.db.updateChildValues(childUpdatesTickets)
         
-        return key
+        return key!
     }
     
     
@@ -952,9 +952,9 @@ class FirebaseClient {
         let userId = self.defaults.string(forKey: "userId")!
         let key = self.db.child("pointsHistory").child(userId).childByAutoId().key
         
-        let point = HistoryPoint(id: key, reason: reason, date: Date(), points: points, userId: userId)
+        let point = HistoryPoint(id: key!, reason: reason, date: Date(), points: points, userId: userId)
         
-        self.db.child("pointsHistory").child(userId).child(key).setValue(point.getFirebaseObject())
+        self.db.child("pointsHistory").child(userId).child(key!).setValue(point.getFirebaseObject())
         
         self.db.child("users").child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
             

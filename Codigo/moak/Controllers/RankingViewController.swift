@@ -11,7 +11,7 @@ import Firebase
 import FBSDKCoreKit
 import FBSDKShareKit
 
-class RankingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FBSDKAppInviteDialogDelegate {
+class RankingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource { //FBSDKAppInviteDialogDelegate {
 	
     @IBOutlet weak var friendsList: UITableView!
     
@@ -32,43 +32,43 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     @IBAction func inviteFriends(_ sender: Any) {
-        let inviteDialog:FBSDKAppInviteDialog = FBSDKAppInviteDialog()
-        if(inviteDialog.canShow()){
-            let appLinkUrl:NSURL = NSURL(string: "http://yourwebpage.com")!
-            let previewImageUrl:NSURL = NSURL(string: "http://yourwebpage.com/preview-image.png")!
-            
-            let inviteContent:FBSDKAppInviteContent = FBSDKAppInviteContent()
-            inviteContent.appLinkURL = appLinkUrl as URL!
-            inviteContent.appInvitePreviewImageURL = previewImageUrl as URL!
-            
-            inviteDialog.content = inviteContent
-            inviteDialog.delegate = self
-            inviteDialog.show()
-        }
+//        let inviteDialog:FBSDKAppInviteDialog = FBSDKAppInviteDialog()
+//        if(inviteDialog.canShow()){
+//            let appLinkUrl:NSURL = NSURL(string: "http://yourwebpage.com")!
+//            let previewImageUrl:NSURL = NSURL(string: "http://yourwebpage.com/preview-image.png")!
+//
+//            let inviteContent:FBSDKAppInviteContent = FBSDKAppInviteContent()
+//            inviteContent.appLinkURL = appLinkUrl as URL!
+//            inviteContent.appInvitePreviewImageURL = previewImageUrl as URL!
+//
+//            inviteDialog.content = inviteContent
+//            inviteDialog.delegate = self
+//            inviteDialog.show()
+//        }
     }
     
-    // MARK: - Invite Delegate
-    func appInviteDialog (_ appInviteDialog: FBSDKAppInviteDialog!, didCompleteWithResults results: [AnyHashable : Any]!) {
-        
-        if results != nil {
-        
-        	let resultObject = NSDictionary(dictionary: results)
-        
-        	if let didCancel = resultObject.value(forKey: "completionGesture") {
-            	if (didCancel as AnyObject).caseInsensitiveCompare("Cancel") == ComparisonResult.orderedSame
-            	{
-                	print("User Canceled invitation dialog")
-            	}
-        	}
-        } else {
-            print("No invite results")
-        }
-    }
-    
-    func appInviteDialog(_ appInviteDialog: FBSDKAppInviteDialog!, didFailWithError error: Error!) {
-        print("Error tool place in appInviteDialog \(error)")
-    }
-    
+//    // MARK: - Invite Delegate
+//    func appInviteDialog (_ appInviteDialog: FBSDKAppInviteDialog!, didCompleteWithResults results: [AnyHashable : Any]!) {
+//        
+//        if results != nil {
+//        
+//        	let resultObject = NSDictionary(dictionary: results)
+//        
+//        	if let didCancel = resultObject.value(forKey: "completionGesture") {
+//            	if (didCancel as AnyObject).caseInsensitiveCompare("Cancel") == ComparisonResult.orderedSame
+//            	{
+//                	print("User Canceled invitation dialog")
+//            	}
+//        	}
+//        } else {
+//            print("No invite results")
+//        }
+//    }
+//    
+//    func appInviteDialog(_ appInviteDialog: FBSDKAppInviteDialog!, didFailWithError error: Error!) {
+//        print("Error tool place in appInviteDialog \(error)")
+//    }
+//    
     
     // MARK: - TableView
     

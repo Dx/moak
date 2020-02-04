@@ -156,8 +156,14 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
                     // Uh-oh, an error occurred!
                 } else {
                     // Metadata contains file metadata such as size, content-type, and download URL.
-                    let downloadURL = metadata!.downloadURL
-                    print (downloadURL)
+                    do {
+                        let downloadURL = try metadata!.bucket.asURL().absoluteURL
+                        print (downloadURL)
+                    } catch {
+                        print ("Error \(error.localizedDescription)")
+                    }
+                    
+                    
                 }
             }
         }

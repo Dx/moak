@@ -1,11 +1,17 @@
-# Lottie for iOS, MacOS (and [Android](https://github.com/airbnb/lottie-android) and [React Native](https://github.com/airbnb/lottie-react-native))
+# Lottie for iOS, macOS (and [Android](https://github.com/airbnb/lottie-android) and [React Native](https://github.com/airbnb/lottie-react-native))
+[![Version](https://img.shields.io/cocoapods/v/lottie-ios.svg?style=flat)](https://cocoapods.org/pods/lottie-ios)[![License](https://img.shields.io/cocoapods/l/lottie-ios.svg?style=flat)](https://cocoapods.org/pods/lottie-ios)[![Platform](https://img.shields.io/cocoapods/p/lottie-ios.svg?style=flat)](https://cocoapods.org/pods/lottie-ios)
 
-Lottie is a mobile library for Android and iOS that parses [Adobe After Effects](http://www.adobe.com/products/aftereffects.html) animations exported as json with [bodymovin](https://github.com/bodymovin/bodymovin) and renders the vector animations natively on mobile and through React Native!
+# View documentation, FAQ, help, examples, and more at [airbnb.io/lottie](http://airbnb.io/lottie/)
+
+Lottie is a mobile library for Android and iOS that natively renders vector based animations and art in realtime with minimal code.
+
+Lottie loads and renders animations and vectors exported in the bodymovin JSON format. Bodymovin JSON can be created and exported from After Effects with [bodymovin](https://github.com/bodymovin/bodymovin), Sketch with [Lottie Sketch Export](https://github.com/buba447/Lottie-Sketch-Export), and from [Haiku](https://www.haiku.ai). 
 
 For the first time, designers can create **and ship** beautiful animations without an engineer painstakingly recreating it by hand.
 Since the animation is backed by JSON they are extremely small in size but can be large in complexity!
-Animations can be played, resized, looped, sped up, slowed down, and even interactively scrubbed.
-
+Animations can be played, resized, looped, sped up, slowed down, reversed, and even interactively scrubbed.
+Lottie can play or loop just a portion of the animation as well, the possibilities are endless!
+Animations can even be ***changed at runtime*** in various ways! Change the color, position or any keyframable value!
 Lottie also supports native UIViewController Transitions out of the box!
 
 Here is just a small sampling of the power of Lottie
@@ -19,266 +25,85 @@ Here is just a small sampling of the power of Lottie
 
 ![Abcs](_Gifs/Examples4.gif)
 
-## Using Lottie
-Lottie supports iOS 8 and above.
-Lottie animations can be loaded from bundled JSON or from a URL
+## Installing Lottie
+Lottie supports [CocoaPods](https://cocoapods.org/) and [Carthage](https://github.com/Carthage/Carthage) (Both dynamic and static). Lottie is written in ***Swift 4.2***.
+### Github Repo
 
-To bundle JSON just add it and any images that the animation requires to your target in xcode.
-
-The simplest way to use it is with LOTAnimationView:
-```objective-c
-LOTAnimationView *animation = [LOTAnimationView animationNamed:@"Lottie"];
-[self.view addSubview:animation];
-[animation playWithCompletion:^(BOOL animationFinished) {
-  // Do Something
-}];
-```
-
-If you are working with multiple bundles you can use.
-
-```objective-c
-LOTAnimationView *animation = [LOTAnimationView animationNamed:@"Lottie" inBundle:[NSBundle YOUR_BUNDLE]];
-[self.view addSubview:animation];
-[animation playWithCompletion:^(BOOL animationFinished) {
-  // Do Something
-}];
-```
-
-Or you can load it programmatically from a NSURL
-```objective-c
-LOTAnimationView *animation = [[LOTAnimationView alloc] initWithContentsOfURL:[NSURL URLWithString:URL]];
-[self.view addSubview:animation];
-```
-
-Lottie supports the iOS `UIViewContentModes` aspectFit, aspectFill and scaleFill
-
-You can also set the animation progress interactively.
-```objective-c
-CGPoint translation = [gesture getTranslationInView:self.view];
-CGFloat progress = translation.y / self.view.bounds.size.height;
-animationView.animationProgress = progress;
-```
-
-Want to mask arbitrary views to animation layers in a Lottie View?
-Easy-peasy as long as you know the name of the layer from After Effects
-
-```objective-c
-UIView *snapshot = [self.view snapshotViewAfterScreenUpdates:YES];
-[lottieAnimation addSubview:snapshot toLayerNamed:@"AfterEffectsLayerName"];
-```
-
-Lottie comes with a `UIViewController` animation-controller for making custom viewController transitions!
-
-```objective-c
-#pragma mark -- View Controller Transitioning
-
-- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
-                                                                  presentingController:(UIViewController *)presenting
-                                                                      sourceController:(UIViewController *)source {
-  LOTAnimationTransitionController *animationController = [[LOTAnimationTransitionController alloc] initWithAnimationNamed:@"vcTransition1"
-                                                                                                          fromLayerNamed:@"outLayer"
-                                                                                                            toLayerNamed:@"inLayer"];
-  return animationController;
-}
-
-- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
-  LOTAnimationTransitionController *animationController = [[LOTAnimationTransitionController alloc] initWithAnimationNamed:@"vcTransition2"
-                                                                                                          fromLayerNamed:@"outLayer"
-                                                                                                            toLayerNamed:@"inLayer"];
-  return animationController;
-}
-
-```
-
-If your animation will be frequently reused, `LOTAnimationView` has an built in LRU Caching Strategy.
-
-## Swift Support
-
-Lottie works just fine in Swift too!
-Simply `import Lottie` at the top of your swift class, and use Lottie as follows
-
-```swift
-let animationView = LOTAnimationView(name: "hamburger")
-self.view.addSubview(animationView)
-
-animationView.play(completion: { finished in
-    // Do Something
-})
-```
-## Note:
-Animation file name should be first added to your project. as for the above code sample, It won't work until you add an animation file called `hamburger.json`.. 
-`let animationView = LOTAnimationView(name: "here_goes_your_json_file_name_without_.json")` 
-
-## Supported After Effects Features
-
-### Keyframe Interpolation
-
----
-
-* Linear Interpolation
-* Bezier Interpolation
-* Hold Interpolation
-* Rove Across Time
-* Spatial Bezier
-
-### Solids
-
----
-
-* Transform Anchor Point
-* Transform Position
-* Transform Scale
-* Transform Rotation
-* Transform Opacity
-
-### Masks
-
----
-
-* Path
-* Opacity
-* Multiple Masks (additive)
-
-### Track Mattes
-
----
-
-* Alpha Matte
-
-### Parenting
-
----
-
-* Multiple Parenting
-* Nulls
-
-### Shape Layers
-
----
-
-* Anchor Point
-* Position
-* Scale
-* Rotation
-* Opacity
-* Path
-* Group Transforms (Anchor point, position, scale etc)
-* Rectangle (All properties)
-* Elipse (All properties)
-* Multiple paths in one group
-
-#### Stroke (shape layer)
-
----
-
-* Stroke Color
-* Stroke Opacity
-* Stroke Width
-* Line Cap
-* Dashes
-
-#### Fill (shape layer)
-
----
-
-* Fill Color
-* Fill Opacity
-
-#### Trim Paths (shape layer)
-
----
-
-* Trim Paths Start
-* Trim Paths End
-* Trim Paths Offset
-
-#### Layer Features
-
----
-
-* Precomps
-* Image Layers
-* Shape Layers
-* Null Layers
-* Solid Layers
-* Parenting Layers
-* Alpha Matte Layers
-
-## Currently Unsupported After Effects Features
-
-* Even-Odd winding paths
-* Merge Shapes
-* Trim Shapes Individually feature of Trim Paths
-* Expressions
-* 3d Layer support
-* Gradients
-* Polystar shapes (Can convert to vector path as a workaround)
-* Alpha inverted mask
-
-
-## Install Lottie
+You can pull the [Lottie Github Repo](https://github.com/airbnb/lottie-ios/) and include the Lottie.xcodeproj to build a dynamic or static library.
 
 ### CocoaPods
-Add the pod to your podfile
-```
+Add the pod to your Podfile:
+```ruby
 pod 'lottie-ios'
 ```
-run
-```
+
+And then run:
+```ruby
 pod install
 ```
-
+After installing the cocoapod into your project import Lottie with 
+```swift
+import Lottie
+```
 ### Carthage
-Install Carthage (https://github.com/Carthage/Carthage)
-Add Lottie to your Cartfile
+Add Lottie to your Cartfile:
 ```
 github "airbnb/lottie-ios" "master"
 ```
-run
+
+And then run:
 ```
 carthage update
 ```
-
-## Try it out
-
-Lottie Uses Cocoapods!
-Get the Cocoapod or clone this repo and try out [the Example App](https://github.com/airbnb/lottie-ios/tree/master/Example)
-After installing the cocoapod into your project import Lottie with
-`#import <Lottie/Lottie.h>`
-
-Try with Carthage.
 In your application targets “General” tab under the “Linked Frameworks and Libraries” section, drag and drop lottie-ios.framework from the Carthage/Build/iOS directory that `carthage update` produced.
 
-## Community Contributions
- * [Xamarin bindings](https://github.com/martijn00/LottieXamarin)
- * [NativeScript bindings](https://github.com/bradmartin/nativescript-lottie)
- * [Appcelerator Titanium bindings](https://github.com/m1ga/ti.animation)
- * MacOS Support added by [Alex Pawlowski](https://github.com/pawlowskialex)
+### Swift Package Manager
+``` swift
+// swift-tools-version:5.1
 
-## Alternatives
-1. Build animations by hand. Building animations by hand is a huge time commitment for design and engineering across Android and iOS. It's often hard or even impossible to justify spending so much time to get an animation right.
-2. [Facebook Keyframes](https://github.com/facebookincubator/Keyframes). Keyframes is a wonderful new library from Facebook that they built for reactions. However, Keyframes doesn't support some of Lottie's features such as masks, mattes, trim paths, dash patterns, and more.
-2. Gifs. Gifs are more than double the size of a bodymovin JSON and are rendered at a fixed size that can't be scaled up to match large and high density screens.
-3. Png sequences. Png sequences are even worse than gifs in that their file sizes are often 30-50x the size of the bodymovin json and also can't be scaled up.
+import PackageDescription
 
-## Why is it called Lottie?
-Lottie is named after a German film director and the foremost pioneer of silhouette animation. Her best known films are The Adventures of Prince Achmed (1926) – the oldest surviving feature-length animated film, preceding Walt Disney's feature-length Snow White and the Seven Dwarfs (1937) by over ten years
-[The art of Lotte Reineger](https://www.youtube.com/watch?v=LvU55CUw5Ck&feature=youtu.be)
+let package = Package(
+  name: "YourTestProject",
+  platforms: [
+       .iOS(.v12),
+  ],
+  dependencies: [
+    .package(url: "https://github.com/airbnb/lottie-ios.git", from: "3.1.2")
+  ],
+  targets: [
+    .target(name: "YourTestProject", dependencies: ["Lottie"])
+  ]
+)
+```
+And then import wherever needed: ```import Lottie```
 
-## Contributing
-Contributors are more than welcome. Just upload a PR with a description of your changes.
+#### Adding it to an existent iOS Project via Swift Package Manager
 
-If you would like to add more JSON files feel free to do so!
+1. Using Xcode 11 go to File > Swift Packages > Add Package Dependency
+2. Paste the project URL: https://github.com/airbnb/lottie-ios
+3. Click on next and select the project target
+  **NOTE: For MacOS you must set the `Branch` field to `lottie/macos-spm`
+  ![Example](_Gifs/spm-branch.png)
 
-## Issues or feature requests?
-File github issues for anything that is unexpectedly broken. If an After Effects file is not working, please attach it to your issue. Debugging without the original file is much more difficult.
+If you have doubts, please, check the following links:
 
-## Roadmap (In no particular order)
-- Add support for interactive animated transitions
-- Add support for parenting programmatically added layers, moving/scaling
-- Programmatically alter animations
-- Animation Breakpoints/Seekpoints
-- Gradients
-- LOTAnimatedButton
-- Repeater objects
+[How to use](https://developer.apple.com/videos/play/wwdc2019/408/)
 
+[Creating Swift Packages](https://developer.apple.com/videos/play/wwdc2019/410/)
+
+After successfully retrieved the package and added it to your project, just import `Lottie` and you can get the full benefits of it.
+
+### Objective-C Support
+
+As of 3.0 Lottie has been completely rewritten in Swift! 
+
+For Objective-C support please use Lottie 2.5.3. Alternatively an Objective-C branch exists and is still active.
+
+The official objective c branch can be found here:
+
+[Objective-C Branch](https://github.com/airbnb/lottie-ios/tree/lottie/objectiveC)
+
+Also check out the documentation regarding it here: 
+
+[iOS Migration](http://airbnb.io/lottie/#/ios-migration)

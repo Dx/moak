@@ -98,7 +98,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         
         storageRef = storage.reference(forURL: "gs://moak-1291.appspot.com")
         
-        let avatarsRef = storageRef!.child("avatars/\(self.friends[(indexPath as NSIndexPath).row].id).jpg")
+        let isRef = storageRef!.child("avatars/\(self.friends[(indexPath as NSIndexPath).row].id).jpg")
         
         cell.pictureView.layer.cornerRadius = 30 //cell.pictureView.frame.size.width / 2
         cell.pictureView.clipsToBounds = true
@@ -106,7 +106,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         cell.pictureView.layer.borderColor = UIColor(red: 0.952, green: 0.278, blue: 0.278, alpha: 0.65).cgColor
         
         // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
-        avatarsRef.getData(maxSize: 1 * 1024 * 1024) { (data, error) -> Void in
+        isRef.getData(maxSize: 1 * 1024 * 1024) { (data, error) -> Void in
             if (error != nil) {
                 // Uh-oh, an error occurred!
                 print("error downloading avatar \(String(describing: error))")

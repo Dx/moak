@@ -274,7 +274,7 @@ class BarCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObj
     }
     
     func barcodeFound(code: String, completion: @escaping (_ product: Product) -> Void) {
-        
+        		
         let firebase = FirebaseClient()
         if self.selectedProduct != nil {
         	firebase.deleteProduct(shoppingList: self.selectedProduct!.shoppingList, productId: self.selectedProduct!.productId)

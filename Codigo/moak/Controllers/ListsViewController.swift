@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import MBProgressHUD
+//import MBProgressHUD
 import CoreLocation
 import GooglePlaces
 import Firebase
@@ -215,10 +215,10 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
     }
     
     func setButtonAnimation() {
-        let buttonAnimation = LOTAnimationView.init(name: "plusbutton")
+        let buttonAnimation = AnimationView.init(name: "plusbutton")
         
         buttonAnimation.frame = CGRect(x: self.view.frame.midX - 33.5, y: addButton.frame.midY + 31, width: 67, height: 67)
-        buttonAnimation.loopAnimation = true
+        buttonAnimation.loopMode = .loop
         buttonAnimation.layer.zPosition = 7
         buttonAnimation.isUserInteractionEnabled = false
         self.view.addSubview(buttonAnimation)
@@ -226,15 +226,15 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
     }
     
     func setSideMenuManager() {
-        SideMenuManager.menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? UISideMenuNavigationController
+        SideMenuManager.default.menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? UISideMenuNavigationController
         
-        SideMenuManager.menuFadeStatusBar = true
-        SideMenuManager.menuAnimationTransformScaleFactor = 1
+        SideMenuManager.default.menuFadeStatusBar = true
+        SideMenuManager.default.menuAnimationTransformScaleFactor = 1
         // SideMenuManager.menuBlurEffectStyle = UIBlurEffectStyle.light
-        SideMenuManager.menuAnimationFadeStrength = 0.3
-        SideMenuManager.menuShadowOpacity = 0.3
-        SideMenuManager.menuFadeStatusBar = true
-        SideMenuManager.menuPresentMode = .viewSlideInOut
+        SideMenuManager.default.menuAnimationFadeStrength = 0.3
+        SideMenuManager.default.menuShadowOpacity = 0.3
+        SideMenuManager.default.menuFadeStatusBar = true
+        SideMenuManager.default.menuPresentMode = .viewSlideInOut
     }
     
     func setLocationManager() {
@@ -342,10 +342,10 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
 			label.text = "Ganaste \(point.points) por \(point.reason)"
 			label.textColor = UIColor.black
 			
-			let crownAnimation = LOTAnimationView.init(name: "crown")
+			let crownAnimation = AnimationView.init(name: "crown")
 			
 			crownAnimation.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
-			crownAnimation.loopAnimation = true
+            crownAnimation.loopMode = .loop
 			anotherView.addSubview(crownAnimation)
 			crownAnimation.play()
 			

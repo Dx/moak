@@ -15,7 +15,7 @@ class PointNotification: UIView {
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
-		let crownAnimation = LOTAnimationView.init(name: "crown")
+        let crownAnimation = AnimationView.init(name: "crown")
 		
 		crownAnimation.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
 		addSubview(crownAnimation)

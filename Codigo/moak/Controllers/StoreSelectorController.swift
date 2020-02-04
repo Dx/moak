@@ -71,7 +71,7 @@ class StoreSelectorController: UIViewController, UITableViewDelegate, UITableVie
     
     // MARK: - GMSPlacePickerViewControllerDelegate
     func placePicker(_ viewController: GMSPlacePickerViewController, didPick place: GMSPlace) {
-        let googlePlace = GooglePlaceResult(id: place.placeID, name: place.name, address: place.formattedAddress!, lat: place.coordinate.latitude, lng: place.coordinate.longitude)
+        let googlePlace = GooglePlaceResult(id: place.placeID!, name: place.name!, address: place.formattedAddress!, lat: place.coordinate.latitude, lng: place.coordinate.longitude)
         
         self.currentGooglePlace = googlePlace
         
