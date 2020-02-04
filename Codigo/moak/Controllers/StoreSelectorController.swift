@@ -83,8 +83,8 @@ class StoreSelectorController: UIViewController, UITableViewDelegate, UITableVie
         
         _ = self.navigationController?.popViewController(animated: true)
         
-        print("Place name \(place.name)")
-        print("Place address \(place.formattedAddress ?? "")")
+        print("Place name \(place.name!)")
+        print("Place address \(place.formattedAddress!)")
     }
     
     func placePicker(_ viewController: GMSPlacePickerViewController, didFailWithError error: Error) {

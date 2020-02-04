@@ -11,7 +11,7 @@ import Foundation
 extension String {
     func substring(from: Int?, to: Int?) -> String {
         if let start = from {
-            guard start < self.characters.count else {
+            guard start < self.count else {
                 return ""
             }
         }
@@ -36,7 +36,7 @@ extension String {
         }
         
         let endIndex: String.Index
-        if let end = to, end >= 0, end < self.characters.count {
+        if let end = to, end >= 0, end < self.count {
             endIndex = self.index(self.startIndex, offsetBy: end + 1)
         } else {
             endIndex = self.endIndex
@@ -84,7 +84,7 @@ extension String {
     }
     
     func leftPadding(toLength: Int, withPad character: Character) -> String {
-        let newLength = self.characters.count
+        let newLength = self.count
         if newLength < toLength {
             return String(repeatElement(character, count: toLength - newLength)) + self
         } else {

@@ -566,7 +566,7 @@
 					E19F00081DA1F8BE00BE4755 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = J42N2J85M6;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1130;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -583,7 +583,7 @@
 					E19F00291DA1F8BF00BE4755 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = J42N2J85M6;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1130;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1046,7 +1046,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
@@ -1065,7 +1065,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
@@ -1126,7 +1126,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = palmera.moak;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1145,7 +1145,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = palmera.moak;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

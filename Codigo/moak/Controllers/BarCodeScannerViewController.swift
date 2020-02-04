@@ -97,7 +97,7 @@ class BarCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObj
             settingButtons()
             startCamera()
         } else {
-            if let appSettings = NSURL(string: UIApplicationOpenSettingsURLString) {
+            if let appSettings = NSURL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.openURL(appSettings as URL)
             }
         }
@@ -167,8 +167,8 @@ class BarCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObj
         let buttonFlash = UIButton(frame: CGRect(x: 20, y: self.view.frame.size.height - 100, width: 100, height: 50))
         buttonFlash.backgroundColor = .red
         buttonFlash.layer.cornerRadius = 17
-        buttonFlash.setTitleColor(.white, for: UIControlState())
-        buttonFlash.setTitle("Flash", for: UIControlState())
+        buttonFlash.setTitleColor(.white, for: UIControl.State())
+        buttonFlash.setTitle("Flash", for: UIControl.State())
         buttonFlash.addTarget(self, action: #selector(self.toggleFlash), for: .touchUpInside)
         
         view.addSubview(buttonFlash)
@@ -176,8 +176,8 @@ class BarCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObj
         let buttonCancel = UIButton(frame: CGRect(x: self.view.frame.size.width - 120, y: self.view.frame.size.height - 100, width: 100, height: 50))
         buttonCancel.backgroundColor = .white
         buttonCancel.layer.cornerRadius = 17
-        buttonCancel.setTitleColor(.black, for: UIControlState())
-        buttonCancel.setTitle("Cancelar", for: UIControlState())
+        buttonCancel.setTitleColor(.black, for: UIControl.State())
+        buttonCancel.setTitle("Cancelar", for: UIControl.State())
         buttonCancel.addTarget(self, action: #selector(self.cancel), for: .touchUpInside)
         view.addSubview(buttonCancel)
         
@@ -311,7 +311,7 @@ class BarCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObj
     func showAlertForProduct(_ completion:@escaping (String?) -> ()) {
         let alertController = UIAlertController(title: "No se encontró el código de barras", message: "Captura el nombre del producto", preferredStyle: .alert)
         
-        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+        let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
             UIAlertAction in
             
             self.inputText.autocapitalizationType = .words
@@ -321,7 +321,7 @@ class BarCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObj
             }
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) {
             UIAlertAction in
             NSLog("Cancel Undo Pressed")
         }

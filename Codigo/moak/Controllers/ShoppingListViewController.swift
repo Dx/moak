@@ -192,9 +192,9 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     func addDoneButtonOnKeyboard() {
         let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 50))
         
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
         
-        let done: UIBarButtonItem = UIBarButtonItem(title: "Guardar", style: UIBarButtonItemStyle.done, target: self, action: #selector(ShoppingListViewController.save))
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Guardar", style: UIBarButtonItem.Style.done, target: self, action: #selector(ShoppingListViewController.save))
         
         done.tintColor = .red
         
@@ -205,11 +205,11 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
 //        
 //        let done2: UIBarButtonItem = UIBarButtonItem.init(customView: doneButton)
         
-        let delete: UIBarButtonItem = UIBarButtonItem(title: "Borrar", style: UIBarButtonItemStyle.done, target: self, action: #selector(ShoppingListViewController.deleteList))
+        let delete: UIBarButtonItem = UIBarButtonItem(title: "Borrar", style: UIBarButtonItem.Style.done, target: self, action: #selector(ShoppingListViewController.deleteList))
         
         delete.tintColor = .red
         
-        let cancel: UIBarButtonItem = UIBarButtonItem(title: "Cancelar", style: UIBarButtonItemStyle.done, target: self, action: #selector(ShoppingListViewController.cancel))
+        let cancel: UIBarButtonItem = UIBarButtonItem(title: "Cancelar", style: UIBarButtonItem.Style.done, target: self, action: #selector(ShoppingListViewController.cancel))
         
         cancel.tintColor = .red
         

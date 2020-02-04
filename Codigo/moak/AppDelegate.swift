@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var shortcutItem: UIApplicationShortcutItem?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		
 		self.window?.tintColor = UIColor(red: 0.6171, green: 0.2617, blue: 0.2617, alpha: 1.0)
 	GMSServices.provideAPIKey("AIzaSyDreT7fCLOxKN8rEkgK3yTDuho4TAkS_98")
@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var performShortcutDelegate = true
         
-        if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
+        if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
             
             print("Application launched via shortcut")
             self.shortcutItem = shortcutItem

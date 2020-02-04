@@ -56,7 +56,7 @@ class TicketSummary {
         }
         
         let firebaseParameters = [
-            "id": self.id,
+            "id": self.id!,
             "storeName": self.storeName,
             "totalPrice":self.totalPrice,
             "ticketDate":formattedDate] as [String : Any]

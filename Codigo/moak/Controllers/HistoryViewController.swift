@@ -128,7 +128,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         if self.resultSearchController.isActive {
             let filterProducts = self.filteredProducts
             
-            if let product = filterProducts[(indexPath as NSIndexPath).row] as Product! {
+            if let product = filterProducts[(indexPath as NSIndexPath).row] as Product? {
                 
                 cell.toDoItem = product
             }
@@ -136,7 +136,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         	let filterProducts = self.products
         
-        	if let product = filterProducts[(indexPath as NSIndexPath).row] as Product! {
+        	if let product = filterProducts[(indexPath as NSIndexPath).row] as Product? {
             	
                 cell.toDoItem = product
         	}
@@ -149,7 +149,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         if self.resultSearchController.isActive {
             let filterProducts = self.filteredProducts
             
-            if let product = filterProducts[(indexPath as NSIndexPath).row] as Product! {
+            if let product = filterProducts[(indexPath as NSIndexPath).row] as Product? {
                 if product.checked {
                     self.selectedProduct = product
                     self.performSegue(withIdentifier: "showDetail", sender: nil)
@@ -158,7 +158,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         } else {
             let filterProducts = self.products
             
-        	if let product = filterProducts[(indexPath as NSIndexPath).row] as Product! {
+        	if let product = filterProducts[(indexPath as NSIndexPath).row] as Product? {
             	if product.checked {
                 	self.selectedProduct = product
                 	self.performSegue(withIdentifier: "showDetail", sender: nil)
@@ -210,16 +210,16 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         performSegue(withIdentifier: "moveToListSegue", sender: self)
     }
     
-    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
             let alertController = UIAlertController(title: "¿Deshacer borrado?", message: "Puedes evitar el borrado", preferredStyle: .alert)
             
-            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
                 UIAlertAction in
                 self.undoManager?.undo()
                 NSLog("OK Undo Pressed")
             }
-            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) {
                 UIAlertAction in
                 NSLog("Cancel Undo Pressed")
             }
@@ -236,7 +236,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     // MARK: - TableViewCellDelegate
     func toDoItemChecked(_ toDoItem: Product) {
-        let index = self.selectedProducts.index( where: { $0.productId == toDoItem.productId } )
+        let index = self.selectedProducts.firstIndex( where: { $0.productId == toDoItem.productId } )
         if  index >= 0 {
             self.selectedProducts.remove(at: index!)
         } else {

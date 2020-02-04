@@ -51,7 +51,7 @@ class TableViewCell: UITableViewCell, UITextFieldDelegate {
         fatalError("NSCoding not supported")
     }
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         
         //Create the textView for price
         priceText = UITextField()
@@ -149,8 +149,8 @@ class TableViewCell: UITableViewCell, UITextFieldDelegate {
     func addDoneButtonOnKeyboard() {
         let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: bounds.size.width, height: 50))
         
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(priceText.endEditing(_:)))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(priceText.endEditing(_:)))
         
         var items: [UIBarButtonItem]? = [UIBarButtonItem]()
         items?.append(flexSpace)
@@ -176,7 +176,7 @@ class TableViewCell: UITableViewCell, UITextFieldDelegate {
             deleteOnDragRelease = frame.origin.x < -frame.size.width / 2.0
             completeOnDragRelease = frame.origin.x > frame.size.width / 2.0
             // fade the contextual clues
-            let cueAlpha = fabs(frame.origin.x) / (frame.size.width / 2.0)
+            let cueAlpha = abs(frame.origin.x) / (frame.size.width / 2.0)
             tickLabel.alpha = cueAlpha
             crossLabel.alpha = cueAlpha
             // indicate when the user has pulled the item far enough to invoke the given action
@@ -212,7 +212,7 @@ class TableViewCell: UITableViewCell, UITextFieldDelegate {
     override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         if let panGestureRecognizer = gestureRecognizer as? UIPanGestureRecognizer {
             let translation = panGestureRecognizer.translation(in: superview!)
-            if fabs(translation.x) > fabs(translation.y) {
+            if abs(translation.x) > fabs(translation.y) {
                 return true
             }
             return false

@@ -54,9 +54,9 @@ class ListCell: UITableViewCell {
         if toDoItem!.checked {
             self.backgroundColor = UIColor(red: 0.811, green: 0.831, blue: 0.831, alpha: 1)
             
-            let textRange = NSMakeRange(0, name.text!.characters.count)
+            let textRange = NSMakeRange(0, name.text!.count)
             let attributedText = NSMutableAttributedString(string: name.text!)
-			attributedText.addAttribute(NSAttributedStringKey.strikethroughStyle , value: 2, range: textRange)
+			attributedText.addAttribute(NSAttributedString.Key.strikethroughStyle , value: 2, range: textRange)
             // Add other attributes if needed
             self.name.attributedText = attributedText
         } else {
@@ -99,7 +99,7 @@ class ListCell: UITableViewCell {
         }
         
         if capturedPrice {
-			let attrs = [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 15)]
+			let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)]
             let boldString = NSMutableAttributedString(string:unitPrice.text!, attributes:attrs)
             self.unitPrice.attributedText = boldString
         }

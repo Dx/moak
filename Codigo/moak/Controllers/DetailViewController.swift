@@ -294,7 +294,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITableViewDe
     func showAlertForProduct(_ completion:@escaping (String?) -> ()) {
         let alertController = UIAlertController(title: "No se encontró el código de barras", message: "Captura el nombre del producto", preferredStyle: .alert)
         
-        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+        let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
             UIAlertAction in
             
             if self.inputText != nil {
@@ -304,7 +304,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITableViewDe
             NSLog("OK Undo Pressed")
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) {
             UIAlertAction in
             NSLog("Cancel Undo Pressed")
         }
@@ -332,12 +332,12 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITableViewDe
     func addDoneButtonOnKeyboard() {
         let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 50))
         
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        let done: UIBarButtonItem = UIBarButtonItem(title: "Al carrito", style: UIBarButtonItemStyle.done, target: self, action: #selector(DetailViewController.addToList))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Al carrito", style: UIBarButtonItem.Style.done, target: self, action: #selector(DetailViewController.addToList))
         
         done.tintColor = .red
         
-        let onlyPrice: UIBarButtonItem = UIBarButtonItem(title: "Solo precio", style: UIBarButtonItemStyle.done, target: self, action: #selector(DetailViewController.captureJustPrice))
+        let onlyPrice: UIBarButtonItem = UIBarButtonItem(title: "Solo precio", style: UIBarButtonItem.Style.done, target: self, action: #selector(DetailViewController.captureJustPrice))
         
         onlyPrice.tintColor = .red
         

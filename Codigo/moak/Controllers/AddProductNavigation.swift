@@ -74,7 +74,7 @@ class AddProductNavigation: UINavigationController, CLLocationManagerDelegate {
     func showAlertForProduct(_ completion:@escaping (String?) -> ()) {
         let alertController = UIAlertController(title: "No se encontró el código de barras", message: "Captura el nombre del producto", preferredStyle: .alert)
         
-        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+        let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
             UIAlertAction in
             
             if self.inputText != nil {
@@ -84,7 +84,7 @@ class AddProductNavigation: UINavigationController, CLLocationManagerDelegate {
             NSLog("OK Undo Pressed")
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) {
             UIAlertAction in
             NSLog("Cancel Undo Pressed")
         }

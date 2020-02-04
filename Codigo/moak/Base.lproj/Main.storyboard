@@ -1034,9 +1034,11 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="gxc-Gq-Kbu" secondAttribute="trailing" constant="20" id="6SJ-io-w17"/>
                                                 <constraint firstItem="b2s-eQ-yMw" firstAttribute="centerY" secondItem="Qsv-LP-VqX" secondAttribute="centerY" id="E6u-L2-ZT9"/>
                                                 <constraint firstItem="b2s-eQ-yMw" firstAttribute="leading" secondItem="Qsv-LP-VqX" secondAttribute="leadingMargin" constant="5" id="QNS-TW-ssv"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="SaL-6g-p8c" secondAttribute="trailing" constant="5" id="eRT-ao-F9D"/>
+                                                <constraint firstItem="gxc-Gq-Kbu" firstAttribute="top" secondItem="Qsv-LP-VqX" secondAttribute="top" constant="8" id="hpF-3J-Gea"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>

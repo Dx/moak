@@ -596,7 +596,7 @@ class FirebaseClient {
         let document = shoppingList.getFirebaseObject()
         
         // Add new shopping list
-        let childUpdates = ["shoppingLists/\(key)": document]
+        let childUpdates = ["shoppingLists/\(String(describing: key))": document]
         self.db.updateChildValues(childUpdates)
         
     	self.db.child("users").child(userId).child("lists").child(shoppingList.id).setValue(shoppingList.name)
@@ -644,7 +644,7 @@ class FirebaseClient {
         return self.db.child("users").child(userId).child("lists")
     }
     
-    func getUserDefaultShoppingList(completion:@escaping (ShoppingList!) -> ()) {
+    func getUserDefaultShoppingList(completion:@escaping (ShoppingList?) -> ()) {
         let userId = self.defaults.string(forKey: "userId")!
         
         self.db.child("users").child(userId).child("lists").queryLimited(toFirst: 1).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -771,7 +771,7 @@ class FirebaseClient {
         })
         
         // adds the ticket to the shopping list owner
-        let childUpdates = ["users/\(userId)/tickets/\(key)": ticketSummary.getFirebaseObject()]
+        let childUpdates = ["users/\(userId)/tickets/\(String(describing: key))": ticketSummary.getFirebaseObject()]
         self.db.updateChildValues(childUpdates)
         
         // Completes the ticket entity
@@ -782,7 +782,7 @@ class FirebaseClient {
         let document = ticket.getFirebaseObject()
         
         // Add new ticket
-        let childUpdatesTickets = ["tickets/\(key)": document]
+        let childUpdatesTickets = ["tickets/\(String(describing: key))": document]
         self.db.updateChildValues(childUpdatesTickets)
         
         return key!

@@ -108,7 +108,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
                     let stringDate = "\(day) \(month) \(year)"
                     
                     if newDayPoints.contains( where: { $0.dateString == stringDate } ) {
-                        newDayPoints[newDayPoints.index( where: { $0.dateString == stringDate } )!].totalPoints += item.points
+                        newDayPoints[newDayPoints.firstIndex( where: { $0.dateString == stringDate } )!].totalPoints += item.points
                     } else {
                         let point = DayPoints()
                         point.dateString = stringDate
@@ -126,10 +126,10 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @IBAction func editClick(_ sender: AnyObject) {
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
-            imagePicker.sourceType = UIImagePickerControllerSourceType.camera;
+            imagePicker.sourceType = UIImagePickerController.SourceType.camera;
             imagePicker.allowsEditing = false
             self.present(imagePicker, animated: true, completion: nil)
         }
@@ -143,7 +143,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         if storageRef != nil {
             
-            let imageData: Data = UIImagePNGRepresentation(newImage)!
+            let imageData: Data = newImage.pngData()!
             let userId = self.defaults.string(forKey: "userId")!
             
             let avatarsRef = storageRef!.child("avatars/\(userId).jpg")

@@ -115,7 +115,7 @@ class MasterHistoryViewController: UIViewController, UITableViewDelegate, UITabl
         performSegue(withIdentifier: "showList", sender: self)
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
         	let ticketId = tickets[indexPath.row].id
             tickets.remove(at: (indexPath as NSIndexPath).row)

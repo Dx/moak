@@ -226,7 +226,7 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
     }
     
     func setSideMenuManager() {
-        SideMenuManager.default.menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? UISideMenuNavigationController
+        SideMenuManager.default.leftMenuNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? SideMenuNavigationController
         
         SideMenuManager.default.menuFadeStatusBar = true
         SideMenuManager.default.menuAnimationTransformScaleFactor = 1
@@ -234,7 +234,7 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
         SideMenuManager.default.menuAnimationFadeStrength = 0.3
         SideMenuManager.default.menuShadowOpacity = 0.3
         SideMenuManager.default.menuFadeStatusBar = true
-        SideMenuManager.default.menuPresentMode = .viewSlideInOut
+        SideMenuManager.default.menuPresentMode = .viewSlideOutMenuIn
     }
     
     func setLocationManager() {
@@ -248,7 +248,7 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
                 locationManager.startUpdatingLocation()
             }
         } else {
-            let alert = UIAlertController(title: "Me das permiso?", message: "Moak necesita acceder a tu posición para poder detectar si estás cerca de una tienda y mostrarte los mejores precios. Me autorizas?", preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: "Me das permiso?", message: "Moak necesita acceder a tu posición para poder detectar si estás cerca de una tienda y mostrarte los mejores precios. Me autorizas?", preferredStyle: UIAlertController.Style.alert)
             
             alert.addAction(UIAlertAction(title: "No", style: .default, handler: { action in
                 switch action.style{
@@ -260,6 +260,8 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
                     
                 case .destructive:
                     print("destructive")
+                @unknown default:
+                    print("error")
                 }
             }))
             
@@ -271,7 +273,7 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
                     
                     self.locationManager.startUpdatingLocation()
                     if CLLocationManager.authorizationStatus() != CLAuthorizationStatus.notDetermined {
-                        if let appSettings = NSURL(string: UIApplicationOpenSettingsURLString) {
+                        if let appSettings = NSURL(string: UIApplication.openSettingsURLString) {
                             UIApplication.shared.openURL(appSettings as URL)
                         }
                     }
@@ -281,6 +283,8 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
                     
                 case .destructive:
                     print("destructive")
+                @unknown default:
+                    print("error")
                 }
             }))
             
@@ -420,17 +424,17 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
         return true
     }
     
-    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
             let alertController = UIAlertController(title: "Orden de lista", message: "¿Desea ordenar la lista en automático?", preferredStyle: .alert)
             
-            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
                 UIAlertAction in
                 
                 self.orderList()
                 
             }
-            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) {
                 UIAlertAction in
                 print("Cancel Order Pressed")
             }
@@ -538,7 +542,7 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ListCell
             cell.selectionStyle = .none
             
-            if let product = products[(indexPath as NSIndexPath).row] as Product! {
+            if let product = products[(indexPath as NSIndexPath).row] as Product? {
                 cell.toDoItem = product
             }
             
@@ -550,7 +554,7 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if let product = products[(indexPath as NSIndexPath).row] as Product! {
+        if let product = products[(indexPath as NSIndexPath).row] as Product? {
             self.gotoDetail(product: product)
         }
     }
@@ -572,7 +576,7 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
         uncheck.backgroundColor = UIColor(red: 0, green: 0.611, blue: 0.655, alpha: 0.65)
 
         let edit = UITableViewRowAction(style: .normal, title: "Editar") { action, index in
-            if let product = self.products[(indexPath as NSIndexPath).row] as Product! {
+            if let product = self.products[(indexPath as NSIndexPath).row] as Product? {
                 
                 self.selectedProduct = product
                 self.gotoDetail(product: product)
@@ -596,7 +600,7 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
             for i in 0..<visibleCells.count {
                 let cell = visibleCells[i]
                 if startAnimating {
-                    UIView.animate(withDuration: 0.3, delay: delay, options: UIViewAnimationOptions(),
+                    UIView.animate(withDuration: 0.3, delay: delay, options: UIView.AnimationOptions(),
                                    animations: {() in
                                     cell.frame = cell.frame.offsetBy(dx: 0.0,
                                                                      dy: -cell.frame.size.height)},
@@ -630,7 +634,7 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
         return [uncheck, delete]
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
         } else if editingStyle == .insert {
         }
@@ -675,7 +679,7 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
         case UIGestureRecognizerState.began:
             if indexPath != nil {
                 Path.initialIndexPath = indexPath
-                let cell = listTableView.cellForRow(at: indexPath!) as UITableViewCell!
+                let cell = listTableView.cellForRow(at: indexPath!) as UITableViewCell?
                 My.cellSnapshot  = snapshopOfCell(cell!)
                 var center = cell?.center
                 My.cellSnapshot!.center = center!
@@ -707,7 +711,7 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
                 
             }
         case UIGestureRecognizerState.ended:
-            let cell = listTableView.cellForRow(at: Path.initialIndexPath!) as UITableViewCell!
+            let cell = listTableView.cellForRow(at: Path.initialIndexPath!) as UITableViewCell?
             cell?.isHidden = false
             cell?.alpha = 0.0
             UIView.animate(withDuration: 0.25, animations: { () -> Void in
@@ -725,7 +729,7 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
             self.saveListOrder()
             
         default:
-            let cell = listTableView.cellForRow(at: Path.initialIndexPath!) as UITableViewCell!
+            let cell = listTableView.cellForRow(at: Path.initialIndexPath!) as UITableViewCell?
             cell?.isHidden = false
             cell?.alpha = 0.0
             UIView.animate(withDuration: 0.25, animations: { () -> Void in
@@ -961,7 +965,7 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
     func showAlertForProduct(_ completion:@escaping (String?) -> ()) {
         let alertController = UIAlertController(title: "No se encontró el código de barras", message: "Captura el nombre del producto", preferredStyle: .alert)
         
-        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+        let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
             UIAlertAction in
             
             if self.inputText != nil {
@@ -971,7 +975,7 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
             NSLog("OK Undo Pressed")
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) {
             UIAlertAction in
             NSLog("Cancel Undo Pressed")
         }

@@ -60,15 +60,15 @@ class AddProductDescriptionController: UIViewController, UITableViewDataSource, 
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: self.view.window)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: self.view.window)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: self.view.window)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name:UIResponder.keyboardWillHideNotification, object: self.view.window)
         
         
         self.checkDictationAuthorization()
         
         self.configureTable()
         
-        self.searchText.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+        self.searchText.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         
         self.startActivity(on: false)
         
@@ -88,7 +88,7 @@ class AddProductDescriptionController: UIViewController, UITableViewDataSource, 
         switch SFSpeechRecognizer.authorizationStatus() {
             
         case SFSpeechRecognizerAuthorizationStatus.notDetermined:
-            let alert = UIAlertController(title: "Me das permiso?", message: "Moak necesita acceder al reconocimiento de voz para que puedas dictarle. Me autorizas?", preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: "Me das permiso?", message: "Moak necesita acceder al reconocimiento de voz para que puedas dictarle. Me autorizas?", preferredStyle: UIAlertController.Style.alert)
             
             alert.addAction(UIAlertAction(title: "No", style: .default, handler: { action in
                 switch action.style{
@@ -100,6 +100,8 @@ class AddProductDescriptionController: UIViewController, UITableViewDataSource, 
                     
                 case .destructive:
                     print("destructive")
+                @unknown default:
+                    print("error")
                 }
             }))
             
@@ -121,6 +123,8 @@ class AddProductDescriptionController: UIViewController, UITableViewDataSource, 
                             
                         case .notDetermined:
                             print("Speech recognition not yet authorized")
+                        @unknown default:
+                            fatalError()
                         }
                     }
                     
@@ -129,6 +133,8 @@ class AddProductDescriptionController: UIViewController, UITableViewDataSource, 
                     
                 case .destructive:
                     print("destructive")
+                @unknown default:
+                    print("error")
                 }
             }))
             
@@ -137,9 +143,9 @@ class AddProductDescriptionController: UIViewController, UITableViewDataSource, 
         case SFSpeechRecognizerAuthorizationStatus.authorized:
             print("lalalal")
         default:
-            let alert = UIAlertController(title: "Me das permiso?", message: "Moak necesita acceder a tu posición para poder detectar si estás cerca de una tienda y mostrarte los mejores precios. Me autorizas?", preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: "Me das permiso?", message: "Moak necesita acceder a tu posición para poder detectar si estás cerca de una tienda y mostrarte los mejores precios. Me autorizas?", preferredStyle: UIAlertController.Style.alert)
             
-            alert.addAction(UIAlertAction(title: "No", style: .default, handler: { action in
+                alert.addAction(UIAlertAction(title: "No", style: .default, handler: { action in
                 switch action.style{
                 case .default:
                     print("default")
@@ -149,6 +155,8 @@ class AddProductDescriptionController: UIViewController, UITableViewDataSource, 
                     
                 case .destructive:
                     print("destructive")
+                @unknown default:
+                    print("error")
                 }
             }))
             
@@ -160,7 +168,7 @@ class AddProductDescriptionController: UIViewController, UITableViewDataSource, 
                     
                     self.locationManager.startUpdatingLocation()
                     if CLLocationManager.authorizationStatus() != CLAuthorizationStatus.notDetermined {
-                        if let appSettings = NSURL(string: UIApplicationOpenSettingsURLString) {
+                        if let appSettings = NSURL(string: UIApplication.openSettingsURLString) {
                             UIApplication.shared.openURL(appSettings as URL)
                         }
                     }
@@ -170,6 +178,8 @@ class AddProductDescriptionController: UIViewController, UITableViewDataSource, 
                     
                 case .destructive:
                     print("destructive")
+                @unknown default:
+                    print("error")
                 }
             }))
             
@@ -228,14 +238,14 @@ class AddProductDescriptionController: UIViewController, UITableViewDataSource, 
         self.searchText.inputAccessoryView = nil
         let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 50))
         
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
         
-        let dictation: UIBarButtonItem = UIBarButtonItem(title: "Dictar", style: UIBarButtonItemStyle.done, target: self, action: #selector(AddProductDescriptionController.startDictation))
+        let dictation: UIBarButtonItem = UIBarButtonItem(title: "Dictar", style: UIBarButtonItem.Style.done, target: self, action: #selector(AddProductDescriptionController.startDictation))
         
         dictation.tintColor = .red
         dictation.isEnabled = self.enableDictation
         
-        let cancel: UIBarButtonItem = UIBarButtonItem(title: "Cancelar", style: UIBarButtonItemStyle.done, target: self, action: #selector(AddProductDescriptionController.cancel))
+        let cancel: UIBarButtonItem = UIBarButtonItem(title: "Cancelar", style: UIBarButtonItem.Style.done, target: self, action: #selector(AddProductDescriptionController.cancel))
         
         cancel.tintColor = .red
         
@@ -253,7 +263,7 @@ class AddProductDescriptionController: UIViewController, UITableViewDataSource, 
         self.searchText.becomeFirstResponder()
     }
     
-    func cancel() {
+    @objc func cancel() {
         self.parent?.dismiss(animated: true, completion: nil)
     }
     
@@ -261,8 +271,8 @@ class AddProductDescriptionController: UIViewController, UITableViewDataSource, 
         self.searchText.inputAccessoryView = nil
         let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 50))
         
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        let dictation: UIBarButtonItem = UIBarButtonItem(title: "Detener", style: UIBarButtonItemStyle.done, target: self, action: #selector(AddProductDescriptionController.stopRecording))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let dictation: UIBarButtonItem = UIBarButtonItem(title: "Detener", style: UIBarButtonItem.Style.done, target: self, action: #selector(AddProductDescriptionController.stopRecording))
         
         dictation.tintColor = .red
         
@@ -285,7 +295,7 @@ class AddProductDescriptionController: UIViewController, UITableViewDataSource, 
         // Dispose of any resources that can be recreated.
     }
     
-    func startDictation() {
+    @objc func startDictation() {
         AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
         
         if !audioEngine.isRunning {
@@ -303,7 +313,7 @@ class AddProductDescriptionController: UIViewController, UITableViewDataSource, 
     
     // MARK: - Dictation
     
-    func stopRecording() {
+    @objc func stopRecording() {
         audioEngine.stop()
         
         if self.searchText.text == "Te escucho..." {
@@ -323,9 +333,9 @@ class AddProductDescriptionController: UIViewController, UITableViewDataSource, 
         
         let audioSession = AVAudioSession.sharedInstance()
         do {
-            try audioSession.setCategory(AVAudioSessionCategoryRecord)
-            try audioSession.setMode(AVAudioSessionModeMeasurement)
-            try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
+            try audioSession.setCategory(AVAudioSession.Category(rawValue: convertFromAVAudioSessionCategory(AVAudioSession.Category.record)))
+            try audioSession.setMode(AVAudioSession.Mode.measurement)
+            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
         } catch {
             print("audioSession properties weren't set because of an error.")
         }
@@ -382,7 +392,7 @@ class AddProductDescriptionController: UIViewController, UITableViewDataSource, 
         addDictationButtonOnKeyboard()
     }
     
-    func keyboardWillHide(_ sender: Notification) {
+    @objc func keyboardWillHide(_ sender: Notification) {
         listBottomMargin.constant = 50
     }
     
@@ -398,7 +408,7 @@ class AddProductDescriptionController: UIViewController, UITableViewDataSource, 
     func searchProducts(_ name: String) {
         self.products = []
         
-        if name.characters.count > 0 {
+        if name.count > 0 {
             
             self.startActivity(on: true)
             let name = name.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
@@ -483,7 +493,7 @@ class AddProductDescriptionController: UIViewController, UITableViewDataSource, 
 
     // MARK: - UITextFieldDelegate
     
-    func textFieldDidChange(_ textField: UITextField) {
+    @objc func textFieldDidChange(_ textField: UITextField) {
         self.searchProducts(self.searchText.text!)
     }
     
@@ -643,4 +653,9 @@ class AddProductDescriptionController: UIViewController, UITableViewDataSource, 
             print("didUpdateLocations:  \(self.lastLocation!.coordinate.latitude), \(self.lastLocation!.coordinate.longitude)")
         }
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
+	return input.rawValue
 }
