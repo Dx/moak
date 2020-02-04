@@ -1,12 +1,11 @@
-# Uncomment this line to define a global platform for your project
-# platform :ios, '6.0'
-
-source 'https://github.com/CocoaPods/Specs.git'
+# Uncomment the next line to define a global platform for your project
 platform :ios, '11.2'
-use_frameworks!
 
 target 'moak' do
-    pod 'Alamofire'
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+      pod 'Alamofire'
     pod 'BubbleTransition'
     pod 'MBProgressHUD'
     pod 'KCOrderedAccessorFix'
@@ -18,7 +17,7 @@ target 'moak' do
     pod 'FirebaseDatabase'
     pod 'FirebaseAuth'
     pod 'FirebaseStorage'
-    pod 'FirebaseUI/Google'
+    #pod 'FirebaseUIGoogle'
     pod 'Crashlytics'
     pod 'SideMenu'
     pod 'lottie-ios'
@@ -26,12 +25,23 @@ target 'moak' do
     pod 'FBSDKCoreKit'
     pod 'FBSDKLoginKit'
     pod 'FBSDKShareKit'
+
 end
 
 target 'moak WatchKit App' do
-    platform :watchos, '3.0'
+  # Comment the next line if you don't want to use dynamic frameworks
+  platform :watchos, '3.0'
+  use_frameworks!
+
+  # Pods for moak WatchKit App
+
 end
 
-target 'moak WatchKit Extension' do
-    platform :watchos, '3.0'
+target 'moak WatchKit Extension' do    
+  # Comment the next line if you don't want to use dynamic frameworks
+  platform :watchos, '3.0'
+  use_frameworks!
+
+  # Pods for moak WatchKit Extension
+
 end

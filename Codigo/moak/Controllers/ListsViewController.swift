@@ -132,7 +132,7 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
             
             storeSelector.lastLocation = self.lastLocation
             let backItem = UIBarButtonItem()
-            backItem.title = "Cancelari"
+            backItem.title = "Cancelar"
             backItem.tintColor = .red
             navigationItem.backBarButtonItem = backItem
         case "showNewProductAdding":
@@ -152,6 +152,19 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
     }
     
     // MARK: - View control methods
+    
+    @IBAction func clickLeftMenu(_ sender: Any) {
+        let menuController = storyboard?.instantiateViewController(withIdentifier: "MenuController")
+        let menu = SideMenuNavigationController(rootViewController: menuController!, settings: getSideMenuSettings())
+        menu.leftSide = true
+        present(menu, animated: true, completion: nil)
+    }
+    @IBAction func clickRightMenu(_ sender: Any) {
+        let menuController = storyboard?.instantiateViewController(withIdentifier: "MasterListViewController")
+        let menu = SideMenuNavigationController(rootViewController: menuController!, settings: getSideMenuSettings())
+        menu.leftSide = false
+        present(menu, animated: true, completion: nil)
+    }
     
     @IBAction func addProductClick(_ sender: Any) {
         performSegue(withIdentifier: "showNewProductAdding", sender: self)
@@ -200,41 +213,54 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
 		pointsNotification.append(message)
 	}
 	
-    // MARK: - Methods
-	
+    // MARK: - SideMenu
+    
+    func setSideMenuManager() {
+        
+        let leftView = storyboard?.instantiateViewController(withIdentifier: "MenuController")
+        
+        let leftMenu = SideMenuNavigationController(rootViewController: leftView!, settings: getSideMenuSettings())
+        
+        SideMenuManager.default.leftMenuNavigationController = leftMenu
+//        SideMenuManager.default.leftMenuNavigationController?.settings = getSideMenuSettings()
+        
+        SideMenuManager.default.rightMenuNavigationController = storyboard?.instantiateViewController(withIdentifier: "RightMenuNavigationController") as? SideMenuNavigationController
+        SideMenuManager.default.rightMenuNavigationController?.settings = getSideMenuSettings()
+        
+        SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
+        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
+    }
+    
+    private func getSideMenuSettings() -> SideMenuSettings {
+        var presentationStyle = SideMenuPresentationStyle()
+        presentationStyle = .menuSlideIn
+        presentationStyle.backgroundColor = .white
+        presentationStyle.menuStartAlpha = 1
+        presentationStyle.menuScaleFactor = 0.8
+        presentationStyle.onTopShadowOpacity = 1
+        presentationStyle.presentingEndAlpha = 1
+        presentationStyle.presentingScaleFactor = 0.8
+
+        var settings = SideMenuSettings()
+        settings.presentationStyle = presentationStyle
+        settings.menuWidth = min(view.frame.width, view.frame.height) * 0.8
+        settings.blurEffectStyle = .regular
+        settings.statusBarEndAlpha = 1
+
+        return settings
+    }
+    
+    // MARK:- Methods
+    
     func setViewControls() {
         configureTableList()
         setStoreButton()
         setSideMenuManager()
-        setButtonAnimation()
     }
     
     func setStoreButton() {
         storeButton.titleLabel!.lineBreakMode = .byWordWrapping
         storeButton.titleLabel!.textAlignment = .center
-    }
-    
-    func setButtonAnimation() {
-        let buttonAnimation = AnimationView.init(name: "plusbutton")
-        
-        buttonAnimation.frame = CGRect(x: self.view.frame.midX - 33.5, y: addButton.frame.midY + 31, width: 67, height: 67)
-        buttonAnimation.loopMode = .loop
-        buttonAnimation.layer.zPosition = 7
-        buttonAnimation.isUserInteractionEnabled = false
-        self.view.addSubview(buttonAnimation)
-        buttonAnimation.play()
-    }
-    
-    func setSideMenuManager() {
-        SideMenuManager.default.leftMenuNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? SideMenuNavigationController
-        
-        SideMenuManager.default.menuFadeStatusBar = true
-        SideMenuManager.default.menuAnimationTransformScaleFactor = 1
-        // SideMenuManager.menuBlurEffectStyle = UIBlurEffectStyle.light
-        SideMenuManager.default.menuAnimationFadeStrength = 0.3
-        SideMenuManager.default.menuShadowOpacity = 0.3
-        SideMenuManager.default.menuFadeStatusBar = true
-        SideMenuManager.default.menuPresentMode = .viewSlideOutMenuIn
     }
     
     func setLocationManager() {

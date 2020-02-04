@@ -19,7 +19,6 @@
 
 #import <GoogleDataTransport/GDTCORAssert.h>
 #import <GoogleDataTransport/GDTCORConsoleLogger.h>
-#import <GoogleDataTransport/GDTCOREvent.h>
 #import <GoogleDataTransport/GDTCOREventTransformer.h>
 #import <GoogleDataTransport/GDTCORLifecycle.h>
 
@@ -61,7 +60,6 @@
     GDTCOREvent *transformedEvent = event;
     for (id<GDTCOREventTransformer> transformer in transformers) {
       if ([transformer respondsToSelector:@selector(transform:)]) {
-        GDTCORLogDebug("Applying a transformer to event %@", event);
         transformedEvent = [transformer transform:transformedEvent];
         if (!transformedEvent) {
           return;

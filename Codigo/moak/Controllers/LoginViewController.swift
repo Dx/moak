@@ -35,7 +35,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
             let loginView : FBLoginButton = FBLoginButton()
             self.view.addSubview(loginView)
             loginView.center = self.view.center
-            loginView.permissions = ["public_profile", "email", "user_birthday", "user_location"]
+            loginView.permissions = ["public_profile", "email"]
             loginView.delegate = self
         }
     }    
@@ -60,11 +60,17 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
             let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
             
             Auth.auth().signIn(with: credential) { (user, error) in
-                // ...
+                if error != nil && user != nil {
+                    self.defaults.set(user?.user.uid, forKey: "userId")
+                    self.logged = true
+                    self.goToNextView()
+                } else {
+                    print("Error en login \(error.debugDescription)")
+                }
             }
             
             if result!.grantedPermissions.contains("email") {
-                logged = true
+                self.logged = true
                 self.goToNextView()
             }
         }
@@ -175,7 +181,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
                     	self.tabShowed = true
                     }
                 } else {
-                    self.performSegue(withIdentifier: "showCreateUserName", sender: self)
+                    self.performSegue(withIdentifier: "showMenuView", sender: self)
                 }
             })
         })

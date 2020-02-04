@@ -40,9 +40,9 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func loadProfileImage() {
-        self.profileImage.layer.cornerRadius = 50
+        self.profileImage.layer.cornerRadius = 55
         self.profileImage.clipsToBounds = true
-        self.profileImage.layer.borderWidth = 4.0
+        self.profileImage.layer.borderWidth = 2.0
         self.profileImage.layer.borderColor = UIColor(red: 0.952, green: 0.278, blue: 0.278, alpha: 0.65).cgColor
         
         storageRef = storage.reference(forURL: "gs://moak-1291.appspot.com")

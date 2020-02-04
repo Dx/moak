@@ -1,10 +1,5 @@
 PODS:
   - Alamofire (4.9.1)
-  - AppAuth (1.3.0):
-    - AppAuth/Core (= 1.3.0)
-    - AppAuth/ExternalUserAgent (= 1.3.0)
-  - AppAuth/Core (1.3.0)
-  - AppAuth/ExternalUserAgent (1.3.0)
   - BubbleTransition (4.0.0)
   - Crashlytics (3.14.0):
     - Fabric (~> 1.10.2)
@@ -26,9 +21,6 @@ PODS:
     - FBSDKCoreKit (~> 5.0)
   - Firebase (6.16.0):
     - Firebase/Core (= 6.16.0)
-  - Firebase/Auth (6.16.0):
-    - Firebase/CoreOnly
-    - FirebaseAuth (~> 6.4.3)
   - Firebase/Core (6.16.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 6.2.2)
@@ -79,12 +71,6 @@ PODS:
     - FirebaseAuthInterop (~> 1.0)
     - FirebaseCore (~> 6.0)
     - GTMSessionFetcher/Core (~> 1.1)
-  - FirebaseUI/Auth (8.4.1):
-    - Firebase/Auth (~> 6.0)
-    - GoogleUtilities/UserDefaults
-  - FirebaseUI/Google (8.4.1):
-    - FirebaseUI/Auth
-    - GoogleSignIn (~> 5.0)
   - GoogleAppMeasurement (6.2.2):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
@@ -105,10 +91,6 @@ PODS:
     - GooglePlaces (= 3.1.0)
   - GooglePlaces (3.1.0):
     - GoogleMaps/Base (= 3.1.0)
-  - GoogleSignIn (5.0.2):
-    - AppAuth (~> 1.2)
-    - GTMAppAuth (~> 1.0)
-    - GTMSessionFetcher/Core (~> 1.1)
   - GoogleUtilities/AppDelegateSwizzler (6.5.1):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -127,14 +109,7 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (6.5.1):
     - GoogleUtilities/Logger
-  - GTMAppAuth (1.0.0):
-    - AppAuth/Core (~> 1.0)
-    - GTMSessionFetcher (~> 1.1)
-  - GTMSessionFetcher (1.3.1):
-    - GTMSessionFetcher/Full (= 1.3.1)
   - GTMSessionFetcher/Core (1.3.1)
-  - GTMSessionFetcher/Full (1.3.1):
-    - GTMSessionFetcher/Core (= 1.3.1)
   - KCOrderedAccessorFix (0.1.1)
   - leveldb-library (1.22)
   - lottie-ios (3.1.6)
@@ -164,7 +139,6 @@ DEPENDENCIES:
   - FirebaseAuth
   - FirebaseDatabase
   - FirebaseStorage
-  - FirebaseUI/Google
   - GoogleMaps
   - GooglePlacePicker
   - GooglePlaces
@@ -175,9 +149,8 @@ DEPENDENCIES:
   - SideMenu
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  trunk:
     - Alamofire
-    - AppAuth
     - BubbleTransition
     - Crashlytics
     - DeployGateSDK
@@ -196,16 +169,13 @@ SPEC REPOS:
     - FirebaseInstallations
     - FirebaseInstanceID
     - FirebaseStorage
-    - FirebaseUI
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleDataTransportCCTSupport
     - GoogleMaps
     - GooglePlacePicker
     - GooglePlaces
-    - GoogleSignIn
     - GoogleUtilities
-    - GTMAppAuth
     - GTMSessionFetcher
     - KCOrderedAccessorFix
     - leveldb-library
@@ -220,7 +190,6 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
-  AppAuth: 73574f3013a1e65b9601a3ddc8b3158cce68c09d
   BubbleTransition: 9d96f31375e0db46684e2060d3a601fa47d9f9c1
   Crashlytics: 540b7e5f5da5a042647227a5e3ac51d85eed06df
   DeployGateSDK: df3d5838db7e35c05a711c35a3bdeef3c2b016ba
@@ -239,16 +208,13 @@ SPEC CHECKSUMS:
   FirebaseInstallations: 575cd32f2aec0feeb0e44f5d0110a09e5e60b47b
   FirebaseInstanceID: 6668efc1655a4052c083f287a7141f1ead12f9c2
   FirebaseStorage: 6c5263796af3b1be82ed173598aade47535fe125
-  FirebaseUI: 69f7e480265758a9a9ea39915694b0949bcab23f
   GoogleAppMeasurement: d0560d915abf15e692e8538ba1d58442217b6aff
   GoogleDataTransport: 0048df6388dab1c254799f2a30365b1dffe20422
   GoogleDataTransportCCTSupport: f880d70972efa2ed1be4e9173a0f4c5f3dc2d176
   GoogleMaps: 5c13302e6fe6bb6e686b267196586b91cd594225
   GooglePlacePicker: fa975116ac202ac29822c0a79758ea1c4db5a95f
   GooglePlaces: e874db179f2675c4f3eeda0b686b540273a578b0
-  GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
   GoogleUtilities: 06eb53bb579efe7099152735900dd04bf09e7275
-  GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
   GTMSessionFetcher: cea130bbfe5a7edc8d06d3f0d17288c32ffe9925
   KCOrderedAccessorFix: 53c6f2bb13c9a163590f414536eccd2f103e3189
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
@@ -261,6 +227,6 @@ SPEC CHECKSUMS:
   SideMenu: 928a015669c3afc201e1fe3a87f1b0bc8993a664
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 107a3e6593247fc35307f322f2b86507cbb71b44
+PODFILE CHECKSUM: e552a6d417354859d5675f872f53a7eb906756fa
 
 COCOAPODS: 1.8.4
