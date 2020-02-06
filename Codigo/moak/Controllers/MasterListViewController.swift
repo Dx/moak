@@ -65,20 +65,6 @@ class MasterListViewController: UIViewController, UITableViewDelegate, UITableVi
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         switch segue.identifier! {
-        case "listSegue":
-            if let indexPath = self.selectedRow {
-                let index = lists.index(lists.startIndex, offsetBy: (indexPath as NSIndexPath).row)
-                let key = lists.keys[index]
-                let controller = segue.destination as! ListsViewController
-                let backItem = UIBarButtonItem()
-                backItem.title = "Atrás"
-                navigationItem.backBarButtonItem = backItem
-                controller.listDescriptionSelected = lists.values[index]
-                controller.listSelected = key
-                
-                self.defaults.set(controller.listSelected, forKey: "listId")
-                self.defaults.set(controller.listDescriptionSelected, forKey: "listDescription")
-            }
         case "showShoppingList":
             if shoppingListIdSelected != "" {
                 
@@ -135,8 +121,15 @@ class MasterListViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.selectedRow = indexPath
         tableView.deselectRow(at: indexPath, animated: true)
+        let index = lists.index(lists.startIndex, offsetBy: (indexPath as NSIndexPath).row)
+        self.defaults.set(lists.keys[index], forKey: "listId")
+        self.defaults.set(lists.values[index], forKey: "listDescription")
+        let nc = NotificationCenter.default
         
-        performSegue(withIdentifier: "listSegue", sender: self)
+        nc.post(name:Notification.Name(rawValue:"RefreshList"),
+                object: nil,
+                userInfo: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

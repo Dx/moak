@@ -51,6 +51,7 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
     var pointsNotification: [HistoryPoint] = []
 	
 	let localNotifications = Notification.Name(rawValue:"LocalNotifications")
+    let refreshListNotification = Notification.Name(rawValue:"RefreshList")
     
     // MARK: - View methods
     
@@ -63,11 +64,21 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
 		
 		let nc = NotificationCenter.default
 		nc.addObserver(forName:localNotifications, object:nil, queue:nil, using:catchNotification)
+        nc.addObserver(forName:refreshListNotification, object:nil, queue:nil, using:catchRefreshList)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        refreshList()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        resignFirstResponder()
+    }
+    
+    private func refreshList() {
         if self.defaults.string(forKey: "listId") == nil {
             self.getDefaultList() { (nothing: String) in
                 self.loadTitle()
@@ -77,15 +88,10 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
             loadTitle()
             loadShoppingList()
         }
-		
-		showPointsNotifications()
+        
+        showPointsNotifications()
         
         becomeFirstResponder()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        resignFirstResponder()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -212,6 +218,12 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
 		
 		pointsNotification.append(message)
 	}
+    
+    private func catchRefreshList(notification: Notification) -> Void {
+        print("Catch refresh list")
+        
+        refreshList()
+    }
 	
     // MARK: - SideMenu
     
@@ -407,11 +419,11 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
     }
     
     // MARK: - StoreSelector Delegate
-    func storeSelected(store: GooglePlaceResult?) {
+    func storeSelected(store: MoakPlace?) {
         
         if store != nil {
             self.currentList!.place = store!
-            self.storeButton.setTitle(self.currentList!.place?.name, for: .normal)
+            self.storeButton.setTitle(self.currentList!.place?.storeName, for: .normal)
             self.setCurrentStore()
             self.reloadProducts()
         } else {
@@ -876,7 +888,7 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
                 let product = products[index]
                 if product.checked && product.productSKU != "" {
                     let firebase = FirebaseClient()
-                    firebase.getLastPriceInStore(storeId:self.currentList!.place!.id, skuNumber: product.productSKU) { (price: ProductComparer?) in
+                    firebase.getLastPriceInStore(storeId:self.currentList!.place!.id!, skuNumber: product.productSKU) { (price: ProductComparer?) in
                         if let price = price {
                             updated = true
                             self.products[index].unitaryEstimatedPrice = price.unitaryPrice
@@ -914,10 +926,10 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
         ticket.ticketDate = Date()
         ticket.totalPrice = totalPrice
         if let store = self.currentList!.place {
-            ticket.storeId = store.id
-            ticket.storeLatitude = store.latitude
-            ticket.storeLongitude = store.longitude
-            ticket.storeName = store.name
+            ticket.storeId = store.id!
+            ticket.storeLatitude = store.position!.latitude
+            ticket.storeLongitude = store.position!.longitude
+            ticket.storeName = store.storeName!
         } else {
             ticket.storeId = ""
             ticket.storeLatitude = 0
@@ -977,7 +989,7 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
         if self.currentList!.place != nil {
             for product in products {
                 if product.productSKU != "" {
-                    firebase.getLastPriceInStore(storeId: self.currentList!.place!.id, skuNumber: product.productSKU) { (price: ProductComparer?) in
+                    firebase.getLastPriceInStore(storeId: self.currentList!.place!.id!, skuNumber: product.productSKU) { (price: ProductComparer?) in
                         if let price = price {
                             let total = price.unitaryPrice * product.quantity
                             firebase.updateProductPrice(shoppingList: product.shoppingList, purchaseId: product.productId, modeBuying: 0, unitaryPrice: price.unitaryPrice, totalPrice: total)
@@ -1028,14 +1040,14 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
     
     func selectClosestStore() {
         if self.currentList != nil {
-            let gpClient = GooglePlacesClient()
-            gpClient.getCloserStore(currentLocation: self.lastLocation!) { (result: GooglePlaceResult?, error: String?) in
+            let gpClient = LocationModel()
+            gpClient.getCurrentLocation(completion: { (result: MoakPlace?) in
                 
                 if result != nil {
                     print("distancia a tienda \(result!.distance)")
                     if result!.distance < 30 {
                         self.currentList!.place = result
-                        self.storeButton.setTitle(self.currentList!.place?.name, for: .normal)
+                        self.storeButton.setTitle(self.currentList!.place?.storeName, for: .normal)
                         self.storeButton.setTitleColor(UIColor.red, for: .normal)
                     }
                 } else {
@@ -1044,7 +1056,7 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
                 }
                 
                 self.setCurrentStore()
-            }
+            })
         }
     }
 }

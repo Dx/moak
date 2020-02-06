@@ -14,6 +14,8 @@
 		E12FB8601E0F16D500B7E804 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12FB85F1E0F16D500B7E804 /* StringExtension.swift */; };
 		E13BD3031F2D87AA0043D0A3 /* PointNotification.xib in Resources */ = {isa = PBXBuildFile; fileRef = E13BD3021F2D87AA0043D0A3 /* PointNotification.xib */; };
 		E13BD3071F2D8A3E0043D0A3 /* PointNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BD3061F2D8A3E0043D0A3 /* PointNotification.swift */; };
+		E141B1B023EB225F00E3CFC2 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E141B1AF23EB225F00E3CFC2 /* LocationModel.swift */; };
+		E141B1B323EB2B9C00E3CFC2 /* MoakPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = E141B1B223EB2B9C00E3CFC2 /* MoakPlace.swift */; };
 		E14DCF321EE437800038B2B4 /* GeneralExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14DCF311EE437800038B2B4 /* GeneralExtensions.swift */; };
 		E14DCF341EE593C50038B2B4 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14DCF331EE593C50038B2B4 /* TutorialViewController.swift */; };
 		E15586F51E4447990073C71E /* MasterListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15586F41E4447990073C71E /* MasterListViewCell.swift */; };
@@ -155,6 +157,8 @@
 		E12FB85F1E0F16D500B7E804 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = Models/StringExtension.swift; sourceTree = "<group>"; };
 		E13BD3021F2D87AA0043D0A3 /* PointNotification.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PointNotification.xib; path = Views/PointNotification.xib; sourceTree = "<group>"; };
 		E13BD3061F2D8A3E0043D0A3 /* PointNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PointNotification.swift; path = Views/PointNotification.swift; sourceTree = "<group>"; };
+		E141B1AF23EB225F00E3CFC2 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocationModel.swift; path = Models/LocationModel.swift; sourceTree = "<group>"; };
+		E141B1B223EB2B9C00E3CFC2 /* MoakPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoakPlace.swift; sourceTree = "<group>"; };
 		E14DCF311EE437800038B2B4 /* GeneralExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeneralExtensions.swift; path = Controllers/GeneralExtensions.swift; sourceTree = "<group>"; };
 		E14DCF331EE593C50038B2B4 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialViewController.swift; path = Controllers/TutorialViewController.swift; sourceTree = "<group>"; };
 		E15586F41E4447990073C71E /* MasterListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MasterListViewCell.swift; path = Views/MasterListViewCell.swift; sourceTree = "<group>"; };
@@ -292,6 +296,14 @@
 				E10FC0FD1E2B3A3D008C4C26 /* Bridging_Header.h */,
 			);
 			name = aws;
+			sourceTree = "<group>";
+		};
+		E141B1B123EB2B8A00E3CFC2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E141B1B223EB2B9C00E3CFC2 /* MoakPlace.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		E19F00001DA1F8BE00BE4755 = {
@@ -434,6 +446,7 @@
 		E19F004B1DA1F8ED00BE4755 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E141B1B123EB2B8A00E3CFC2 /* Extensions */,
 				E10FC0FB1E2B3A2B008C4C26 /* aws */,
 				E1D997981DA202A000FE129F /* FirebaseClient.swift */,
 				E1D997911DA202A000FE129F /* SearchClient.swift */,
@@ -455,6 +468,7 @@
 				E12FB85F1E0F16D500B7E804 /* StringExtension.swift */,
 				E15F7BE31EC57F2400E7668C /* GooglePlacesClient.swift */,
 				E16BECF71EDE61390010BB93 /* UserProductAverage.swift */,
+				E141B1AF23EB225F00E3CFC2 /* LocationModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -791,6 +805,7 @@
 				E1D997851DA2029600FE129F /* LoginViewController.swift in Sources */,
 				E1D9977B1DA2029600FE129F /* UserNameViewController.swift in Sources */,
 				E1D997621DA2028900FE129F /* StrikeThroughText.swift in Sources */,
+				E141B1B323EB2B9C00E3CFC2 /* MoakPlace.swift in Sources */,
 				E15586F51E4447990073C71E /* MasterListViewCell.swift in Sources */,
 				E1D9979F1DA202A000FE129F /* SearchProduct.swift in Sources */,
 				E1B6AEA01DEBBCB400E2FC21 /* PriceController.swift in Sources */,
@@ -813,6 +828,7 @@
 				E1D997A21DA202A000FE129F /* ProductComparer.swift in Sources */,
 				E1D997601DA2028900FE129F /* TableViewCellDetailHistory.swift in Sources */,
 				E14DCF341EE593C50038B2B4 /* TutorialViewController.swift in Sources */,
+				E141B1B023EB225F00E3CFC2 /* LocationModel.swift in Sources */,
 				E17851CC1EB75B0400E37B51 /* AddToListQuestionViewController.swift in Sources */,
 				E1D997A61DA202A000FE129F /* GameLevel.swift in Sources */,
 				E1D997A51DA202A000FE129F /* GooglePlaceResult.swift in Sources */,

@@ -9,6 +9,7 @@ import Foundation
 import Firebase
 import FirebaseDatabase
 import CoreLocation
+import GooglePlaces
 
 class FirebaseClient {
     
@@ -596,7 +597,7 @@ class FirebaseClient {
         let document = shoppingList.getFirebaseObject()
         
         // Add new shopping list
-        let childUpdates = ["shoppingLists/\(String(describing: key))": document]
+        let childUpdates = ["shoppingLists/\(key!)": document]
         self.db.updateChildValues(childUpdates)
         
     	self.db.child("users").child(userId).child("lists").child(shoppingList.id).setValue(shoppingList.name)
@@ -834,8 +835,8 @@ class FirebaseClient {
     
     // MARK: - Stores
     
-    func getUserStores(location: CLLocation?, completion:@escaping (_ stores:[GooglePlaceResult]) -> Void) {
-        var result: [GooglePlaceResult] = []
+    func getUserStores(location: CLLocation?, completion:@escaping (_ stores:[MoakPlace]) -> Void) {
+        var result: [MoakPlace] = []
         let userId = self.defaults.string(forKey: "userId")!
         
         self.db.child("users").child(userId).child("favStores").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -847,10 +848,10 @@ class FirebaseClient {
                     self.db.child("stores").child(store.value as! String).observeSingleEvent(of: .value, with: { (snapshot) in
                         
             			if let storeParameters = snapshot.value! as? [String: AnyObject] {
-                            let storeComplete = GooglePlaceResult(parameters: storeParameters)
+                            let storeComplete = MoakPlace(parameters: storeParameters)
                             
                             if let location = location {
-                            	storeComplete.distance = Int(storeComplete.getStoreLocation().distance(from: location))
+                                storeComplete.distance = Int((storeComplete.getStoreLocation() as AnyObject).distance(from: location))
                             } else {
                                 storeComplete.distance = -1
                             }
@@ -869,14 +870,14 @@ class FirebaseClient {
         })
     }
     
-    func setStoreInUserFavs(store: GooglePlaceResult) {
-        self.db.child("stores").child(store.id).setValue(store.getFirebaseObject())
+    func setStoreInUserFavs(store: MoakPlace) {
+        self.db.child("stores").child(store.id!).setValue(store.getFirebaseObject())
         
         let userId = self.defaults.string(forKey: "userId")!
-        self.db.child("users").child(userId).child("favStores").child(store.id).setValue(store.id)
+        self.db.child("users").child(userId).child("favStores").child(store.id!).setValue(store.id!)
     }
     
-    func setStoreInShoppingList(shoppingListId: String, store: GooglePlaceResult) {
+    func setStoreInShoppingList(shoppingListId: String, store: MoakPlace) {
         self.db.child("shoppingLists").child(shoppingListId).child("place").setValue(store.getFirebaseObject())
     }
     

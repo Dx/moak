@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import GooglePlaces
 
 class MagicListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
 
@@ -17,7 +18,7 @@ class MagicListViewController: UIViewController, UITableViewDelegate, UITableVie
     var listId: String? = ""
     var locationManager = CLLocationManager()
     var lastLocation : CLLocation? = nil
-    var currentGooglePlace: GooglePlaceResult?
+    var currentGooglePlace: MoakPlace?
     
     var products: [UserProductAverage] = []
     
@@ -188,7 +189,7 @@ class MagicListViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         
         if let store = self.currentGooglePlace {
-            firebase.getLastPriceInStore(storeId: store.id, skuNumber: sku ) {(productComparer: ProductComparer?) in
+            firebase.getLastPriceInStore(storeId: store.id!, skuNumber: sku ) {(productComparer: ProductComparer?) in
                 if let price = productComparer {
                     product?.unitaryPrice = price.unitaryPrice
                     

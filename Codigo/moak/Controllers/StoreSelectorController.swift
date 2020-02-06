@@ -12,20 +12,20 @@ import GooglePlaces
 import GooglePlacePicker
 
 protocol StoreSelectorDelegate {
-    func storeSelected(store: GooglePlaceResult?)
+    func storeSelected(store: MoakPlace?)
 }
 
-class StoreSelectorController: UIViewController, UITableViewDelegate, UITableViewDataSource, GMSPlacePickerViewControllerDelegate {
+class StoreSelectorController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 	
-    var googlePlaceResults : [GooglePlaceResult] = []
+    var googlePlaceResults : [MoakPlace] = []
     var delegate: StoreSelectorDelegate?
     var lastLocation : CLLocation? = nil
     var placeShopping : String? = nil
     
-    var currentGooglePlace : GooglePlaceResult?
+    var currentGooglePlace : GMSPlace?
     
     // MARK: - View methods
     override func viewDidLoad() {
@@ -46,59 +46,59 @@ class StoreSelectorController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     @IBAction func addStoreClick(_ sender: Any) {
-        self.selectFromGooglePicker()
+//        self.selectFromGooglePicker()
     }
     
     // MARK: - Google Picker
-    func selectFromGooglePicker() {
-        var center : CLLocationCoordinate2D? = nil
-        if let currentLocation = self.lastLocation {
-            center = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude)
-        }
-        
-        if let center = center {
-            let northEast = CLLocationCoordinate2DMake(center.latitude + 0.001, center.longitude + 0.001)
-            let southWest = CLLocationCoordinate2DMake(center.latitude - 0.001, center.longitude - 0.001)
-            let viewport = GMSCoordinateBounds(coordinate: northEast, coordinate: southWest)
-            let config = GMSPlacePickerConfig(viewport: viewport)
-            let placePicker = GMSPlacePickerViewController(config: config)
-            
-            placePicker.delegate = self
-        } else {
-            print("Google place picker failed")
-        }
-    }
-    
-    // MARK: - GMSPlacePickerViewControllerDelegate
-    func placePicker(_ viewController: GMSPlacePickerViewController, didPick place: GMSPlace) {
-        let googlePlace = GooglePlaceResult(id: place.placeID!, name: place.name!, address: place.formattedAddress!, lat: place.coordinate.latitude, lng: place.coordinate.longitude)
-        
-        self.currentGooglePlace = googlePlace
-        
-        let firebase = FirebaseClient()
-        
-        firebase.setStoreInUserFavs(store: googlePlace)
-        
-        self.delegate!.storeSelected(store: googlePlace)
-        
-        _ = self.navigationController?.popViewController(animated: true)
-        
-        print("Place name \(place.name!)")
-        print("Place address \(place.formattedAddress!)")
-    }
-    
-    func placePicker(_ viewController: GMSPlacePickerViewController, didFailWithError error: Error) {
-        // In your own app you should handle this better, but for the demo we are just going to log
-        // a message.
-        NSLog("An error occurred while picking a place: \(error)")
-    }
-    
-    func placePickerDidCancel(_ viewController: GMSPlacePickerViewController) {
-        NSLog("The place picker was canceled by the user")
-        
-        // Dismiss the place picker.
-        viewController.dismiss(animated: true, completion: nil)
-    }
+//    func selectFromGooglePicker() {
+//        var center : CLLocationCoordinate2D? = nil
+//        if let currentLocation = self.lastLocation {
+//            center = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude)
+//        }
+//
+//        if let center = center {
+//            let northEast = CLLocationCoordinate2DMake(center.latitude + 0.001, center.longitude + 0.001)
+//            let southWest = CLLocationCoordinate2DMake(center.latitude - 0.001, center.longitude - 0.001)
+//            let viewport = GMSCoordinateBounds(coordinate: northEast, coordinate: southWest)
+//            let config = GMSPlacePickerConfig(viewport: viewport)
+//            let placePicker = GMSPlacePickerViewController(config: config)
+//
+//            placePicker.delegate = self
+//        } else {
+//            print("Google place picker failed")
+//        }
+//    }
+//
+//    // MARK: - GMSPlacePickerViewControllerDelegate
+//    func placePicker(_ viewController: GMSPlacePickerViewController, didPick place: GMSPlace) {
+//        let googlePlace = GooglePlaceResult(id: place.placeID!, name: place.name!, address: place.formattedAddress!, lat: place.coordinate.latitude, lng: place.coordinate.longitude)
+//
+//        self.currentGooglePlace = googlePlace
+//
+//        let firebase = FirebaseClient()
+//
+//        firebase.setStoreInUserFavs(store: googlePlace)
+//
+//        self.delegate!.storeSelected(store: googlePlace)
+//
+//        _ = self.navigationController?.popViewController(animated: true)
+//
+//        print("Place name \(place.name!)")
+//        print("Place address \(place.formattedAddress!)")
+//    }
+//
+//    func placePicker(_ viewController: GMSPlacePickerViewController, didFailWithError error: Error) {
+//        // In your own app you should handle this better, but for the demo we are just going to log
+//        // a message.
+//        NSLog("An error occurred while picking a place: \(error)")
+//    }
+//
+//    func placePickerDidCancel(_ viewController: GMSPlacePickerViewController) {
+//        NSLog("The place picker was canceled by the user")
+//
+//        // Dismiss the place picker.
+//        viewController.dismiss(animated: true, completion: nil)
+//    }
     
     // MARK: - TableView Delegate
     
@@ -125,7 +125,7 @@ class StoreSelectorController: UIViewController, UITableViewDelegate, UITableVie
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! StoreSelectorViewCell
         
-        cell.storeName.text = self.googlePlaceResults[index].name
+        cell.storeName.text = self.googlePlaceResults[index].storeName
         
         if placeShopping != nil && self.googlePlaceResults[index].id == self.placeShopping {
         	cell.storeName.textColor = UIColor.red
@@ -170,7 +170,7 @@ class StoreSelectorController: UIViewController, UITableViewDelegate, UITableVie
             
             self.googlePlaceResults.remove(at: indexPath.row)
             let firebase = FirebaseClient()
-            firebase.deleteStore(storeId: place.id)
+            firebase.deleteStore(storeId: place.id!)
             
             self.reloadStores()
         }
@@ -187,26 +187,18 @@ class StoreSelectorController: UIViewController, UITableViewDelegate, UITableVie
     // MARK: - Functions
     
     func reloadStores() {
-		
-		let firebase = FirebaseClient()
-		firebase.getUserStores(location: self.lastLocation!) { (resultFirebase: [GooglePlaceResult]) in
-			
-			self.googlePlaceResults = resultFirebase
-			
-			let client = GooglePlacesClient()
-			client.getCloserStores(currentLocation: self.lastLocation!) { (result: [GooglePlaceResult]?, error: String?) in
-				
-				if result != nil {
-					self.googlePlaceResults.append(contentsOf: result!)
-					DispatchQueue.main.async {
-						self.tableView.reloadData()
-						self.tableView.isHidden = false
-						self.activityIndicator.isHidden = true
-					}
-				}
-			}
-		}
-		
-		
+        
+        let locationModel = LocationModel()
+        locationModel.getCloserStores(completion: {(result: [MoakPlace]?) in
+            
+            if result != nil {
+                self.googlePlaceResults = result!
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    self.tableView.isHidden = false
+                    self.activityIndicator.isHidden = true
+                }
+            }
+        })
     }
 }

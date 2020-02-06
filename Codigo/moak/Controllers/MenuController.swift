@@ -42,8 +42,8 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func loadProfileImage() {
         self.profileImage.layer.cornerRadius = 55
         self.profileImage.clipsToBounds = true
-        self.profileImage.layer.borderWidth = 2.0
-        self.profileImage.layer.borderColor = UIColor(red: 0.952, green: 0.278, blue: 0.278, alpha: 0.65).cgColor
+        self.profileImage.layer.borderWidth = 1.0
+        self.profileImage.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
         
         storageRef = storage.reference(forURL: "gs://moak-1291.appspot.com")
         
@@ -109,9 +109,18 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         switch indexPath.row {
         case 0:
-            performSegue(withIdentifier: "listSegue", sender: self)
+            dismiss(animated: true, completion: nil)
+            navigationController?.popToRootViewController(animated: false)
+            let listController = storyboard?.instantiateViewController(withIdentifier: "ListsViewController")
+            navigationController?.pushViewController(listController!, animated: true)
+
         case 1:
-            performSegue(withIdentifier: "ticketsSegue", sender: self)
+            let ticketsController = storyboard?.instantiateViewController(withIdentifier: "MasterHistoryViewController")
+            
+            dismiss(animated: true, completion: nil)
+            navigationController?.popToRootViewController(animated: false)
+            navigationController?.pushViewController(ticketsController!, animated: true)
+
         default:
             print("opción inválida")
         }

@@ -509,7 +509,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rSf-jV-iCW">
-                                <rect key="frame" x="280" y="7.5" width="69" height="30"/>
+                                <rect key="frame" x="280" y="20" width="69" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Compartir"/>
                                 <connections>
@@ -518,7 +518,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lCL-wz-Clw">
-                                <rect key="frame" x="26" y="10" width="14" height="25"/>
+                                <rect key="frame" x="26" y="10" width="28" height="50"/>
                                 <state key="normal" image="Back"/>
                                 <connections>
                                     <action selector="backClicked:" destination="EUP-gZ-AZF" eventType="touchUpInside" id="lpS-gx-8J9"/>
@@ -526,7 +526,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RLt-IF-wEd">
-                                <rect key="frame" x="305.5" y="114" width="48" height="28"/>
+                                <rect key="frame" x="305.5" y="126.5" width="48" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="48" id="Gk2-Yg-yjh"/>
                                 </constraints>
@@ -539,7 +539,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GOJ-b2-1f5">
-                                <rect key="frame" x="77.5" y="111" width="220" height="34"/>
+                                <rect key="frame" x="77.5" y="123.5" width="220" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="220" id="NJf-pM-nZc"/>
                                 </constraints>
@@ -547,7 +547,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Escribe el correo o nombre de usuario de tu contacto" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lJp-72-1e4">
-                                <rect key="frame" x="71" y="57.5" width="233" height="31.5"/>
+                                <rect key="frame" x="71" y="70" width="233" height="31.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="245" id="BVG-Mm-ATw"/>
                                     <constraint firstAttribute="width" constant="233" id="jwd-Aw-ZCx"/>
@@ -564,7 +564,7 @@
                                 </variation>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xe6-gn-uuK">
-                                <rect key="frame" x="112.5" y="175" width="250" height="16"/>
+                                <rect key="frame" x="112.5" y="187.5" width="250" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="RXJ-I3-vZw"/>
                                 </constraints>
@@ -573,7 +573,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MjD-JN-8mM">
-                                <rect key="frame" x="22.5" y="153" width="60" height="60"/>
+                                <rect key="frame" x="22.5" y="165.5" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="bj5-Eo-15I"/>
                                     <constraint firstAttribute="width" constant="60" id="nRj-8o-oIq"/>
@@ -736,7 +736,7 @@
         <!--Mis tickets-->
         <scene sceneID="NkE-xm-Qc3">
             <objects>
-                <viewController id="f9X-DH-D96" customClass="MasterHistoryViewController" customModule="moak" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MasterHistoryViewController" id="f9X-DH-D96" customClass="MasterHistoryViewController" customModule="moak" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fn4-dr-u76"/>
                         <viewControllerLayoutGuide type="bottom" id="IAZ-Rz-np7"/>
@@ -745,13 +745,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hPT-cL-iNd">
-                                <rect key="frame" x="-4" y="0.0" width="383" height="647"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QC9-nu-0DH">
                                 <rect key="frame" x="-4" y="0.0" width="383" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="eLH-KE-3a4">
+                                    <rect key="frame" x="0.0" y="141" width="383" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" rowHeight="85" id="5fP-fT-9rA" customClass="MasterHistoryCellView" customModule="moak" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="383" height="85"/>
@@ -826,13 +827,9 @@
                         <color key="backgroundColor" red="0.99019607840000001" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.96078431369999995" green="0.56862745100000001" blue="0.01176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="hPT-cL-iNd" firstAttribute="leading" secondItem="RpX-9L-eRY" secondAttribute="leadingMargin" constant="-20" id="0Lc-2Y-LbY"/>
                             <constraint firstAttribute="leadingMargin" secondItem="QC9-nu-0DH" secondAttribute="leading" constant="20" id="6fj-n3-vUQ"/>
                             <constraint firstItem="IAZ-Rz-np7" firstAttribute="top" secondItem="QC9-nu-0DH" secondAttribute="bottom" id="8kN-1a-YeD"/>
-                            <constraint firstItem="IAZ-Rz-np7" firstAttribute="top" secondItem="hPT-cL-iNd" secondAttribute="bottom" id="EDW-mD-O3Q"/>
                             <constraint firstAttribute="trailingMargin" secondItem="QC9-nu-0DH" secondAttribute="trailing" constant="-20" id="PBv-j1-uoP"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="hPT-cL-iNd" secondAttribute="trailing" constant="-20" id="U2L-c1-OGe"/>
-                            <constraint firstItem="hPT-cL-iNd" firstAttribute="top" secondItem="fn4-dr-u76" secondAttribute="bottom" id="e8A-u1-ywq"/>
                             <constraint firstItem="QC9-nu-0DH" firstAttribute="top" secondItem="fn4-dr-u76" secondAttribute="bottom" id="fjR-zj-ewK"/>
                         </constraints>
                     </view>
@@ -841,7 +838,7 @@
                         <barButtonItem key="leftBarButtonItem" image="menu" id="AIq-bg-8b1">
                             <color key="tintColor" red="0.66963392499999996" green="0.23511388899999999" blue="0.24946409459999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <segue destination="jJE-RQ-xS3" kind="presentation" id="sJA-s5-uLn"/>
+                                <action selector="clickLeftMenu:" destination="f9X-DH-D96" id="pGl-a1-SMp"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -2043,7 +2040,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fPs-qL-TqE">
-                                <rect key="frame" x="16" y="10" width="14" height="25"/>
+                                <rect key="frame" x="16" y="10" width="28" height="50"/>
                                 <state key="normal" image="Back">
                                     <color key="titleColor" red="0.96470588239999999" green="0.27058823529999998" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -2762,7 +2759,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z3A-A2-BcE">
-                                <rect key="frame" x="112.5" y="126.5" width="150" height="90"/>
+                                <rect key="frame" x="100" y="126.5" width="175" height="90"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="vwe-aj-FA5"/>
@@ -2781,7 +2778,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PNO-iX-ud6">
-                                <rect key="frame" x="112.5" y="246.5" width="150" height="90"/>
+                                <rect key="frame" x="100" y="246.5" width="175" height="90"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="1jM-jN-F4n"/>
@@ -2840,7 +2837,7 @@
         <segue reference="eBH-0V-VsO"/>
         <segue reference="gZN-Kj-dOf"/>
         <segue reference="93I-pw-i6M"/>
-        <segue reference="0Hf-I8-nYd"/>
+        <segue reference="f6y-Np-VA2"/>
         <segue reference="Ujy-uH-sK9"/>
     </inferredMetricsTieBreakers>
 </document>

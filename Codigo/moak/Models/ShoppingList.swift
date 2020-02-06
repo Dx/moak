@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import CoreLocation
 
 class ShoppingList {
     var id: String = ""
     var name: String = ""
     var owner: String = ""
-    var place: GooglePlaceResult? = nil
-    var placeShopping: GooglePlaceResult? = nil
+    var place: MoakPlace? = nil
+    var placeShopping: MoakPlace? = nil
     var sharedWith = [String: AnyObject]()
     
     init(id: String, name: String, owner: String) {
@@ -40,12 +41,13 @@ class ShoppingList {
             self.sharedWith = sharedWith
         }
         
+        //TODO: Cambiar a GMSPlace
         if let paramsPlace = parameters["place"] as? [String: AnyObject] {
-        	self.place = GooglePlaceResult.init(parameters: paramsPlace)
+        	self.place = MoakPlace.init(parameters: paramsPlace)
         }
-        
+
         if let paramsPlaceShopping = parameters["placeShopping"] as? [String: AnyObject] {
-            self.placeShopping = GooglePlaceResult.init(parameters: paramsPlaceShopping)
+            self.placeShopping = MoakPlace.init(parameters: paramsPlaceShopping)
         }
     }
     

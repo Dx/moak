@@ -12,15 +12,15 @@ import CoreLocation
 class CloserStoresTableViewController: UITableViewController {
     
     var currentLocation: CLLocation?
-    var stores: [GooglePlaceResult] = []
+    var stores: [MoakPlace] = []
 
     @IBOutlet var storesTable: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let client = GooglePlacesClient()
-        client.getCloserStores(currentLocation: self.currentLocation!) { (result: [GooglePlaceResult]?, error: String?) in
+        let client = LocationModel()
+        client.getCloserStores(completion: { (result: [MoakPlace]?) in
             
             if result != nil {
                 self.stores = result!
@@ -28,7 +28,7 @@ class CloserStoresTableViewController: UITableViewController {
                 self.storesTable.dataSource = self
                 self.storesTable.reloadData()
             }
-        }
+        })
     }
 
     override func didReceiveMemoryWarning() {

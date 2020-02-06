@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SideMenu
 
 class MasterHistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -43,6 +44,35 @@ class MasterHistoryViewController: UIViewController, UITableViewDelegate, UITabl
                 self.tableView.reloadData()
             }
         })
+    }
+    
+    @IBAction func clickLeftMenu(_ sender: Any) {
+        
+//        navigationController?.navigationController?.popToRootViewController(animated: true)
+        
+        let menuController = storyboard?.instantiateViewController(withIdentifier: "MenuController")
+        let menu = SideMenuNavigationController(rootViewController: menuController!, settings: getSideMenuSettings())
+        menu.leftSide = true
+        present(menu, animated: true, completion: nil)
+    }
+    
+    private func getSideMenuSettings() -> SideMenuSettings {
+        var presentationStyle = SideMenuPresentationStyle()
+        presentationStyle = .menuSlideIn
+        presentationStyle.backgroundColor = .white
+        presentationStyle.menuStartAlpha = 1
+        presentationStyle.menuScaleFactor = 0.8
+        presentationStyle.onTopShadowOpacity = 1
+        presentationStyle.presentingEndAlpha = 1
+        presentationStyle.presentingScaleFactor = 0.8
+
+        var settings = SideMenuSettings()
+        settings.presentationStyle = presentationStyle
+        settings.menuWidth = min(view.frame.width, view.frame.height) * 0.8
+        settings.blurEffectStyle = .regular
+        settings.statusBarEndAlpha = 1
+
+        return settings
     }
     
     func configureList(){

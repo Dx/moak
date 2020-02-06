@@ -10,6 +10,7 @@ import UIKit
 import AudioToolbox
 import Speech
 import CoreLocation
+import GooglePlaces
 
 class AddProductDescriptionController: UIViewController, UITableViewDataSource, UITableViewDelegate, SFSpeechRecognizerDelegate, CLLocationManagerDelegate {    
 
@@ -30,7 +31,7 @@ class AddProductDescriptionController: UIViewController, UITableViewDataSource, 
     var isUserProduct = false
     var products: [SearchProduct] = []
     var modeList: String = "l"
-    var currentGooglePlace: GooglePlaceResult?
+    var currentGooglePlace: MoakPlace?
     
     var locationManager = CLLocationManager()
     var lastLocation : CLLocation? = nil
@@ -141,7 +142,7 @@ class AddProductDescriptionController: UIViewController, UITableViewDataSource, 
             self.present(alert, animated: true, completion: nil)
             
         case SFSpeechRecognizerAuthorizationStatus.authorized:
-            print("lalalal")
+            print("Autorizado para dictar")
         default:
             let alert = UIAlertController(title: "Me das permiso?", message: "Moak necesita acceder a tu posición para poder detectar si estás cerca de una tienda y mostrarte los mejores precios. Me autorizas?", preferredStyle: UIAlertController.Style.alert)
             
@@ -223,7 +224,7 @@ class AddProductDescriptionController: UIViewController, UITableViewDataSource, 
             backItem.title = "Atrás"
             navigationItem.backBarButtonItem = backItem
             if let googlePlace = self.currentGooglePlace {
-                questionViewController.storeId = googlePlace.id
+                questionViewController.storeId = googlePlace.id!
             }
             
             self.defaults.set("Description", forKey: "CaptureMode")
@@ -585,7 +586,7 @@ class AddProductDescriptionController: UIViewController, UITableViewDataSource, 
         
         if sku != "" {
         	if let store = self.currentGooglePlace {
-            	firebase.getLastPriceInStore(storeId: store.id, skuNumber: sku ) {(productComparer: ProductComparer?) in
+                firebase.getLastPriceInStore(storeId: store.id!, skuNumber: sku ) {(productComparer: ProductComparer?) in
                 	if let price = productComparer {
                     	product?.unitaryPrice = price.unitaryPrice
                 	}

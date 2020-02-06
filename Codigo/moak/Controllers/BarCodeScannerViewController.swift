@@ -9,6 +9,7 @@
 import AVFoundation
 import UIKit
 import CoreLocation
+import GooglePlaces
 
 class BarCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, CLLocationManagerDelegate {
     
@@ -21,7 +22,7 @@ class BarCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObj
     var selectedProduct : Product?
     var locationManager = CLLocationManager()
     var lastLocation : CLLocation? = nil
-    var currentGooglePlace: GooglePlaceResult?
+    var currentGooglePlace: MoakPlace?
     var inputText: UITextField!
     
     var listId: String? = ""
@@ -76,7 +77,7 @@ class BarCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObj
             backItem.title = "Atrás"
             navigationItem.backBarButtonItem = backItem
             if let googlePlace = self.currentGooglePlace {
-                questionViewController.storeId = googlePlace.id
+                questionViewController.storeId = googlePlace.id!
             }
             
             self.defaults.set("BarCode", forKey: "CaptureMode")
@@ -374,7 +375,7 @@ class BarCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObj
         }
         
         if let store = self.currentGooglePlace {
-            firebase.getLastPriceInStore(storeId: store.id, skuNumber: sku ) {(productComparer: ProductComparer?) in
+            firebase.getLastPriceInStore(storeId: store.id!, skuNumber: sku ) {(productComparer: ProductComparer?) in
                 if let price = productComparer {
                     product?.unitaryPrice = price.unitaryPrice
                     
