@@ -30,25 +30,25 @@ class NoFacebookController: UIViewController {
     @IBAction func okClick(_ sender: AnyObject) {
         
         print("User Name is: \(String(describing: userNameText.text))")
-        self.defaults.set(userNameText.text, forKey: "userName")
+        self.defaults.set(userNameText.text, forKey: defaultKeys.userName)
         
         print("User Email is: \(String(describing: emailText.text))")
-        self.defaults.set(emailText.text, forKey: "userEmail")
+        self.defaults.set(emailText.text, forKey: defaultKeys.userEmail)
         
         print("User First Name is: \(String(describing: firstNameText.text))")
-        self.defaults.set(firstNameText.text, forKey: "userFirstName")
+        self.defaults.set(firstNameText.text, forKey: defaultKeys.userFirstName)
         
         print("User Last name is: \(String(describing: lastNameText.text))")
-        self.defaults.set(lastNameText.text, forKey: "userLastName")
+        self.defaults.set(lastNameText.text, forKey: defaultKeys.userLastName)
         
         print("User Gender is: \(String(describing: genderText.text))")
-            self.defaults.set(genderText.text, forKey: "userGender")
+            self.defaults.set(genderText.text, forKey: defaultKeys.userGender)
         
         print("User Birthday is: \(String(describing: birthdayText.text))")
-        self.defaults.set(birthdayText.text, forKey: "userBirthday")
+        self.defaults.set(birthdayText.text, forKey: defaultKeys.userBirthday)
         
         print("User Location is: \(String(describing: cityText.text))")
-        self.defaults.set(cityText.text, forKey: "userLocation")
+        self.defaults.set(cityText.text, forKey: defaultKeys.userLocation)
         
         self.showLanguageView()
     }

@@ -238,7 +238,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         	firebase.getShoppingList(shoppingListId: self.shoppingListIdSelected, completion:{(shoppingList: ShoppingList?) in
                 
             	self.usersToShare = [String]()
-            	let userId = self.defaults.string(forKey: "userId")!
+                let userId = self.defaults.string(forKey: defaultKeys.userId)!
             	if let list = shoppingList {
                     
                 	if list.owner != userId {

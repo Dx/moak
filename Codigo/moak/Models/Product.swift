@@ -49,7 +49,7 @@ class Product {
         
         let defaults = UserDefaults.standard
         
-        if let puserId = defaults.string(forKey: "userId") {
+        if let puserId = defaults.string(forKey: defaultKeys.userId) {
             self.userId = puserId
         } else {
             self.userId = "unknown"

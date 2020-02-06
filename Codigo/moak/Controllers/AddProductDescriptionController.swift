@@ -55,7 +55,7 @@ class AddProductDescriptionController: UIViewController, UITableViewDataSource, 
         
         self.searchText.autocapitalizationType = .words
         
-        self.listId = self.defaults.string(forKey: "listId")!
+        self.listId = self.defaults.string(forKey: defaultKeys.listId)!
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.viewTapped))
         tap.cancelsTouchesInView = false
@@ -227,7 +227,7 @@ class AddProductDescriptionController: UIViewController, UITableViewDataSource, 
                 questionViewController.storeId = googlePlace.id!
             }
             
-            self.defaults.set("Description", forKey: "CaptureMode")
+            self.defaults.set("Description", forKey: defaultKeys.CaptureMode)
         default :
             print ("Ups")
         }
@@ -469,7 +469,7 @@ class AddProductDescriptionController: UIViewController, UITableViewDataSource, 
         let timeInterval = someDate.timeIntervalSince1970
         let stringInt = String(Int(timeInterval))
         let defaults = UserDefaults.standard
-        let userId = defaults.string(forKey: "userId")!
+        let userId = defaults.string(forKey: defaultKeys.userId)!
         let result = "m" + userId.substring(from: 0, to:2) + stringInt.substring(from:0, to:8)
         return result
     }
@@ -651,6 +651,7 @@ class AddProductDescriptionController: UIViewController, UITableViewDataSource, 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.lastLocation = locations.last! as CLLocation
         if self.lastLocation != nil {
+            
             print("didUpdateLocations:  \(self.lastLocation!.coordinate.latitude), \(self.lastLocation!.coordinate.longitude)")
         }
     }

@@ -113,3 +113,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
+struct defaultKeys {
+    static let userId = "userId"
+    static let userName = "userName"
+    static let userEmail = "userEmail"
+    static let userFirstName = "userFirstName"
+    static let userLastName = "userLastName"
+    static let userGender = "userGender"
+    static let userBirthday = "userBirthday"
+    static let userLocation = "userLocation"
+    static let CaptureMode = "CaptureMode"
+    static let currentLatitude = "currentLatitude"
+    static let currentLongitude = "currentLongitude"
+    static let listId = "listId"
+    static let listDescription = "listDescription"
+}

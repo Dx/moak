@@ -22,7 +22,14 @@ class LocationModel: NSObject, CLLocationManagerDelegate {
     
     func getCloserStores(completion: @escaping(_ result: [MoakPlace]?) -> Void) {
         // Specify the place data types to return.
-        let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) | UInt(GMSPlaceField.placeID.rawValue) | UInt(GMSPlaceField.types.rawValue))!
+        
+        let nameField = UInt(GMSPlaceField.name.rawValue)
+        let idField = UInt(GMSPlaceField.placeID.rawValue)
+        let typeField = UInt(GMSPlaceField.types.rawValue)
+        let addressField = UInt(GMSPlaceField.formattedAddress.rawValue)
+        let coordinateField = UInt(GMSPlaceField.coordinate.rawValue)
+        
+        let fields: GMSPlaceField = GMSPlaceField(rawValue: nameField | idField | typeField | addressField | coordinateField)!
         
         var result: [MoakPlace]?
         

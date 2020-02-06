@@ -79,14 +79,16 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
     }
     
     private func refreshList() {
-        if self.defaults.string(forKey: "listId") == nil {
+        if let listId = self.defaults.string(forKey: defaultKeys.listId) {
+            self.listSelected = listId
+            loadTitle()
+            loadShoppingList()
+        } else {
             self.getDefaultList() { (nothing: String) in
                 self.loadTitle()
                 self.loadShoppingList()
             }
-        } else {
-            loadTitle()
-            loadShoppingList()
+            
         }
         
         showPointsNotifications()
@@ -333,17 +335,17 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
     }
     
     func loadTitle() {
-        if let list = self.defaults.string(forKey: "listId") {
+        if let list = self.defaults.string(forKey: defaultKeys.listId) {
             self.listSelected = list
             
-            if let listName = self.defaults.string(forKey: "listDescription") {
+            if let listName = self.defaults.string(forKey: defaultKeys.listDescription) {
                 self.listDescriptionSelected = listName
                 self.navigationItem.title = self.listDescriptionSelected
             } else {
                 let firebase = FirebaseClient()
                 firebase.getShoppingList(shoppingListId: list) { (result: ShoppingList?) in
                     if let completeList = result {
-                        self.defaults.set(completeList.name, forKey: "listDescription")
+                        self.defaults.set(completeList.name, forKey: defaultKeys.listDescription)
                         self.navigationItem.title = self.listDescriptionSelected
                     }
                 }
@@ -358,8 +360,8 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
             
             if shoppingList != nil {
             	self.listSelected = shoppingList.id
-                self.defaults.set(shoppingList.id, forKey: "listId")
-                self.defaults.set(shoppingList.name, forKey: "listDescription")
+                self.defaults.set(shoppingList.id, forKey: defaultKeys.listId)
+                self.defaults.set(shoppingList.name, forKey: defaultKeys.listDescription)
                 self.listDescriptionSelected = shoppingList.name
                 self.navigationItem.title = shoppingList.name
                 self.loadShoppingList()
@@ -435,7 +437,7 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
     
     func suscribeToProducts() {
         let firebase = FirebaseClient()
-        
+                
         let productsInList = firebase.getRefToProductsInShoppingList(shoppingList: listSelected)
         
         _ = productsInList.observe(DataEventType.value, with: { (snapshot) in
@@ -518,11 +520,11 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
         if self.lastLocation != nil && self.currentList != nil {
             print("didUpdateLocations:  \(self.lastLocation!.coordinate.latitude), \(self.lastLocation!.coordinate.longitude)")
             
-            if Swift.abs(self.defaults.double(forKey: "currentLatitude") - self.lastLocation!.coordinate.latitude) > 0.0001 || Swift.abs(self.defaults.double(forKey: "currentLongitude") - self.lastLocation!.coordinate.longitude) > 0.0001 {
+            if Swift.abs(self.defaults.double(forKey: defaultKeys.currentLatitude) - self.lastLocation!.coordinate.latitude) > 0.0001 || Swift.abs(self.defaults.double(forKey: defaultKeys.currentLongitude) - self.lastLocation!.coordinate.longitude) > 0.0001 {
             
             
-            	self.defaults.set(self.lastLocation!.coordinate.latitude, forKey: "currentLatitude")
-            	self.defaults.set(self.lastLocation!.coordinate.longitude, forKey: "currentLongitude")
+                self.defaults.set(self.lastLocation!.coordinate.latitude, forKey: defaultKeys.currentLatitude)
+                self.defaults.set(self.lastLocation!.coordinate.longitude, forKey: defaultKeys.currentLongitude)
             
             	self.selectClosestStore()
             }
@@ -1044,8 +1046,8 @@ class ListsViewController: UIViewController, UIViewControllerTransitioningDelega
             gpClient.getCurrentLocation(completion: { (result: MoakPlace?) in
                 
                 if result != nil {
-                    print("distancia a tienda \(result!.distance)")
-                    if result!.distance < 30 {
+                    print("distancia a tienda \(result!.getDistance()) m")
+                    if result!.getDistance() < 30 {
                         self.currentList!.place = result
                         self.storeButton.setTitle(self.currentList!.place?.storeName, for: .normal)
                         self.storeButton.setTitleColor(UIColor.red, for: .normal)

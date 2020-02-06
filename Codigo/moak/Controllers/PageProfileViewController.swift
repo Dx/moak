@@ -29,7 +29,7 @@ class PageProfileViewController: UIPageViewController {
         dataSource = self
         
         
-        if (self.defaults.string(forKey: "CaptureMode") == nil) {
+        if (self.defaults.string(forKey: defaultKeys.CaptureMode) == nil) {
         
         	if let firstViewController = orderedViewControllers.first {
             	setViewControllers([firstViewController],
@@ -39,7 +39,7 @@ class PageProfileViewController: UIPageViewController {
         	}
         } else {
             
-            switch self.defaults.string(forKey: "CaptureMode")! {
+            switch self.defaults.string(forKey: defaultKeys.CaptureMode)! {
             case "BarCode":
                 setViewControllers([orderedViewControllers[0]],
                                        direction: .forward,

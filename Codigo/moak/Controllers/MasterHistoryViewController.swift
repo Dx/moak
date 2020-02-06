@@ -33,15 +33,16 @@ class MasterHistoryViewController: UIViewController, UITableViewDelegate, UITabl
         _ = userTickets.observe(DataEventType.value, with: { (snapshot) in
             var newItems: [TicketSummary] = []
             if let postDict = snapshot.value as? [String : AnyObject] {
-                
-                for item in postDict.values {
-                    let itemType = TicketSummary(parameters: item as! [String: AnyObject])
-                    newItems.append(itemType)
-                }
-                
-                self.tickets = newItems.sorted( by: { $0.ticketDate.timeIntervalSinceNow > $1.ticketDate.timeIntervalSinceNow })
-                
-                self.tableView.reloadData()
+//                if let items = postDict.values as? [String: AnyObject] {
+                    for item in postDict.values {
+                        let itemType = TicketSummary(parameters: item as! [String: AnyObject])
+                        newItems.append(itemType)
+                    }
+                    
+                    self.tickets = newItems.sorted( by: { $0.ticketDate.timeIntervalSinceNow > $1.ticketDate.timeIntervalSinceNow })
+                    
+                    self.tableView.reloadData()
+//                }
             }
         })
     }
@@ -112,7 +113,7 @@ class MasterHistoryViewController: UIViewController, UITableViewDelegate, UITabl
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MasterHistoryCellView
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM dd"
+        dateFormatter.dateFormat = "MMM dd, yyyy"
         
         var formattedDate =  ""
         if let date = tickets[(indexPath as NSIndexPath).row].ticketDate {

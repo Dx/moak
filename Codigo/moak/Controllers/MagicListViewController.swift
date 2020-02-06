@@ -31,8 +31,8 @@ class MagicListViewController: UIViewController, UITableViewDelegate, UITableVie
         
         loadProducts()
         
-        if self.defaults.string(forKey: "listId") != nil {
-            self.listId = self.defaults.string(forKey: "listId")!
+        if self.defaults.string(forKey: defaultKeys.listId) != nil {
+            self.listId = self.defaults.string(forKey: defaultKeys.listId)!
         }
     }
     
@@ -60,7 +60,7 @@ class MagicListViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     @IBAction func cancelClick(_ sender: Any) {
-        self.defaults.set("MagicList", forKey: "CaptureMode")
+        self.defaults.set("MagicList", forKey: defaultKeys.CaptureMode)
         self.parent?.dismiss(animated: true, completion: nil)
     }
     

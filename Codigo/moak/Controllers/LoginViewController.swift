@@ -61,7 +61,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
             
             Auth.auth().signIn(with: credential) { (user, error) in
                 if error != nil && user != nil {
-                    self.defaults.set(user?.user.uid, forKey: "userId")
+                    self.defaults.set(user?.user.uid, forKey: defaultKeys.userId)
                     self.logged = true
                     self.goToNextView()
                 } else {
@@ -101,53 +101,53 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
                     
                     if let userName : NSString = user["name"] as? NSString {
                         print("User Name is: \(userName)")
-                        self.defaults.set(userName, forKey: "userName")
+                        self.defaults.set(userName, forKey: defaultKeys.userName)
                     }
                     if let userEmail : NSString = user["email"] as? NSString {
                         print("User Email is: \(userEmail)")
-                        self.defaults.set(userEmail, forKey: "userEmail")
+                        self.defaults.set(userEmail, forKey: defaultKeys.userEmail)
                     }
                     if let userFirstName : NSString = user["first_name"] as? NSString {
                         print("User First Name is: \(userFirstName)")
-                        self.defaults.set(userFirstName, forKey: "userFirstName")
+                        self.defaults.set(userFirstName, forKey: defaultKeys.userFirstName)
                     }
                     
                     DispatchQueue.main.async {
-                        if let firstName = self.defaults.object(forKey: "userFirstName") as? String {
+                        if let firstName = self.defaults.object(forKey: defaultKeys.userFirstName) as? String {
                             self.labelName.text = "Welcome \(firstName)"
                         }
                     }
                     
                     if let userLastName : NSString = user["last_name"] as? NSString {
                         print("User Last name is: \(userLastName)")
-                        self.defaults.set(userLastName, forKey: "userLastName")
+                        self.defaults.set(userLastName, forKey: defaultKeys.userLastName)
                     }
                     if let userGender : NSString = user["gender"] as? NSString {
                         print("User Gender is: \(userGender)")
-                        self.defaults.set(userGender, forKey: "userGender")
+                        self.defaults.set(userGender, forKey: defaultKeys.userGender)
                     }
                     if let userBirthday : NSString = user["birthday"] as? NSString {
                         print("User Birthday is: \(userBirthday)")
-                        self.defaults.set(userBirthday, forKey: "userBirthday")
+                        self.defaults.set(userBirthday, forKey: defaultKeys.userBirthday)
                     }
                     if let userLocation : NSString = user["location"] as? NSString {
                         print("User Location is: \(userLocation)")
-                        self.defaults.set(userLocation, forKey: "userLocation")
+                        self.defaults.set(userLocation, forKey: defaultKeys.userLocation)
                     }
                     
                     let formatter = DateFormatter()
                     formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
                     
                     var birthday: Date? = nil
-                    if self.defaults.string(forKey: "userBirthday") != nil {
-                        if let userbirthday = formatter.date(from: self.defaults.string(forKey: "userBirthday")! as String) {
+                    if self.defaults.string(forKey: defaultKeys.userBirthday) != nil {
+                        if let userbirthday = formatter.date(from: self.defaults.string(forKey: defaultKeys.userBirthday)! as String) {
                             birthday = userbirthday
                         }
                     }
                     
                     firebaseClient.getUser({(user: User?) in
                         if user == nil {
-                            let newUser = User(id: self.defaults.string(forKey: "userId")!, name: self.defaults.string(forKey: "userName"), userName: "", email: self.defaults.string(forKey: "userEmail"), firstName: self.defaults.string(forKey: "userFirstName"), lastName: self.defaults.string(forKey: "userLastName"), gender: self.defaults.string(forKey: "userGender"), birthday: birthday, location: self.defaults.string(forKey: "userLocation"), level: 0, points: 0, lists: [String: String](), buyedLists: [String: String]())
+                            let newUser = User(id: self.defaults.string(forKey: defaultKeys.userId)!, name: self.defaults.string(forKey: defaultKeys.userName), userName: "", email: self.defaults.string(forKey: defaultKeys.userEmail), firstName: self.defaults.string(forKey: defaultKeys.userFirstName), lastName: self.defaults.string(forKey: defaultKeys.userLastName), gender: self.defaults.string(forKey: defaultKeys.userGender), birthday: birthday, location: self.defaults.string(forKey: defaultKeys.userLocation), level: 0, points: 0, lists: [String: String](), buyedLists: [String: String]())
                             firebaseClient.addUser(user: newUser)
                         } else {
                             if user!.userName == "" {
@@ -167,14 +167,14 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
         let firebase = FirebaseClient()
         firebase.getUserId( { (userId: String) in
                 print("Usuario!:\(userId)")
-            self.defaults.set(userId, forKey: "userId")
+            self.defaults.set(userId, forKey: defaultKeys.userId)
             self.completeUserData({(result: Bool) in
                 if result {
                     
-                    self.defaults.set("BarCode", forKey: "CaptureMode")
+                    self.defaults.set("BarCode", forKey: defaultKeys.CaptureMode)
                     let cero: Double = 0
-                    self.defaults.set(cero, forKey: "currentLatitude")
-                    self.defaults.set(cero, forKey: "currentLongitude")
+                    self.defaults.set(cero, forKey: defaultKeys.currentLatitude)
+                    self.defaults.set(cero, forKey: defaultKeys.currentLongitude)
                     
                     if !self.tabShowed {
                 		self.performSegue(withIdentifier: "showMenuView", sender: self)

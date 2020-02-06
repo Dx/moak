@@ -41,7 +41,6 @@ class ShoppingList {
             self.sharedWith = sharedWith
         }
         
-        //TODO: Cambiar a GMSPlace
         if let paramsPlace = parameters["place"] as? [String: AnyObject] {
         	self.place = MoakPlace.init(parameters: paramsPlace)
         }

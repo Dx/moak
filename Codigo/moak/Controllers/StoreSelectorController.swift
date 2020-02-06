@@ -135,11 +135,7 @@ class StoreSelectorController: UIViewController, UITableViewDelegate, UITableVie
         
         cell.storeAddress.text = self.googlePlaceResults[index].address
         
-        if self.googlePlaceResults[index].distance >= 0 {
-        	cell.storeDistance.text = "\(self.googlePlaceResults[index].distance) m"
-        } else {
-            cell.storeDistance.text = ""
-        }
+        cell.storeDistance.text = "\(self.googlePlaceResults[index].getDistance()) m"
         
         cell.storeDistance.isHidden = self.lastLocation == nil
         

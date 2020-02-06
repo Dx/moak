@@ -46,9 +46,14 @@ class MasterListViewController: UIViewController, UITableViewDelegate, UITableVi
         
         _ = shoppingLists.observe(DataEventType.value, with: { (snapshot) in
             self.lists = [:]
+            
             if let postDict = snapshot.value as? [String : String] {
-                self.lists = postDict
                 
+                let orderedList = postDict.sorted(by: { $0.0 < $1.0 })
+                for element in orderedList {
+                    self.lists[element.key] = element.value
+                }
+                    
                 if self.session != nil {
                     self.session.sendMessage(self.lists, replyHandler: nil, errorHandler: {(error) in
                         print ("Error en teléfono al enviar el mensaje: \(error.localizedDescription)")
@@ -122,8 +127,8 @@ class MasterListViewController: UIViewController, UITableViewDelegate, UITableVi
         self.selectedRow = indexPath
         tableView.deselectRow(at: indexPath, animated: true)
         let index = lists.index(lists.startIndex, offsetBy: (indexPath as NSIndexPath).row)
-        self.defaults.set(lists.keys[index], forKey: "listId")
-        self.defaults.set(lists.values[index], forKey: "listDescription")
+        self.defaults.set(lists.keys[index], forKey: defaultKeys.listId)
+        self.defaults.set(lists.values[index], forKey: defaultKeys.listDescription)
         let nc = NotificationCenter.default
         
         nc.post(name:Notification.Name(rawValue:"RefreshList"),

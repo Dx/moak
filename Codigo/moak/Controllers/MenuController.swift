@@ -47,7 +47,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         storageRef = storage.reference(forURL: "gs://moak-1291.appspot.com")
         
-        let userId = self.defaults.string(forKey: "userId")!
+        let userId = self.defaults.string(forKey: defaultKeys.userId)!
         let avatarsRef = storageRef!.child("avatars/\(userId).jpg")
         
         // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)

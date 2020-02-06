@@ -193,7 +193,7 @@ class FirebaseClient {
     }
     
     func setProductPrice(price: ProductComparer, shoppingListId: String) {
-        let userId = self.defaults.string(forKey: "userId")!
+        let userId = self.defaults.string(forKey: defaultKeys.userId)!
         
         let key = db.child("prices").childByAutoId().key
         price.id = key!
@@ -244,8 +244,8 @@ class FirebaseClient {
         let group = DispatchGroup()
         
         let gpClient = GooglePlacesClient()
-        let latitude = self.defaults.double(forKey: "currentLatitude")
-        let longitude = self.defaults.double(forKey: "currentLongitude")
+        let latitude = self.defaults.double(forKey: defaultKeys.currentLatitude)
+        let longitude = self.defaults.double(forKey: defaultKeys.currentLongitude)
         let currentLocation = CLLocation(latitude: latitude, longitude: longitude)
         
         gpClient.getCloserStoreIds(currentLocation: currentLocation) { (result: [String]?, error: String?) in
@@ -290,7 +290,7 @@ class FirebaseClient {
     
     func getLastUserPrices(skuNumber: String, priceNumber: Int, completion:@escaping (_ userShops: [ProductComparer]) -> Void) {
         
-        let userId = self.defaults.string(forKey: "userId")!
+        let userId = self.defaults.string(forKey: defaultKeys.userId)!
         
         self.db.child("userShops").child(userId).child(skuNumber).queryOrderedByKey().queryLimited(toFirst: UInt(priceNumber)).observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -323,7 +323,7 @@ class FirebaseClient {
     
     func setSpecificSkuToGenericSku(specificSku: String, genericSku: String) {
         
-        let userId = self.defaults.string(forKey: "userId")!
+        let userId = self.defaults.string(forKey: defaultKeys.userId)!
         
         self.db.child("userSkuRelations").child(userId).child(genericSku).child(specificSku).setValue(specificSku)
     }
@@ -408,7 +408,7 @@ class FirebaseClient {
     
     func getAverageProducts(completion: @escaping (_ products: [UserProductAverage]) -> Void) {
         
-        let userId = self.defaults.string(forKey: "userId")!
+        let userId = self.defaults.string(forKey: defaultKeys.userId)!
         
         var result:[UserProductAverage] = []
         
@@ -441,7 +441,7 @@ class FirebaseClient {
     // MARK: - Users
     
     func addUser (user: User) {
-        let userId = self.defaults.string(forKey: "userId")!
+        let userId = self.defaults.string(forKey: defaultKeys.userId)!
         user.id = userId
         let document = user.getFirebaseObject()
         
@@ -473,7 +473,7 @@ class FirebaseClient {
     }
     
     func getUserIdsSharingShoppingList(shoppingList: String, completion:@escaping ([String]?) -> ()) {
-        let userId = self.defaults.string(forKey: "userId")
+        let userId = self.defaults.string(forKey: defaultKeys.userId)
         var usersResult = [String]()
         
         self.db.child("shoppingLists").child(shoppingList).child("sharedWith").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -491,7 +491,7 @@ class FirebaseClient {
     }
     
     func getUser(_ completion:@escaping (User?) -> ()) {
-        let userId = self.defaults.string(forKey: "userId")!
+        let userId = self.defaults.string(forKey: defaultKeys.userId)!
         self.db.child("users").child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
             
             var user: User? = nil
@@ -589,7 +589,7 @@ class FirebaseClient {
     // MARK: - ShoppingLists
     
     func addUserShoppingList(shoppingList: ShoppingList) -> String {
-        let userId = self.defaults.string(forKey: "userId")!
+        let userId = self.defaults.string(forKey: defaultKeys.userId)!
         // Completes the shopping list entity
         let key = self.db.child("shoppingLists").childByAutoId().key
         shoppingList.id = key!
@@ -606,14 +606,14 @@ class FirebaseClient {
     }
     
     func updateNameShoppingList(id: String, name: String) {
-        let userId = self.defaults.string(forKey: "userId")!
+        let userId = self.defaults.string(forKey: defaultKeys.userId)!
         
         self.db.child("shoppingLists").child(id).child("name").setValue(name)
         self.db.child("users").child(userId).child("lists").child(id).setValue(name)
     }
 
     func deleteShoppingList(_ shoppingListId: String) {
-        let userId = self.defaults.string(forKey: "userId")!
+        let userId = self.defaults.string(forKey: defaultKeys.userId)!
         
         
         //delete from the users who share the list
@@ -641,12 +641,12 @@ class FirebaseClient {
     }
 
     func getUserShoppingLists() -> DatabaseQuery {
-        let userId = self.defaults.string(forKey: "userId")!
+        let userId = self.defaults.string(forKey: defaultKeys.userId)!
         return self.db.child("users").child(userId).child("lists")
     }
     
     func getUserDefaultShoppingList(completion:@escaping (ShoppingList?) -> ()) {
-        let userId = self.defaults.string(forKey: "userId")!
+        let userId = self.defaults.string(forKey: defaultKeys.userId)!
         
         self.db.child("users").child(userId).child("lists").queryLimited(toFirst: 1).observeSingleEvent(of: .value, with: { (snapshot) in
             if let postDict = snapshot.value as? [String : String] {
@@ -706,13 +706,13 @@ class FirebaseClient {
     
     // MARK: - Friends
     func addFriend(friendId: String) {
-        let userId = self.defaults.string(forKey: "userId")!
+        let userId = self.defaults.string(forKey: defaultKeys.userId)!
         self.db.child("users").child(userId).child("friends").child(friendId).setValue(friendId)
     }
     
     func getFriends(completion:@escaping ([Friend]?) -> ()) {
         var result = [Friend]()
-        let userId = self.defaults.string(forKey: "userId")!
+        let userId = self.defaults.string(forKey: defaultKeys.userId)!
         self.db.child("users").child(userId).child("friends").observeSingleEvent(of: .value, with: { (snapshot) in
             
             if let friends = snapshot.value! as? [String: AnyObject] {
@@ -740,8 +740,8 @@ class FirebaseClient {
     
     // MARK: Tickets
     func getUserTickets() -> DatabaseReference {
-        let userId = self.defaults.string(forKey: "userId")!
-        return self.db.child("users").child(userId).child("tickets")
+        let userId = self.defaults.string(forKey: defaultKeys.userId)!
+        return self.db.child("usersTickets").child(userId).child("tickets")
     }
     
     func getProductsInTicket(_ ticketId: String) -> DatabaseReference {
@@ -749,7 +749,7 @@ class FirebaseClient {
     }
     
     func addTicket(_ ticket: Ticket) -> String {
-        let userId = self.defaults.string(forKey: "userId")!
+        let userId = self.defaults.string(forKey: defaultKeys.userId)!
         // Adds the ticket to the user
         let key = self.db.child("users").child(userId).child("tickets").childByAutoId().key
         let ticketSummary = TicketSummary(id: key!, storeName: ticket.storeName, totalPrice: ticket.totalPrice!, ticketDate: ticket.ticketDate)
@@ -803,7 +803,7 @@ class FirebaseClient {
         self.db.child("productsInShoppingList").child(shoppingList).child(product.productId).removeValue()
         print ("Borrado shoppinglist:\(shoppingList) productId:\(product.productId)")
         
-        let userId = self.defaults.string(forKey: "userId")!
+        let userId = self.defaults.string(forKey: defaultKeys.userId)!
         setAveragePerProduct(userId: userId, skuText: product.productSKU)
         
         // DX: Falta para los que comparten la lista
@@ -837,7 +837,7 @@ class FirebaseClient {
     
     func getUserStores(location: CLLocation?, completion:@escaping (_ stores:[MoakPlace]) -> Void) {
         var result: [MoakPlace] = []
-        let userId = self.defaults.string(forKey: "userId")!
+        let userId = self.defaults.string(forKey: defaultKeys.userId)!
         
         self.db.child("users").child(userId).child("favStores").observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -850,17 +850,7 @@ class FirebaseClient {
             			if let storeParameters = snapshot.value! as? [String: AnyObject] {
                             let storeComplete = MoakPlace(parameters: storeParameters)
                             
-                            if let location = location {
-                                storeComplete.distance = Int((storeComplete.getStoreLocation() as AnyObject).distance(from: location))
-                            } else {
-                                storeComplete.distance = -1
-                            }
-							
-							if storeComplete.distance <= 200 {
-								result.append(storeComplete)
-							}
-							
-                            result = result.sorted(by: { $0.distance < $1.distance} )
+                            result = result.sorted(by: { $0.getDistance() < $1.getDistance()} )
                             
                             completion(result)
                         }
@@ -873,7 +863,7 @@ class FirebaseClient {
     func setStoreInUserFavs(store: MoakPlace) {
         self.db.child("stores").child(store.id!).setValue(store.getFirebaseObject())
         
-        let userId = self.defaults.string(forKey: "userId")!
+        let userId = self.defaults.string(forKey: defaultKeys.userId)!
         self.db.child("users").child(userId).child("favStores").child(store.id!).setValue(store.id!)
     }
     
@@ -886,7 +876,7 @@ class FirebaseClient {
     }
     
     func deleteStore(storeId: String) {
-        let userId = self.defaults.string(forKey: "userId")!
+        let userId = self.defaults.string(forKey: defaultKeys.userId)!
         self.db.child("users").child(userId).child("favStores").child(storeId).removeValue()
     }
     
@@ -920,7 +910,7 @@ class FirebaseClient {
     func setUserName(userName: String) {
         let userNameLower = userName.lowercased()
         
-        let userId = self.defaults.string(forKey: "userId")!
+        let userId = self.defaults.string(forKey: defaultKeys.userId)!
         let value = ["userId":userId]
         self.db.child("userNames").child(userNameLower).setValue(value)
         
@@ -950,7 +940,7 @@ class FirebaseClient {
     // MARK: - Points
     func addPoints(points: Int, reason: String) {
         var oldpoints = 0
-        let userId = self.defaults.string(forKey: "userId")!
+        let userId = self.defaults.string(forKey: defaultKeys.userId)!
         let key = self.db.child("pointsHistory").child(userId).childByAutoId().key
         
         let point = HistoryPoint(id: key!, reason: reason, date: Date(), points: points, userId: userId)
@@ -975,12 +965,12 @@ class FirebaseClient {
     }
     
     func getPointHistory() -> DatabaseReference {
-        let userId = self.defaults.string(forKey: "userId")!
+        let userId = self.defaults.string(forKey: defaultKeys.userId)!
         return self.db.child("pointsHistory").child(userId)
     }
     
     func updateLevel(points: Int) {
-        let userId = self.defaults.string(forKey: "userId")!
+        let userId = self.defaults.string(forKey: defaultKeys.userId)!
         
         switch points {
         case 0..<200:

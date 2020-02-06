@@ -16,7 +16,6 @@ class MoakPlace {
     var storeName: String?
     var address: String?
     var position: CLLocationCoordinate2D?
-    var distance: Int = 0
     
     init(googlePlace: GMSPlace) {
         self.id = googlePlace.placeID
@@ -54,7 +53,10 @@ class MoakPlace {
         let firebaseParameters = [
             "id": self.id!,
             "name": self.storeName!,
-            "address": self.address!] as [String : Any]
+            "address": self.address ?? "",
+            "position":
+                ["lat":self.position?.latitude,
+                 "long":self.position?.longitude]] as [String : Any]
         
         return firebaseParameters as [String : AnyObject]
         
@@ -62,5 +64,11 @@ class MoakPlace {
     
     func getStoreLocation() -> CLLocation {
         return CLLocation(latitude: self.position!.latitude, longitude: self.position!.longitude)
+    }
+    
+    func getDistance() -> Int {
+        let defaults = UserDefaults.standard
+        let currentLocation = CLLocation(latitude: defaults.double(forKey: defaultKeys.currentLatitude), longitude: defaults.double(forKey: defaultKeys.currentLongitude))
+        return Int((self.getStoreLocation() as AnyObject).distance(from: currentLocation))
     }
 }

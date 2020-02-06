@@ -34,8 +34,8 @@ class BarCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObj
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if self.defaults.string(forKey: "listId") != nil {
-            self.listId = self.defaults.string(forKey: "listId")!
+        if self.defaults.string(forKey: defaultKeys.listId) != nil {
+            self.listId = self.defaults.string(forKey: defaultKeys.listId)!
         }
         
         let cameraMediaType = AVMediaType.video
@@ -80,7 +80,7 @@ class BarCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObj
                 questionViewController.storeId = googlePlace.id!
             }
             
-            self.defaults.set("BarCode", forKey: "CaptureMode")
+            self.defaults.set("BarCode", forKey: defaultKeys.CaptureMode)
         case "showTutorial":
             let tutorial = segue.destination as! TutorialViewController
             tutorial.requiredScreen = "BarCode"

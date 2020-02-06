@@ -62,6 +62,23 @@ class AddContactViewController: UIViewController, UITextFieldDelegate {
                 self.nombreLabel.isHidden = false
                 self.userFound = user
                 self.okButton.isEnabled = true
+                
+                self.storageRef = self.storage.reference(forURL: "gs://moak-1291.appspot.com")
+                let avatarsRef = self.storageRef!.child("avatars/\(user!.id).jpg")
+                avatarsRef.getData(maxSize: 1 * 1024 * 1024) { (data, error) -> Void in
+                    if (error != nil) {
+                        // Uh-oh, an error occurred!
+                        print("error downloading avatar \(String(describing: error))")
+                    } else {
+                        // Data for "images/island.jpg" is returned
+                        let avatarImage: UIImage! = UIImage(data: data!)
+                        
+                        DispatchQueue.main.async {
+                            self.pictureView.image = avatarImage
+                            self.pictureView.isHidden = false
+                        }
+                    }
+                }
             } else {
                 firebase.getUserByUserName(userName: userSearch) { (user: UserToShareWith? ) in
                     if user != nil {
@@ -82,6 +99,7 @@ class AddContactViewController: UIViewController, UITextFieldDelegate {
                                 let avatarImage: UIImage! = UIImage(data: data!)
                                 
                                 self.pictureView.image = avatarImage
+                                self.pictureView.isHidden = false
                             }
                         }
                     }
